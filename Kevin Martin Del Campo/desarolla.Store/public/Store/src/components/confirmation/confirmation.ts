@@ -15,7 +15,17 @@ import { Singleton } from 'src/refactoring/DataSingleton';
 export class ConfirmationComponent implements OnInit { //Cambiar el nombre de AppComponent por el del nuestro
     
     ngOnInit() {
-        this.GetPedido();
+        //this.GetPedido();
+        var query = window.location.search;
+        var result : any;
+        result = query.match(/[Oo][Rr][Dd][Ee][Rr]=\w+/);
+        if(result.length === 1) {
+          result = result[0].split('=');
+          var numPedido = result[1];
+          console.log(numPedido)
+        } else {
+          //No se puede, no existe un pedido vacío...
+        }
     }
     
     GetPedido() {
