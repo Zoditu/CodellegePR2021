@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { StoreComponent } from "./store";
-import { HeaderComponent } from "../menu-header/menuHeader";
+import { HeaderComponent } from "../menu-header";
 
 
 @NgModule({

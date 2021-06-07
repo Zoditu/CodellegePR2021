@@ -1,0 +1,12 @@
+.line-border{
+    border-bottom: 0.5rem solid var(--color-blue);
+}
+
+.title {
+    padding: 0;
+}
+
+.quantity {
+    height: 100%;
+}
+

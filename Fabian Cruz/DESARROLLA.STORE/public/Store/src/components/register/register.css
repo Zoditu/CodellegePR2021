@@ -1,0 +1,32 @@
+.card-body {
+    display: table;
+}
+.card-row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+}
+
+
+.card {
+    border: solid 2px var(--color-blue);
+    display: inline-block;
+    margin: 2rem
+}
+
+.card-header {
+    text-align: center;
+    background-color: var(--color-blue);
+    font-family: 'Oswald', sans-serif;
+    color: var(--color-white);
+}
+
+.card-body {
+    background-color: var(--color-white);
+}
+
+.register-error {
+    color: var(--error-color);
+}

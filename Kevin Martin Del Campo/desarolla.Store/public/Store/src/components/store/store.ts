@@ -10,5 +10,5 @@ import {
 //Debemos asignarle el nombre de nuestro componente.
 //Ejemplo: Si se llama catalogo.component.ts, debemos exportar CatalogoComponent
 export class StoreComponent { //Cambiar el nombre de AppComponent por el del nuestro
-
+  
 }

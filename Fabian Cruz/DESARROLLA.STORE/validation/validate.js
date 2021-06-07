@@ -8,6 +8,8 @@ module.exports = {
             lastName: Joi.string().required(),
             email: Joi.string().required(),
             password: Joi.string().min(8).required(),
+            address: Joi.string().optional(),
+            phone: Joi.number().optional()
         });
 
         return schema.validate(data);

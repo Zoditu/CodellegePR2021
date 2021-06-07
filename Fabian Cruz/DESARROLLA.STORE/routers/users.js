@@ -26,6 +26,23 @@ router.get('/all', async (req, res) => {
     res.send(users);
 });
 
+router.get('getSession', async (req,res) => {
+    const usuarioActual =  req.cookies['SESSIONID'];
+    var user = await User.findOne({
+        nickname: nickname
+    });
+
+    if(user){
+        return res.send({
+            session: true
+        });
+    }
+    res.clearCookie("SESSIONID");
+    return res.send({
+        session: false
+    });
+})
+
 router.post('/register', async (req, res) => {
     // El parametro req
     var datosUsuario = req.body;
