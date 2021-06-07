@@ -1,0 +1,83 @@
+<div Curso id="PR2021" class="curso123" hora="9:00A.M."></div>
+
+.curso123 {
+    color: white;
+    background-color: darkgray;
+    border: 2px solid yellow;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0.4rem 0 0.4rem 0;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+var sitiosStreaming = [
+    {nombre: "Netfix", url: "www.netflix.com", esPaga: true, calidad: "HD+" }, 
+    {nombre: "Prime", url: "www.primevideo.com", esPaga: true, calidad: "HD+" },
+    {nombre: "Cuevana", url: "www.cuevana3.com", esPaga: false, calidad: "SD+" },
+];
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var descripcion = {
+    nombre: 'Luis',
+    apellido: 'Garcia',
+    edad: 29,
+    estatura: '1.75 mts.',
+    tez: 'marron',
+    cabello: 'chino',
+    colorCabello: 'negro'
+    complexion: 'robusta++',
+    sexo: 'masculino'
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+const nombres = ['Kevin', 'Luis', 'Fabian', 'Mariell', 'Tomás'];
+console.log('Nombres:', nombres);
+
+const nombresAlRevez = nombres.reverse();
+console.log('Nombres:', nombres);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var tiposDeTarea = 'Ocupado';
+switch (tiposDeTarea) {
+  case 'Barrer':
+    var escoba = true;
+    console.log('Barriendo');
+    break;
+  case 'Trapear':
+    var trapeador = true;
+    var cuberta = true;
+    console.log('Trapeando');
+    break;
+  case 'Trastos':
+    var esponja = true;
+    console.log('Lavando trastes');
+    break;
+  case 'Baños':
+    var cepillo = true;
+    var esponja = true;
+    var trapo = true;
+    console.log('Lavando el baño');
+    break;
+  case 'Camas':
+    var cobijas = true;
+    console.log('Tendiendo las camas');
+    break;
+  case 'Cocina':
+    var esponjaMetal = true;
+    console.log('Limpiando la cocina');
+    break;
+  default:
+    var tarea = false;
+    console.log('Estoy ocupado >n<');   
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////

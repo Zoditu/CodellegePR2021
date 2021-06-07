@@ -2,10 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const PORT = 666;
 
 const uri = "mongodb+srv://gasl:asdfghjklñ@cluster0.yfmf7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -26,6 +26,10 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(cookieParser());
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+}));
 //Crear un servidor WEB
 app.use(express.static('./public'));
 
