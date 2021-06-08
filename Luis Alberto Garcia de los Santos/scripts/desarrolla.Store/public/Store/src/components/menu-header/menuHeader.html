@@ -1,0 +1,18 @@
+<header class="w-100">
+  <a href="/" class="d-flex align-items-center float-left">
+    <div class="logo"></div>
+    <span>desarrolla.Store</span>
+  </a>
+  <div class="d-flex align-items-center float-right h-100">
+    <a href="/">Inicio</a>
+    <span>|</span>
+    <a href="/catalog">Catálogo</a>
+    <span>|</span>
+    <a [href]="accountRedirect === 'Login' ? '/login' : '/account'">{{ accountRedirect }}</a>
+
+    <a href="/cart">
+      <i class="bi bi-cart3"></i>
+      ({{numberProducts}})
+    </a>
+  </div>
+</header>

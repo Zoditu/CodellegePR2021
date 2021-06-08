@@ -1,0 +1,55 @@
+<div class="container py-5">
+  <div class="title">
+    <h1><b>Carrito de Compra</b></h1>
+    <button class="btn clean-button" (click)="CleanCart()">
+      <i class="bi bi-trash-fill"></i>&nbsp;Limpiar carrito
+    </button>
+  </div>
+  
+  <section>
+    <!-- <div *ngIf="products == !null; else emptyCart"> -->
+      <div class="column-labels">
+        <label class="product-image">Producto</label>
+        <label class="product-details">.</label>
+        <label class="product-price">Precio</label>
+        <label class="product-quantity">Cantidad</label>
+        <label class="product-line-price">Total</label>
+      </div>
+
+      <div *ngFor="let product of products" class="product">
+        <div class="product-image">
+          <img [src]="product.images[0]">
+        </div>
+        <div class="product-details">
+          <div class="product-title">{{product.name}}
+          </div>
+          <p class="product-description">{{product.description}}</p>
+        </div>
+        <div class="product-price">${{product.unit_price}}
+        </div>
+        <div class="product-quantity">
+          <span class="button-cart" (click)="DeleteOne(product.sku)">-</span>
+                <span class="px-3">{{product.qty}}</span>
+                <span class="button-cart" (click)="AddOne(product.sku)">+</span>
+        </div>
+        <div class="product-removal">
+          <button class="remove-product" (click)="DeleteProduct(product.sku);">
+            Eliminar
+          </button>
+        </div>
+        <div class="product-line-price">${{product.qty * product.unit_price}}</div>
+      </div>
+      <br>
+      <br>
+      <div class="totals">
+        <label>Grand Total: </label>
+        <div class="totals-value" id="cart-total">${{total}}
+            </div>
+      </div>
+      <a class="checkout" href="/checkout">Checkout</a>
+    <!-- </div>
+    <ng-template #emptyCart>
+     <h3 class="py-5">No hay productos en el carrito</h3>
+    </ng-template> -->
+  </section>
+</div>

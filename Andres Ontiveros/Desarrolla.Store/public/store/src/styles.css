@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-white: #feffde;
+  --color-blue: #9e7540;
+  --color-gray: #bd9354;
+  --color-black: #85603f;
+  --color-border: #eee;   
+  --font-default: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-bold: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.float-right {
+  float: right;
+}
