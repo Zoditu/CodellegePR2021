@@ -43,9 +43,12 @@ router.get('/getCart', async (req, res) => {
         var carrito = await Cart.findOne({
             id: cartID
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         }, {
             _id: 0,
             __v: 0
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         });
@@ -357,7 +360,10 @@ router.patch('/cleanCart', async (req, res) => {
 });
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 router.put('/validateCart', async (req, res) => {
     var cartID = req.cookies["CARTID"];
     var carrito = await Cart.findOne({
@@ -440,6 +446,9 @@ router.put('/validateCart', async (req, res) => {
 
 });
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 //Exportar o generar el módulo carts.js
