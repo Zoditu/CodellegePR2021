@@ -1,0 +1,13 @@
+.list-group {
+    width: 50%;
+    font-size: 1.4rem;
+}
+
+.bi {
+    margin-right: 1rem;
+    color: var(--color-gray);
+}
+
+h2 {
+    color: var(--color-black) !important;
+}

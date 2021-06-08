@@ -1,0 +1,89 @@
+body, html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: url(https://i.pinimg.com/originals/4c/d1/f6/4cd1f61bf741cb9d33ea547d3aa77040.jpg);
+    background-size: 100% 100%;
+    font-family: 'DotGothic16', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+main{
+   text-align: center; 
+}
+.tarjeta{
+    width: 25rem;
+    height: 15rem;
+    background: #27292d;
+    margin-bottom: 2rem;
+    display: inline-block;
+    box-shadow: 2px 10px 30px 3px;
+    position: relative;
+}
+.tarjeta > section{
+    position: absolute;
+    bottom: 3rem;
+    left: 2rem;
+}
+.tarjeta section{
+    font-size: 0.75em;
+    display: inline-block;
+}
+.tarjeta section h2, .tarjeta section h6{
+    text-align: left;
+
+    margin:  0.1rem;  
+}
+.golden-text{
+    color: rgb(188, 162, 114);
+    font-weight: bold;
+}
+.white-text{
+    color: white;
+    font-weight: lighter;
+}
+.gray-text{
+    color: gray;
+}
+.table{
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.table-row{
+    display: table-row;
+}
+.table-cell{
+    display: table-cell;
+    vertical-align: middle;
+}
+.mitad{
+    width: 50%;
+    float: left;
+}
+.mitad: :first-child h2, .mitad:first-child h6{
+    text-align:right;
+    
+}
+/* .mitad:last-child: */
+.mitad:nth-child(2){
+    text-align: left;
+    color: gray;
+    font-size: 0.7rem;
+    padding-left: 0.33rem;
+    border-left: 1px solid white;
+}
+.mitad:nth-child(2) span{
+    font-size: 0.6rem;
+}
+.direccion{
+    color: white;
+    /* font-weight: bold; */
+}
+.material-icons{
+    font-weight: bold;
+    color: rgb(188, 162, 114);
+}

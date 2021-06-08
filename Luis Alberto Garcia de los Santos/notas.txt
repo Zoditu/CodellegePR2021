@@ -1,0 +1,17 @@
+https://www.w3schools.com/cssref/css_units.asp
+
+En CSS existen diferentes tipos de display.
+El display es una propiedad que modifica el cómo se acomodan los elementos en los bloques de las páginas.
+
+ 
+
+Un bloque es todo lo que cabe en el ancho del documento. No tienen tamaño de altura, es solo lo que cabe en el ancho del sitio.
+
+ 
+
+display: block; abarca todo el bloque
+display: inline; se alinea con el texto y no tiene márgenes
+display: inline-block; se alinea con el texto y tiene márgenes
+
+[11:49 a. m., 22/2/2021] +52 1 81 1020 8012: En CSS existen diferentes tipos de display. El display es una propiedad que modifica el cómo se acomodan los elementos en los bloques de las páginas. Un bloque es todo lo que cabe en el ancho del documento. No tienen tamaño de altura, es solo lo que cabe en el ancho del sitio. display: block; abarca todo el bloque display: inline; se alinea con el texto y no tiene márgenes display: inline-block; se alinea con el texto y tiene márgenes
+[11:50 a. m., 22/2/2021] +52 1 81 1020 8012: CSS: - Define Reglas de estilos - Estas reglas se definen a través de selectores Selector = Representación de algún elemento o conjunto de elementos en el documento HTML Selector = Etiqueta(s) = Tag(s) = Nodo(s) = Elemento(s) Tipos de selectores: * Nombre de etiqueta: Afecta a todas las etiquetas de ese tipo * Clase: Afecta al grupo de elementos que comparten esa clase * ID: Afecta solo al elemento con ese ID * Comodín (*): Afecta cualquier elemento Jerarquía de selectores: CSS se ve afectado por la cascada Menor * Comodín * Nombre de etiqueta * Clase * Ubicación de elemento * ID Mayor

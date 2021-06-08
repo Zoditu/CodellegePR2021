@@ -1,0 +1,11 @@
+div#padre{
+    background-color: aqua;
+    display: inline-block;
+    width:  100%;
+};
+div#hijo{
+    height: 25%;
+    width: 25%;
+    background-color: blue;
+    margin: auto;
+};
