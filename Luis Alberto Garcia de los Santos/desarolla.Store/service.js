@@ -21,7 +21,7 @@ mongoose.connect(uri, {
 });
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -43,5 +43,8 @@ app.use('/products', routerProducts);
 
 var routerCarts = require('./routers/carts');
 app.use('/carts', routerCarts);
+
+var routerOrders = require('./routers/orders');
+app.use('/orders', routerOrders);
 
 app.listen(PORT);

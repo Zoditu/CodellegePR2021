@@ -24,12 +24,14 @@ export class CatalogComponent implements OnInit {
 
   GetProducts() {
     var self = this;
+    Singleton.GetInstance().ShowLoader();
     $.ajax({
       type: "GET",
       url: 'http://localhost:666/products/all',
       success: function (res: any) {
         //console.log(self.products); //null
         self.products = res;
+        Singleton.GetInstance().HideLoader();
         //console.log(self.products); //[]
       }
     });
@@ -37,6 +39,7 @@ export class CatalogComponent implements OnInit {
 
   AddToCart(sku: String) {
     var self = this;
+    Singleton.GetInstance().ShowLoader();
     $.ajax({
       type: "PATCH",
       xhrFields: { //Esto permite compartir cookies
@@ -50,6 +53,7 @@ export class CatalogComponent implements OnInit {
       success: function (res: any) {
         $(".toast").toast('show');
         Singleton.GetInstance().ReloadCart();
+        Singleton.GetInstance().HideLoader();
         //console.log('Add to cart: ');
         //console.log(res);
       }
