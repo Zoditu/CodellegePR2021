@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const PORT = 666;
 
 const uri = "mongodb+srv://joseV:zxn3w100QWERTY@cluster0.fbjan.mongodb.net/SPGG?retryWrites=true&w=majority";
@@ -20,12 +21,16 @@ mongoose.connect(uri, {
 });
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(cookieParser());
-
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+}));
+//Crear un servidor WEB
 app.use(express.static('./public'));
 
 var routerUsers = require('./routers/users');

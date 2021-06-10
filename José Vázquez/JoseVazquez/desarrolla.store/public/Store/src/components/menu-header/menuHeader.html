@@ -1,17 +1,18 @@
-<header class="w-100 bg-primary">
-    <a href="" class="d-flex align-items-center float-left">
-        <div class="logo"></div>
+<header class="w-100">
+  <a routerLink="/" class="d-flex align-items-center float-left">
+    <div class="logo"></div>
     <span>desarrolla.Store</span>
+  </a>
+  <div class="d-flex align-items-center float-right h-100">
+    <a routerLink="/">Inicio</a>
+    <span>|</span>
+    <a routerLink="/catalog">Catálogo</a>
+    <span>|</span>
+    <a [routerLink]="accountRedirect === 'Login' ? '/login' : '/account'">{{ accountRedirect }}</a>
+
+    <a routerLink="/cart">
+      <i class="bi bi-cart3"></i>
+      ({{numberProducts}})
     </a>
-    <div class="d-flex align-items-center float-right h-100">
-        <a href="/">Inicio</a>
-        <span>|</span>
-        <a href="/catalog">Catalogo</a>
-        <span>|</span>
-        <a [href]="accountRedirect === 'Login' ? '/account'">({ accountRedirect })</a>
-        <a href="/cart">
-            <i class="bi bi-cart4"></i>
-            ({{numberProducts}})
-        </a>
-    </div>
+  </div>
 </header>
