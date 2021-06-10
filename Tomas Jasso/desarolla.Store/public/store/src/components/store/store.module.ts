@@ -10,11 +10,6 @@ import { LoginComponent } from '../login/login';
 import { RegisterComponent } from '../register/register';
 import { AccountComponent } from '../account/account';
 import { CartComponent } from '../cart/cart';
-<<<<<<< Updated upstream
-=======
-import { CheckoutComponent } from '../checkout/checkout';
-import { ConfirmationComponent } from '../confirmation/confirmation';
->>>>>>> Stashed changes
 
 import { LoaderComponent } from '../loader/loader';
 
@@ -25,11 +20,6 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'account', component: AccountComponent },
   { path: 'cart', component: CartComponent },
-<<<<<<< Updated upstream
-=======
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'confirmation', component: ConfirmationComponent }
->>>>>>> Stashed changes
 ];
 //Es importante asignar el nombre igual al que exportamos en el archivo component.ts
 //Ejemplo: Si mi componente es catalogo.component.ts, entonces debo importar CatalogoComponent
@@ -41,13 +31,7 @@ const routes: Routes = [
     CatalogComponent,
     FooterComponent,
     CartComponent,
-<<<<<<< Updated upstream
     LoaderComponent
-=======
-    LoaderComponent,
-    CheckoutComponent,
-    ConfirmationComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

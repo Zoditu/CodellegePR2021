@@ -42,12 +42,9 @@ router.get('/getCart', async (req, res) => {
     if (cartID) {
         var carrito = await Cart.findOne({
             id: cartID
-<<<<<<< Updated upstream
         }, {
             _id: 0,
             __v: 0
-=======
->>>>>>> Stashed changes
         });
 
         if (carrito) {
@@ -68,10 +65,8 @@ router.get('/getCart', async (req, res) => {
                     userCart.quantity += carrito.quantity;
                     userCart.total += carrito.total;
 
-                    var issues = await Utils.validateCart(userCart);
-                    //userCart.markModified('products');
-                    //await userCart.save();
-                    userCart = issues.cart;
+                    userCart.markModified('products');
+                    await userCart.save();
 
                     res.cookie('CARTID', userCart.id, {
                         expires: new Date(2025, 1, 1)
@@ -80,25 +75,15 @@ router.get('/getCart', async (req, res) => {
                     userCart = userCart.toObject();
                     delete userCart._id;
                     delete userCart.__v;
-
                     return res.send(userCart);
                 }
             }
 
-            var issues = await Utils.validateCart(carrito);
-            carrito = issues.cart;
-
-            carrito = carrito.toObject();
-            delete carrito._id;
-            delete carrito.__v;
             return res.send(carrito);
         } else if (user && userCart) {
             res.cookie('CARTID', userCart.id, {
                 expires: new Date(2025, 1, 1)
             });
-
-            var issues = await Utils.validateCart(userCart);
-            userCart = issues.cart;
 
             return res.send(userCart);
         }
@@ -107,9 +92,6 @@ router.get('/getCart', async (req, res) => {
             res.cookie('CARTID', userCart.id, {
                 expires: new Date(2025, 1, 1)
             });
-            var issues = await Utils.validateCart(userCart);
-            userCart = issues.cart;
-
             return res.send(userCart);
         }
 
@@ -356,91 +338,6 @@ router.patch('/cleanCart', async (req, res) => {
     res.send(carrito);
 });
 
-<<<<<<< Updated upstream
-=======
-router.put('/validateCart', async (req, res) => {
-    var cartID = req.cookies["CARTID"];
-    var carrito = await Cart.findOne({
-        id: cartID
-    });
-
-    if (!carrito) {
-        return res.status(400).send({
-            message: "No existe un carrito asociado a esta petición... Ejecute el endpoint /carts/getCart"
-        });
-    }
-
-    var cart_issues = [];
-    //Ejecuta 1 por 1 a la vez
-    //Es más lento
-    for (var i = 0; i < carrito.products.length; i++) {
-        const product = carrito.products[i];
-
-        //Comprobar que el producto existe... No se puede comprar algo que ya se quitó
-        var productDB = await Product.findOne({
-            sku: product.sku
-        });
-
-        //No encontró el producto en la DB. Lo eliminamos
-        if (!productDB) {
-            cart_issues.push({
-                product: {
-                    sku: product.sku,
-                    name: product.name
-                },
-                issue: "Este producto ha sido dado de baja del catálogo"
-            });
-
-            //Elimina el elemento a partir de la posición i, y lo va a hacer n veces
-            carrito.products.splice(i, 1);
-            i--;
-            continue;
-        } else {
-            if (productDB.stock <= 0) {
-                cart_issues.push({
-                    product: {
-                        sku: product.sku,
-                        name: product.name
-                    },
-                    issue: "Este producto no tiene stock por el momento"
-                });
-
-                carrito.products.splice(i, 1);
-                i--;
-                continue;
-            } else if (productDB.stock < product.qty) {
-                cart_issues.push({
-                    product: {
-                        sku: product.sku,
-                        name: product.name
-                    },
-                    issue: "Este producto no tiene suficiente stock. Se le ha modificado al máximo existente"
-                });
-            }
-        }
-
-        product.name = productDB.name;
-        product.description = productDB.description;
-        product.unit_price = productDB.price;
-        product.images = productDB.images;
-    }
-
-    carrito.quantity = 0;
-    carrito.total = 0;
-    for (var i = 0; i < carrito.products.length; i++) {
-        const product = carrito.products[i];
-        carrito.quantity += product.qty;
-        carrito.total += product.qty * product.unit_price;
-    }
-
-    carrito.markModified('products');
-    await carrito.save();
-
-    res.send(cart_issues);
-
-});
-
->>>>>>> Stashed changes
 
 //Exportar o generar el módulo carts.js
 //Para ello debemos exportar aquello que contenga a todo la información
