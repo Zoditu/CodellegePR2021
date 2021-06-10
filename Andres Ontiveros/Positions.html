@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posicionamiento</title>
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .cuadro {
+            width: 14rem;
+            height: 14rem;
+            border: black .25rem solid;
+            display: inline-block;
+        }
+
+        .cuadrito {
+            width: 1rem;
+            height: 1rem;
+            background-color: gray;
+        }
+
+        .cuadro.uno {
+            background-color: purple;
+        }
+
+        .cuadrito.uno {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .cuadro.dos {
+            background-color: green;
+            position: absolute;
+            top: 5rem;
+            left: 5rem;
+        }
+
+        .cuadrito.dos {
+            position: absolute;
+            top: 1rem;
+            left: 12rem;
+        }
+
+        .cuadro.tres {
+            background-color: orangered;
+            position: absolute;
+            top: 10rem;
+            left: 10rem;
+        }
+
+        .cuadrito.tres {
+            position: absolute;
+            top: 12rem;
+            left: 1rem;
+        }
+
+        .cuadro.cuatro {
+            background-color: pink;
+            position: absolute;
+            top: 15rem;
+            left: 15rem;
+        }
+
+        .cuadrito.cuatro {
+            position: absolute;
+            top: 12rem;
+            left: 12rem;
+        }
+
+        .relative {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cuadro uno">
+        <div class="relative">
+            <div class="cuadrito uno"></div>
+        </div>
+    </div>
+    <div class="cuadro dos">
+        <div class="relative">
+            <div class="cuadrito dos"></div>
+        </div>
+    </div>
+    <div class="cuadro tres">
+        <div class="relative">
+            <div class="cuadrito tres"></div>
+        </div>
+    </div>
+    <div class="cuadro cuatro">
+        <div class="relative">
+            <div class="cuadrito cuatro"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

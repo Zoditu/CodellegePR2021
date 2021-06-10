@@ -163,6 +163,8 @@ router.put('/:nickname', async (req, res) => {
                 }
 
                 user.nickname = newNickname;
+                res.clearCookie('SESSIONID');
+                res.cookie('SESSIONID', newNickname);
                 break;
 
             case "email":
@@ -295,6 +297,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', async (req, res) => {
     //Borra la cookie SESSIONID
     res.clearCookie('SESSIONID');
+    res.clearCookie('CARTID');
 
     res.send({
         message: "Se ha desloggeado y se ha borrado la sesión"

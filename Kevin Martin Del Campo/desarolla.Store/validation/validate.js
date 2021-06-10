@@ -36,5 +36,21 @@ module.exports = {
         });
 
         return schema.validate(data);
+    },
+    //Validar el crear una nueva orden
+    order: function(data) {
+        const schema = Joi.object({
+            address: Joi.object().keys({
+                street: Joi.string().required(),
+                suburb: Joi.string().required(),
+                city: Joi.string().required(),
+                state: Joi.string().required(),
+                zip: Joi.number().required()
+            }).required(),
+            email: Joi.string().email().required(),
+            phone: Joi.number().required()
+        });
+        
+        return schema.validate(data);
     }
 };
