@@ -2,6 +2,10 @@ div {
   color: rgb(92, 121, 92)
 }
 
+div.invalid-order {
+  color: rgb(146, 101, 101)
+}
+
 div i {
   font-size: 8rem;
 }

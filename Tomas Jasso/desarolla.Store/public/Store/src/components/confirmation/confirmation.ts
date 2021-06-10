@@ -2,7 +2,10 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { Singleton } from 'src/refactoring/DataSingleton';
+declare var $: any;
+import {
+  Singleton
+} from 'src/refactoring/DataSingleton';
 
 @Component({
   selector: 'confirmation', //Asignar un nombre de etiqueta, único
@@ -13,29 +16,27 @@ import { Singleton } from 'src/refactoring/DataSingleton';
 //Debemos asignarle el nombre de nuestro componente.
 //Ejemplo: Si se llama catalogo.component.ts, debemos exportar CatalogoComponent
 export class ConfirmationComponent implements OnInit { //Cambiar el nombre de AppComponent por el del nuestro
-    
-    ngOnInit() {
-        //this.GetPedido();
-        var query = window.location.search;
-        var result : any;
-        result = query.match(/[Oo][Rr][Dd][Ee][Rr]=\w+/);
-        if(result.length === 1) {
-          result = result[0].split('=');
-          var numPedido = result[1];
-          console.log(numPedido)
-        } else {
-          //No se puede, no existe un pedido vacío...
-        }
-    }
-    
-    GetPedido() {
-        //Llamada al endpoint del pedido con el LastOrder de una cookie
-        this.numeroPedido = null;
 
-        if(this.numeroPedido === null) {
-            window.location.href = '/';
+  ngOnInit() {
+    Singleton.GetInstance().ShowLoader();
+    var query = window.location.search;
+    var result: any;
+    var self = this;
+    result = query.match(/[Oo][Rr][Dd][Ee][Rr]=\w+/);
+    if (result.length === 1) {
+      result = result[0].split('=');
+      var numPedido = result[1];
+      $.ajax({
+        type: 'GET',
+        url: "http://localhost:666/orders/validate/" + numPedido,
+        success: function (res: any) {
+          if (res.valid === true) {
+            self.numeroPedido = numPedido;
+          }
+          Singleton.GetInstance().HideLoader();
         }
+      });
     }
-
-    numeroPedido = null;
+  }
+  numeroPedido = null;
 }
