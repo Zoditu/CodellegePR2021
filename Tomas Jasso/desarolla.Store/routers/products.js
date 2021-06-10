@@ -193,6 +193,7 @@ router.delete('/:sku', async (req, res) => {
     await Product.deleteOne({
         sku: sku
     });
+    
     res.send({
         message: "Se ha borrado el producto: " + sku
     });
