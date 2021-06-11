@@ -1,53 +1,49 @@
-// Referencia del servidor express
-const express = require('express');
+// Referencia del servidor de express
+const express=require('express');
 
-// Crear un enrutador para este micro-servicio
-const router = express.Router();
+// Crear un enrutador para este microservicio
+const router=express.Router();
 
-// Importar nuestro modelo de datos
+// importar nuestro modelo de datos
 const User=require('../models/user');
 
-router.get('/all', async (req, res) => {
-    var users = await User.find({}, {__v:0, _id:0});
-    
+router.get('/all', async(req, res) => {
+    var users=User.find({});
+
     res.send(users);
 });
 
-router.get('/:idUser', async(req,res)=> {
-    
-    var parametros=req.params;
-    var idUser=parametros.idUser;
+router.get('/:nickname', async (req, res) => {
+    var parametros = req.params;
+    var nickname = parametros.nickname;
 
-    var user=await User.findOne({idUser:idUser}, {__v:0, _id:0, password:0});
-    //findOne puede regresar null o el usuario
-    if (!user){
-        //user no existe
-        return res.status(404).send({
-            message: "El usuario: " +idUser+ " no existe"
+    var user = await User.findOne({ nickname:nickname }, { __v: 0, _id: 0, password: 0});
+    //finOne puede regresar null o el usuario
+    if (!user) {
+        // user no existe
+        return res.status(404).send ({
+            message: "El usuario: " + nickname + "no existe"
         });
     }
     return res.send(user);
 });
 
-router.post('/register', async(req, res)=> {
-//El parametro 'req' contiene toda la info que se envia para generar esta petición
-//Osea, aqui vienen los datos
-var datosUsuario=req.body;
+router.post('/register', async(req, res) => {
+    var datosUsuario=req.body;
 
-//OR en el query de Mongo
-var userExists=await User.findOne({ $or: [{ idUser: datosUsuario.idUser }, {email: datosUsuario.email}] });
-if(userExists) {
-    return res.status(401).send({
-        error: "El usuario con este id/email ya existe"
-    });
-}
+    var userExists=await User.findOne({ $or: [{ nickname: datosUsuario.nickname}, {email:datosUsuario.email}] });
+    if(userExists) {
+        return res.status(401).send({
+            error: "El usuario con este nickname/correo ya existe"
+        });
+    }
 
-var usuarioRegistrado= new User ({
-    idUser: datosUsuario.idUser,
-    name: datosUsuario.name,
-    lastName: datosUsuario.lastName,
-    email: datosUsuario.email,
-    password: datosUsuario.password
+    var usuarioRegistrado=new User ({
+        nickname: datosUsuario.nickname,
+        name: datosUsuario.name,
+        lastName: datosUsuario.lastName,
+        email: datosUsuario.email,
+        password: datosUsuario.password
     });
 
     await usuarioRegistrado.save();
@@ -56,63 +52,56 @@ var usuarioRegistrado= new User ({
     });
 });
 
-router.put('/:idUser', async (req, res) => {
-    const idUser=req.params.idUser;
-    const userData=req.body;
+router.put('/:nickanme', async (req, res) => {
+    const nickname = req.params.nickanme
+    const userData = req.body;
 
-    var user = await User.findOne({idUser:idUser});
+    var user = await User.findOne({ nickanme:nickname });
 
-    if(!user){
-        //user no existe
+    if (!user) {
         return res.status(404).send({
-            message: "El usuario: " + idUser + " no existe"
+            message: "El usuario: " + nickname + "no existe"
         });
     }
+  
+    var propiedades = Object.keys(userData);
 
-    //Los objetos en JS tambien se les conoce como Key-Value Pair
-    // key es único
-    var propiedades=Object.keys(userData);
-    //Regresa un array [Strings]
-    for (var i=0; i < propiedades.length; i++) {
+    for (var i=0; i<propiedades.length; i++ ) {
         const propiedad=propiedades[i];
-        switch(propiedad){
+
+        switch(propiedad) {
             case "name":
                 user.name=userData.name
-            break;
+                break;
             case "lastName":
                 user.lastName=userData.lastName
-            break;
-            case "phone":
-                user.phone=userData.phone
-            break;
+                break;
             case "password":
                 user.password=userData.password
-            break;
+                break;
             case "address":
                 user.address=userData.address
-            break;          
+                break;
         }
     }
 
     await user.save();
 
     res.send({
-        message: "Se actualizo el usuario correctamente"
+        message: "Se actualizó el usuario correctamente"
     });
 });
 
-router.delete('/:idUser', async (req, res)=> {
+router.delete('/:nickname', async (req, res) => {
+    var parametros = req.params;
+    var nickname = parametros.nickname;
 
-        var parametros=req.params;
-        var idUser=parametros.idUser;
-
-        var usuarioBorrado = await User.deleteOne({idUser:idUser});
-
-        res.send({
-            message: "Se ha borrado el usuario: " + idUser
-        });
+    var usuarioBorrado = await User.deleteOne ({ nickname:nickname });
+    
+    res.send ({
+         message: "Se ha borrado el usuario: " +nickname
+     });
 });
 
-//Exportar o generar el modulo users.js
-//Para ello debemos exportar aquello que contenga a toda la info
+
 module.exports=router;
