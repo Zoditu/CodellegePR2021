@@ -6,7 +6,67 @@
       <input type="checkbox" name="Filtro tal" id="filtro1">
       <label for="filtro1">Filtro 1</label>
     </section>
+
     <section class="col-9 px-2">
+      <!-- PRODUCTO 1 -->
+      <div *ngFor="let product of products" class="card product-card">
+        <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let image of product.images; let i = index"
+              [class]="'carousel-item' + (i === 0 ? ' active' : '')">
+              <img [src]="image" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div> 
+        <div class="card-body">
+          <span>KISSES CEREAL - $400</span>
+          <p class="card-text">
+            Milk and chocolate the perfect couple
+          </p>
+          <button (click)="AddToCart(product.sku)" class="btn float-right">+</button>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 2 -->
+      <div *ngFor="let product of products" class="card product-card">
+        <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let image of product.images; let i = index"
+              [class]="'carousel-item' + (i === 1 ? ' active' : '')">
+              <img [src]="image" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <span>{{product.name}} - ${{product.price}}</span>
+          <p class="card-text">
+            {{product.description}}
+          </p>
+          <button (click)="AddToCart(product.sku)" class="btn float-right">+</button>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 3 -->
       <div *ngFor="let product of products" class="card product-card">
         <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -34,7 +94,160 @@
           <button (click)="AddToCart(product.sku)" class="btn float-right">+</button>
         </div>
       </div>
+
+      <!-- PRODUCTO 4 -->
+      <div *ngFor="let product of products" class="card product-card">
+        <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let image of product.images; let i = index"
+              [class]="'carousel-item' + (i === 0 ? ' active' : '')">
+              <img [src]="image" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <span>{{product.name}} - ${{product.price}}</span>
+          <p class="card-text">
+            {{product.description}}
+          </p>
+          <button (click)="AddToCart(product.sku)" class="btn float-right">+</button>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 5 -->
+      <div *ngFor="let product of products" class="card product-card">
+        <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let image of product.images; let i = index"
+              [class]="'carousel-item' + (i === 0 ? ' active' : '')">
+              <img [src]="image" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <span>{{product.name}} - ${{product.price}}</span>
+          <p class="card-text">
+            {{product.description}}
+          </p>
+          <button (click)="AddToCart(product.sku)" class="btn float-right">+</button>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 6 -->
+      <div *ngFor="let product of products" class="card product-card">
+        <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let image of product.images; let i = index"
+              [class]="'carousel-item' + (i === 0 ? ' active' : '')">
+              <img [src]="image" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <span>{{product.name}} - ${{product.price}}</span>
+          <p class="card-text">
+            {{product.description}}
+          </p>
+          <button (click)="AddToCart(product.sku)" class="btn float-right">+</button>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 7 -->
+      <div *ngFor="let product of products" class="card product-card">
+        <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let image of product.images; let i = index"
+              [class]="'carousel-item' + (i === 0 ? ' active' : '')">
+              <img [src]="image" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <span>{{product.name}} - ${{product.price}}</span>
+          <p class="card-text">
+            {{product.description}}
+          </p>
+          <button (click)="AddToCart(product.sku)" class="btn float-right">+</button>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 8 -->
+      <div *ngFor="let product of products" class="card product-card">
+        <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let image of product.images; let i = index"
+              [class]="'carousel-item' + (i === 0 ? ' active' : '')">
+              <img [src]="image" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <span>{{product.name}} - ${{product.price}}</span>
+          <p class="card-text">
+            {{product.description}}
+          </p>
+          <button (click)="AddToCart(product.sku)" class="btn float-right">+</button>
+        </div>
+      </div>
+
     </section>
+
+    <!-- COMENT -->
+
+    
+
+    <!-- COMENT -->
+
   </article>
 </main>
 

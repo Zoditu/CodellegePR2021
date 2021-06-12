@@ -1,5 +1,5 @@
 .filtro {
-    border: 0.3rem solid var(--color-blue);
+    border: 0.3rem solid red;
     color: var(--color-gray);
 }
 
@@ -8,6 +8,7 @@
     display: inline-flex;
     margin-right: 1rem;
     margin-bottom: 1rem;
+    align-items: center;
 }
 
 .product-card img {

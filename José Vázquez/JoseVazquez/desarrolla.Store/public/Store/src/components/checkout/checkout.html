@@ -1,18 +1,21 @@
 <section class="container py-5">
-  <div class="row"> (submit)="$"
+  <div class="row">
+    <div class="alert alert-danger" [hidden]="validInfo" role="alert">
+      Por favor, rellene todos los campos con su información.
+    </div>
     <article class="col-9">
       <h2><i class="bi bi-info-circle-fill"></i>Información de envío</h2>
       <hr>
       <ul class="list-group">
         <li class="list-group-item"><i class="bi bi-person-fill"></i>Nombre:
-          <input type="text" required="UpdateValue($event, 'name')" [value]="userData.name">
+          <input type="text" (input)="UpdateValue($event, 'name')" [value]="userData.name">
         </li>
         <li class="list-group-item"><i class="bi bi-person-fill"></i>Apellidos:
-          <input type="text" required="UpdateValue($event, 'lastName')" [value]="userData.lastName"></li>
+          <input type="text" (input)="UpdateValue($event, 'lastName')" [value]="userData.lastName"></li>
         <li class="list-group-item"><i class="bi bi-envelope-fill"></i>Email:
-          <input type="text" required="UpdateValue($event, 'email')" [value]="userData.email"></li>
+          <input type="text" (input)="UpdateValue($event, 'email')" [value]="userData.email"></li>
         <li class="list-group-item"><i class="bi bi-telephone-fill"></i>Teléfono:
-          <input type="text" required="UpdateValue($event, 'phone')" [value]="userData.phone"></li>
+          <input type="text" (input)="UpdateValue($event, 'phone')" [value]="userData.phone"></li>
       </ul>
 
       <h2 class="mt-5"><i class="bi bi-geo-alt-fill"></i>Dirección de envío</h2>
@@ -35,10 +38,10 @@
       <h2>Resumen</h2>
       <hr>
       <section *ngIf="cart.quantity > 0 else emptyCart">
-        <h4 class="text-end">Subtotal: ${{cart.total * 0.84}}</h4>
-        <h4 class="text-end">IVA: ${{cart.total * 0.16}}</h4>
+        <h4 class="text-end">Subtotal: ${{(cart.total * 0.84).toFixed(2)}}</h4>
+        <h4 class="text-end">IVA: ${{(cart.total * 0.16).toFixed(2)}}</h4>
         <hr>
-        <h4 class="text-end">Total: ${{cart.total}}</h4>
+        <h4 class="text-end">Total: ${{(cart.total).toFixed(2)}}</h4>
         <hr>
       </section>
       <ng-template #emptyCart>
