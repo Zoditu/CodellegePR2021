@@ -37,6 +37,7 @@ td {
 
 .product-image img {
   height: 7rem;
+  width: 100%;
 }
 
 .product-detail {

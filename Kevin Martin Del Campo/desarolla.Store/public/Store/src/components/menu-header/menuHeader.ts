@@ -59,9 +59,15 @@ export class HeaderComponent implements OnInit {
         //Mostrar un modal o mensaje con los issues
         var issues = cartInfo.cart_issues;
         if(issues.length) {
+          var messages = '';
+          for (var i = 0; i < issues.length; i++) {
+            const problema = issues[i];
+            messages += problema.issue + "<br>En Producto: " + problema.product.sku + "<br>Nombre: " + problema.product.name + "<hr>";
+          }
           
+          //Mostrar modal
+          alert(messages);
         }
-        //Mostrar modal
 
         cartInfo = cartInfo.cart;
 

@@ -4,7 +4,7 @@
 var currentCallback;
 
 window.alert = function (msg, callback) {
-  $('.message').text(msg);
+  $('.message').html(msg);
   $('.customAlertContainer').css('display', 'flex');
   $('.customAlert').css('animation', 'fadeIn 0.3s linear');
   $('.customAlert').css('display', 'inline-block');
@@ -22,6 +22,8 @@ $(function () {
       $('.customAlert').css('animation', 'none');
       $('.customAlert').css('display', 'none');
     }, 300);
-    currentCallback();
+    if(currentCallback) {
+      currentCallback();
+    }
   });
 });

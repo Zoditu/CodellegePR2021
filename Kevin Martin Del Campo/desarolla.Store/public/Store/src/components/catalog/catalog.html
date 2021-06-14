@@ -31,7 +31,7 @@
           <p class="card-text">
             {{product.description}}
           </p>
-          <button (click)="AddToCart(product.sku)" class="btn float-right">+</button>
+          <button [disabled]="product.stock < 1" (click)="AddToCart(product.sku)" class="btn float-right">+</button>
         </div>
       </div>
     </section>

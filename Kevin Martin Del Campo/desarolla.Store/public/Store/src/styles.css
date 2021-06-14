@@ -72,10 +72,9 @@ body {
 .customAlert .message {
   padding: 5px;
   color: var(--color-white);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 1.5rem;
   text-align: justify;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .customAlert input[type=button] {
