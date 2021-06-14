@@ -1,45 +1,53 @@
-header{
-    height: 3rem;
+header {
+    background: #860000;
+    box-shadow: 0rem 0.2rem 1rem 0.1rem #ff0000;
+    height: 3.25rem;
     padding: 0.3rem;
-    color: whitesmoke;
-    font-size: 1.4rem;
+    color: #ffffff;
+    font-size: 1.8rem;
+
     position: sticky;
     left: 0;
     top: 0;
+
+    z-index: 1060;
 }
 
-a, a:link{
-    color: whitesmoke;
+a, a:link {
+    color: #ffffff;
     text-decoration: none;
+
+    transition: 2s color;
 }
 
-a:hover{
-    color: whitesmoke;
+a:hover {
+    color: #000000;
     text-decoration: none;
+
+    transition: 2s color;
 }
 
-.logo{
+.logo {
     height: 2.4rem;
     width: 2.4rem;
-    background-color: dimgray;
-    margin: 0.3rem;
+    background-color: #420000;
     float: left;
+    border-radius: 100%;
 }
 
 .float-left{
-    float: right;
+    float: left;
 }
 
-.float.right{
+.float-right{
     float: right;
 }
 
 i {
     margin-left: 2rem;
-    cursor: pointer;
 }
 
-span{
+span {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }

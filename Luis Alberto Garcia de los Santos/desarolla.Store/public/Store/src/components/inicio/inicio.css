@@ -34,8 +34,3 @@
     align-items: center;
     justify-content: center;
 }
-
-footer {
-    height: 45rem;
-    background-color: var(--color-footer);
-}

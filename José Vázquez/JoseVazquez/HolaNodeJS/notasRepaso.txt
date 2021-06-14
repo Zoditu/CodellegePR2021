@@ -1,0 +1,247 @@
+
+<curso id="PR2021" class"curso123" hora="9:00 A.M."></curso>
+.curso{
+    color: white;
+    background-color: darkgray;
+    border: solid yellow;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0.4, 0, 0.4, 0;
+    padding-top: 0.4;
+    padding-bottom: 0.4;
+}
+
+var sitiios = [
+    {
+        nombre: "Netflix",
+        url: "www.netflix.com",
+        esPaga: true,
+        calidad: "HD+"
+    }, {
+        nombre: "HBO",
+        url: "www.hbo.com",
+        esPaga: true,
+        calidad: "HD+"
+    }, {
+        nombre: "Amazon Prime",
+        url: "www.amazonprime.com",
+        esPaga: true,
+        calidad: "HD+"
+    }, {
+        nombre: "Disney Plus",
+        url: "www.disneyplus.com",
+        esPaga: true,
+        calidad: "HD+"
+    },
+]
+
+var JoseVazquez = {
+    nombre: Jose,
+    apellido: Vazquez,
+    edad: 21,
+    estatura: "1.70m",
+    colorPiel: "Negro",
+    tipoCabello: "Lacio",
+    colorCabello: "negro",
+    complexión: "Atletica"
+};
+
+
+function hacerSandwich(pan, jamón, queso){
+
+}
+
+var x;
+var y;
+if(true){
+    var x = 0; //Se toma la x como local
+    //Existe la y de alcance global
+}
+
+//global
+funtion(){
+    //local
+}
+
+for (var i: 0; i<arreglo.lenght; i++){
+    const elemento = arreglo[i];
+}
+
+while(x > 123){
+
+}
+
+do{
+
+} while(x > 123)
+
+
+var nombres = ['Kevin', 'Mariell', 'Tomás'];
+for (var i = nombres.lenght - 1; i > -1; i--) {
+    const nombre =  nombres[i];
+    console.log(nombre); 
+}
+
+var tareaEjecucion = true,
+var x = 100;
+
+while(x < 100){
+    x++;
+    if(x === 100){
+        tareaEjecucion = false;  
+    }
+    
+}
+
+tareaEjecucion === true
+var x = 100;
+do{
+    x++;
+    if(x === 100){
+        tareaEjecucion = false;
+    }
+} while (x < 100)
+
+
+-if, else
+if(condicion){
+    //alcance if
+} else{
+    //alcance else
+}
+
+
+var x = 5;
+if (x === 10){
+    //Alcance if
+    var y = 5;
+    console.log('Este es un 10');
+} else{
+    //Alcance  de else 
+    var z = 4;
+    console.log('Es diferente de 10');
+}
+
+var x = 10;
+if (x === 10){
+    var y = 3;
+    if(y === 3){
+        var z = 4;
+        console.log(x);
+        console.log(y);
+        console.log(z);
+    }
+    while(true){
+
+    }
+    if(algo){
+    } else{
+
+    }
+} else{
+    
+}
+
+
+if(a){
+
+} else if(b){
+
+}else if(c){
+
+}else if(d){
+
+}else{
+
+}
+
+swith(valor){
+    case "a":
+    //'omstrucción a realizar en caso que sea a'
+    break;
+
+    case "b":
+    //'omstrucción a realizar en caso que sea b'
+    break;
+
+    case "c":
+    //'omstrucción a realizar en caso que sea c'
+    break;
+
+    case "d":
+    //'omstrucción a realizar en caso que sea d'
+    break;
+} else{
+    //Instrucción en caso que no sea nigún valor anterior
+}
+
+
+var tipodeTarea = 'Cocina'
+if(tipodeTarea === 'Barrer'){
+    var escoba = true;
+    console.log('Barriendo');
+} else if(tipodeTarea === 'Trapear'){
+    var trapeador = true;
+    var cubeta = true;
+    console.log('Trapeando');
+} else if(tipodeTarea === 'Trastos'){
+    var esponjaTrastes = true;
+    console.log('Lavando trastes');
+} else if(tipodeTarea === 'Baños'){
+    var cepillo = true;
+    var esponjaBaños = true;
+    var trapo = true;
+    console.log('Lavando el baño');
+} else if(tipodeTarea === 'Camas'){
+    var cobijas = true;
+    console.log('Tendiendo las camas');
+} else if(tipodeTarea === 'Cocina'){
+    var esponjaMetal = true;
+    console.log('Limpiando cocina');
+} else{
+    var tarea = false;
+    console.log('Estoy ocupado')
+}
+
+swith(tipodeTarea){
+    case 'Barrer':
+    var escoba = true;
+    console.log('Barriendo');
+    break;
+
+    case 'Trapear':
+    var trapeador = true;
+    var cubeta = true;
+    console.log('Trapeando');
+    break;
+
+    case 'Trastos':
+    var esponjaTrastes = true;
+    console.log('Lavando trastes');
+    break;
+
+    case 'Baños':
+    var cepillo = true;
+    var esponjaBaños = true;
+    var trapo = true;
+    console.log('Lavando el baño');
+    break;
+
+    case 'Camas':
+    var cobijas = true;
+    console.log('Tendiendo las camas');
+    break;
+
+    case 'Cocina':
+    var esponjaMetal = true;
+    console.log('Limpiando cocina');
+    break;
+
+    default:
+    var tarea = flase;
+    console.log('Estoy ocupado');
+    break;
+}
+
+

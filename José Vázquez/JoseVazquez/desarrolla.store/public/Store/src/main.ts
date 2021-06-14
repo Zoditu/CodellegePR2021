@@ -1,12 +1,11 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-//import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import { HeaderModule } from './components/menu-header/menuHeader.module';
+import { StoreModule } from './components/store/store.module';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(HeaderModule).catch(err => console.error(err));
+platformBrowserDynamic().bootstrapModule(StoreModule).catch(err => console.error(err));

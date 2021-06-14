@@ -1,18 +1,17 @@
 import {
-    Component
+  Component
 } from '@angular/core';
 
 @Component({
-    selector: 'catalogoRoot', //Asignar un nombre de etiqueta, unico
-    templateUrl: './catalogo.component.html', //Asignar la ruta del archivo .html que representa esta vista
-    styleUrls: ['./catalogo.component.css']
+  selector: 'catalogo-productos', //Asignar un nombre de etiqueta, único
+  templateUrl: './catalogo.component.html', //Asignar la ruta del archivo .html que represente esta vista
+  styleUrls: ['./catalogo.component.css'] //Un arreglo con las rutas de los CSS que queremos en este componente
 })
 
-
-//Debemos asignarle el nombre de nuestro componente
-//Ejemplo: Si se llama catalogo.components.ts, debemos exportar CatalogoComponents
+//Debemos asignarle el nombre de nuestro componente.
+//Ejemplo: Si se llama catalogo.component.ts, debemos exportar CatalogoComponent
 export class CatalogoComponent { //Cambiar el nombre de AppComponent por el del nuestro
     numeroProductos = 10;
     numeroPaginas = 2;
-    productos = [{name: 'iPhone 15 :0'}];
+    productos = [{name: 'iPhone 123'}];
 }
