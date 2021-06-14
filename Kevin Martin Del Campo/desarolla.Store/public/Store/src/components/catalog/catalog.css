@@ -35,7 +35,7 @@
 }
 
 .toast {
-    position: absolute;
+    position: fixed;
     bottom: 1rem;
     right: 1rem;
     background-color: var(--color-blue);
