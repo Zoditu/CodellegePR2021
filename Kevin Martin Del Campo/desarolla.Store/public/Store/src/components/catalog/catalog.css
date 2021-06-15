@@ -40,3 +40,29 @@
     right: 1rem;
     background-color: var(--color-blue);
 }
+
+.search-bar {
+    position: relative;
+}
+
+.search-box {
+    padding-right: 1.5rem;
+}
+
+.search-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.35rem;
+}
+
+input[type=text] {
+    border: 0;
+    background-color: transparent;
+    border-bottom: 1px solid var(--required-status);
+    outline: 0;
+}
+
+input[type=text]:active {
+    outline: 0;
+}
