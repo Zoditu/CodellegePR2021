@@ -1,0 +1,36 @@
+.boton {
+    margin-top: .5rem;
+    text-align: right;
+}
+
+.list-group {
+    text-align: left;
+}
+.bi {
+    margin-right: 1rem;
+}
+input[type=text] {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    border-bottom: solid 1px var(--color-gray);
+    margin-left: 1rem;
+}
+
+input[type=text]:active {
+    outline: 0;
+}
+
+.resumen-form {
+    text-align: right;
+    font-size: .8rem;
+}
+
+.total {
+    background-color: var(--color-blue);
+    color: white;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+    font-size: 1rem;
+    font-weight: bold;
+}

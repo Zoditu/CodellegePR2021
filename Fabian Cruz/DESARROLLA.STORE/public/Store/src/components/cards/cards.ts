@@ -24,16 +24,19 @@ export class CardsComponent implements OnInit {
   }
 
   GetProducts(){
+    Singleton.GetInstance().ShowLoader();
     var self = this;
     $.ajax({
       type: 'GET',
       url: 'http://localhost:666/products/all',
       success: function(res: any) {
         self.products = res;
+        Singleton.GetInstance().HideLoader();
       }
     });
   }
   AddToCart(sku: String) {
+    Singleton.GetInstance().ShowLoader();
     var self = this;
     $.ajax({
       type: 'PATCH',
@@ -50,6 +53,7 @@ export class CardsComponent implements OnInit {
         // console.log(res);
         $('.toast').toast('show');
         Singleton.GetInstance().ReloadCart();
+        Singleton.GetInstance().HideLoader();
       }
     })
   }

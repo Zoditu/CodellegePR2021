@@ -5,5 +5,5 @@ module.exports = mongoose.model('Cart', new mongoose.Schema({
     id: String,
     products: Array,
     quantity: Number,
-    total: Number,
+    total: Number
 }), 'Carts');

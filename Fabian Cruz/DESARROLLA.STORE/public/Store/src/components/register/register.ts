@@ -84,9 +84,6 @@ import {
                 case 'phone':
                     this.phone = value
                 break;       
-        
-            default:
-                break;
         }
     }
 
@@ -96,13 +93,13 @@ import {
     name = '';
     lastName = '';
     address = {
-    street: '',
-    suburb: '',
-    city: '',
-    state: '',
-    zip: ''
-    }
-    phone = '';
+        street: '',
+        suburb: '',
+        city: '',
+        state: '',
+        zip: 0
+        }
+    phone = 0;
 
 
     invalidRegister=false

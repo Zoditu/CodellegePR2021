@@ -26,8 +26,8 @@ router.get('/all', async (req, res) => {
     res.send(users);
 });
 
-router.get('getSession', async (req,res) => {
-    const usuarioActual =  req.cookies['SESSIONID'];
+router.get('/getSession', async (req,res) => {
+    const nickname =  req.cookies['SESSIONID'];
     var user = await User.findOne({
         nickname: nickname
     });
@@ -63,13 +63,7 @@ router.post('/register', async (req, res) => {
         });
     }
 
-    var usuarioRegistrado = new User({
-        nickname: datosUsuario.nickname,
-        name: datosUsuario.name,
-        lastName: datosUsuario.lastName,
-        email: datosUsuario.email,
-        password: datosUsuario.password
-    })
+    var usuarioRegistrado = new User(datosUsuario);
 
     await usuarioRegistrado.save();
     res.send({
@@ -80,8 +74,7 @@ router.post('/register', async (req, res) => {
 // Router,metodo,endpoint,peticion y respuesta
 router.get('/:nickname', async (req, res) => {
 
-    var parametros = req.params;
-    var nickname = parametros.nickname;
+    var nickname = req.cookies['SESSIONID'];;
 
     var user = await User.findOne({ nickname: nickname }, { __v: 0, _id: 0, password: 0 })
     // findOne puede regresar null o el usuario

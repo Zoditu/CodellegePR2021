@@ -1,20 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --color-white: #EEEEEE;
-    --color-footer: #4b4a4a;
-    --color-blue: #00ADB5;
-    --color-gray: #393E46;
-    --color-black: #222831;
+    --color-footer: #0e4265;
+    --color-blue: #6fbfd4;
+    --color-gray: #737a7d;  /* 393E46 */
+    --color-black: #061c2a;
     --error-color: #bb5e5e;
+    --color-fondo: #9fe0df;
+    --color-fondo2: #e5e5e5;
 }
 
 
 body {
-    background: var(--color-white);
+    background: var(--color-fondo);
     color: #151515;
     font-family: 'KoHo', sans-serif;
 }
 
 .float-right {
     float: right;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-hidden:hover {
+    background-color: var(--color-gray);
 }

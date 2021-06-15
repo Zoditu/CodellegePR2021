@@ -1,0 +1,20 @@
+div {
+    color: rgb(64, 156, 64)
+}
+
+div i {
+    font-size: 7rem;
+}
+
+.btn-pagar {
+    background: var(--color-blue);
+    border: 0;
+    border-radius: 0;
+    color: var(--color-white);
+    /* width: 100%; */
+}
+
+.btn-pagar:hover {
+    padding: 0.5rem 2rem;
+    background: var(--color-gray);
+}

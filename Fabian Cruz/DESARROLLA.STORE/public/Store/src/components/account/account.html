@@ -1,0 +1,40 @@
+<section class="container py-5">
+
+  <h2 class="titulo"> <i class="bi bi-person-circle"></i> Información de cuenta:</h2>
+
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active"> <i class="bi bi-person-lines-fill"></i> Datos Generales</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="info">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="bi bi-person"></i>ID Usuario: {{ userData.nickname}} </li>
+            <li class="list-group-item"><i class="bi bi-person"></i>Nombre: {{ userData.name}} </li>
+            <li class="list-group-item"><i class="bi bi-person"></i>Apellido: {{ userData.lastName}} </li>
+            <li class="list-group-item"><i class="bi bi-envelope"></i>Email: {{ userData.email}} </li>
+            <li class="list-group-item"><i class="bi bi-telephone"></i>Teléfono: {{ userData.phone}} </li>
+          </ul>
+      </div>
+      <div class="card address">
+        <div class="card-header">
+            <i class="bi bi-geo-alt-fill"></i> Datos de envió
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Calle: {{ userData.address.street }} </li>
+            <li class="list-group-item">Colonia: {{ userData.address.suburb }} </li>
+            <li class="list-group-item">Ciudad: {{ userData.address.city }} </li>
+            <li class="list-group-item">Estado: {{ userData.address.state }} </li>
+            <li class="list-group-item">C.P: {{ userData.address.zip }} </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="boton">
+    <a href="#" class="btn btn-primary logout">Cerrar Sesión</a>
+  </div>
+</section>

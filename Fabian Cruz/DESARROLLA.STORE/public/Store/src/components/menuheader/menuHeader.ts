@@ -20,9 +20,12 @@ export class HeaderComponent implements OnInit {
     var self = this
     this.ReloadCart();
     Singleton.GetInstance().ReloadCart = function() { self.ReloadCart(); };
+
+    this.CheckSession();
   } 
 
   ReloadCart(){
+    Singleton.GetInstance().ShowLoader();
     var self = this
     console.log('Ejecutando LoadCart')
     $.ajax({
@@ -32,12 +35,37 @@ export class HeaderComponent implements OnInit {
       },
       url: 'http://localhost:666/carts/getCart',
       success: function(cartInfo: any){
+        if(Singleton.GetInstance().UpdateCheckout) {
+          var copia = Object.assign({}, cartInfo);
+          Singleton.GetInstance().UpdateCheckout(copia);
+        }
         self.numberProducts = cartInfo.quantity;
-        console.log('Carrito: ')
-        console.log(cartInfo)
+        Singleton.GetInstance().HideLoader();
       }
     })
 
+  }
+
+  CheckSession(){
+    var self = this;
+    $.ajax({
+      type: "GET",
+      xhrFields: {
+        withCredentials: true
+      },
+      url: "http://localhost:666/users/getSession",
+      success: function(result: any) {
+        if(result.session === true) {
+          self.accountRedirect = "Mi Cuenta";
+          if(window.location.pathname === '/register' || window.location.pathname === '/loging') {
+            window.location.href = '/';
+          }
+        }
+      },
+      error: function() {
+        self.accountRedirect = "Login";
+      }
+    });
   }
 
   accountRedirect = 'Login';

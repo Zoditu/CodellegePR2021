@@ -3,7 +3,7 @@
     <h4 class="card-header">Registrar Usuario</h4>
     <div class="card-body">
       <div class="card-row">
-        <span class="card-title cell">* Nickname:</span>
+        <span class="card-title cell">* Usuario:</span>
         <input type="text" (input)="UpdateValue($event, 'nickname')"
           placeholder="Nickname" class="cell">
       </div>
@@ -61,8 +61,7 @@
       </div>
     </div>
       <hr>
-      <a (click)='Register();' class="btn btn-primary">Registrar</a>
       <div class="py-2 register-error" [hidden]='!invalidRegister'>No se pudo registrar el usuario. {{registerFailure}}.</div>
-    
+      <button (click)='Register();'>Registrar</button>    
   </div>
 </main>

@@ -8,7 +8,7 @@ module.exports = {
             lastName: Joi.string().required(),
             email: Joi.string().required(),
             password: Joi.string().min(8).required(),
-            address: Joi.string().optional(),
+            address: Joi.object().optional(),
             phone: Joi.number().optional()
         });
 

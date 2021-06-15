@@ -2,6 +2,7 @@ import {
     Component,
     OnInit
   } from '@angular/core';
+import { func } from 'joi';
   declare var $:any;
 
   import { Singleton } from '../../refactoring/DataSingleton';
@@ -23,15 +24,100 @@ import {
     } 
   
     GetCart(){
+      Singleton.GetInstance().ReloadCart();
         var self = this;
+        Singleton.GetInstance().ShowLoader();
         $.ajax({
             type: "GET",
+            xhrFields: {
+              withCredentials: true
+            },
             url: "http://localhost:666/carts/getCart",
             success: (cartInfo: any) => {
-                self.cart = cartInfo
+              if(cartInfo.products.length > 0){
+                self.products = cartInfo.products;
+              } else {
+                self.products = null;
+              }
+                self.total = cartInfo.total;
+                Singleton.GetInstance().HideLoader();
             }
         })
     }
 
-    cart = {};
+    DeleteProduct(sku: any){
+      var self = this;
+      Singleton.GetInstance().ShowLoader();
+        $.ajax({
+            type: "PATCH",
+            xhrFields: {
+              withCredentials: true
+            },
+            data: {
+              sku: sku,
+              all: true
+            },
+            url: "http://localhost:666/carts/remove",
+            success: function(response: any) {
+              self.GetCart();
+            }
+        })
+    }
+
+    DeleteOne(sku: any){
+      Singleton.GetInstance().ShowLoader();
+      var self = this;
+        $.ajax({
+            type: "PATCH",
+            xhrFields: {
+              withCredentials: true
+            },
+            data: {
+              sku: sku,
+              qty: 1
+            },
+            url: "http://localhost:666/carts/remove",
+            success: function(response: any) {
+              self.GetCart();
+            }
+        })
+    }
+
+    AddOne(sku: any){
+      Singleton.GetInstance().ShowLoader();
+      var self = this;
+        $.ajax({
+            type: "PATCH",
+            xhrFields: {
+              withCredentials: true
+            },
+            data: {
+              sku: sku,
+              quantity: 1
+            },
+            url: "http://localhost:666/carts/add",
+            success: function(response: any) {
+              self.GetCart();
+            }
+        })
+    }
+
+    CleanCart() {
+      Singleton.GetInstance().ShowLoader();
+      var self = this;
+      $.ajax({
+        type: "PATCH",
+        xhrFields: {
+          withCredentials: true
+        },
+        url: 'http://localhost:666/carts/cleanCart',
+        success: function(cartInfo: any) {
+          self.GetCart();
+        }
+      })
+    }
+
+    total = 0;
+    products = null;
+
   }
