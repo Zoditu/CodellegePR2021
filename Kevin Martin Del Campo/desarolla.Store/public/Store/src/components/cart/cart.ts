@@ -18,11 +18,20 @@ declare var $: any;
 export class CartComponent implements OnInit {
   ngOnInit() {
     this.GetCart();
+    var self = this;
+    Singleton.GetInstance().UpdateCartPage = function(cartInfo: any) {
+      if (cartInfo.products.length > 0) {
+          self.products = cartInfo.products;
+        } else {
+          self.products = null;
+        }
+        self.total = cartInfo.total;
+    }
   }
 
   GetCart() {
     Singleton.GetInstance().ReloadCart();
-    var self = this;
+    /*var self = this;
     Singleton.GetInstance().ShowLoader();
     $.ajax({
       type: "GET",
@@ -43,16 +52,10 @@ export class CartComponent implements OnInit {
           alert(messages);
         }
 
-        cartInfo = cartInfo.cart;
-        if (cartInfo.products.length > 0) {
-          self.products = cartInfo.products;
-        } else {
-          self.products = null;
-        }
-        self.total = cartInfo.total;
+        
         Singleton.GetInstance().HideLoader();
       }
-    });
+    });*/
   }
 
   AddOne(sku: any) {
