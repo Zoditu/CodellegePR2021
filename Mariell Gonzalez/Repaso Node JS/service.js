@@ -1,17 +1,10 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const PORT = 666;
 
-const app = express();
-const PORT = 888;
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-const Database = 'Repaso';
-const uri = "mongodb+srv://kmcf:spgg2021@cluster0.lh9dp.mongodb.net/" + Database + "?retryWrites=true&w=majority";
+const uri = 'mongodb+srv://MariellGzz:Pachon99@cluster0.0drkx.mongodb.net/SPGG?retryWrites=true&w=majority';
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -26,12 +19,22 @@ mongoose.connect(uri, {
     }
 });
 
-//Definir routers
-const routerUsers = require('./routers/users');
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(cookieParser());
+
+var routerUsers = require('./routers/users');
 app.use('/users', routerUsers);
+//localhost:666/users/...
 
-const routerPosts = require('./routers/posts');
-app.use('/posts', routerPosts);
+var routerProducts = require('./routers/products');
+app.use('/products', routerProducts);
+//localhost:666/products/...
 
-console.log('Servidor iniciado...');
+var routerCarts = require('./routers/carts');
+app.use('/carts', routerCarts);
+
 app.listen(PORT);
