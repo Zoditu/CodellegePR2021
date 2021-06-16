@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-darkred: #5e1515;
+  --color-footer: #860000;
+  --color-red: #860000;
+  --color-black: #ff0000;
+  --color-black2: #130000;
+  --error-color: #c05a5a;
+  --color-agregarrojo: rgb(255, 0, 0);
+  --color-colorpagar: rgb(255, 0, 0);
+  --color-negrocontinuar: #000000;
+  --color-pagar: red;
+  --color-limpiarcarrito: rgb(255, 0, 0);
+}
+
+body {
+  background: var(--color-darkred);
+  color: var(--color-white);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.float-right {
+  float: right;
+}
+
+.link {
+  color: var(--color-black);
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--color-blue);
+}
+
+.overflow-hidden {
+  overflow: hidden;
+} 

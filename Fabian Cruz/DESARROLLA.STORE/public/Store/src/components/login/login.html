@@ -1,0 +1,15 @@
+<main class="container">
+  <div class="col card">
+    <h5 class="card-header">Iniciar Sesion</h5>
+    <div class="card-body">
+      <h5 class="card-title">Username/Email</h5>
+      <input type="text" (input)='UpdateEmail($event)' placeholder="Usenrname/Email">
+      <h5 class="card-title">Password</h5>
+      <input type="text" (input)='UpdatePassword($event)' placeholder="********">
+      <hr>
+      <a (click)='Login();' class="btn btn-primary">Iniciar Sesion</a>
+      <div class="py-2 login-error" [hidden]='!invalidLogin'>No se pudo iniciar sesión. Verifique sus datos.</div>
+      <div>¿Eres un cliente nuevo? <a href="" class="Empieza_aquí" routerLink="/register">Empieza aquí</a></div>
+    </div>
+  </div>
+</main>

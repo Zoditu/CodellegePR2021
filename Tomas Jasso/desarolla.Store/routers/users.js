@@ -13,11 +13,28 @@ const Validate = require('../validation/validate');
 //Importar el módulo de utilities
 const Utils = require('../utils/utils');
 
+router.get('/getSession', async (req, res) => {
+    const nickname = req.cookies["SESSIONID"];
+    var user = await User.findOne({
+        nickname: nickname
+    });
+
+    if(user) {
+        return res.send({
+            session: true
+        });
+    }
+
+    res.clearCookie("SESSIONID");
+    return res.send({
+        session: false
+    });
+});
 
 router.get('/all', async (req, res) => {
 
     var userIsAdmin = await Utils.isAdmin(req, res);
-    if(!userIsAdmin) {
+    if (!userIsAdmin) {
         return;
     }
 
@@ -29,10 +46,9 @@ router.get('/all', async (req, res) => {
     res.send(users);
 });
 
-router.get('/:nickname', async (req, res) => {
+router.get('/profile', async (req, res) => {
 
-    var parametros = req.params;
-    var nickname = parametros.nickname;
+    var nickname = req.cookies["SESSIONID"];
 
     var user = await User.findOne({
         nickname: nickname
@@ -75,19 +91,14 @@ router.post('/register', async (req, res) => {
             email: datosUsuario.email
         }]
     });
+
     if (userExists) {
         return res.status(401).send({
             error: "El usuario con este nickname/correo ya existe"
         });
     }
 
-    var usuarioRegistrado = new User({
-        nickname: datosUsuario.nickname,
-        name: datosUsuario.name,
-        lastName: datosUsuario.lastName,
-        email: datosUsuario.email,
-        password: datosUsuario.password
-    });
+    var usuarioRegistrado = new User(datosUsuario);
 
     await usuarioRegistrado.save();
     res.send({
@@ -99,10 +110,11 @@ router.put('/:nickname', async (req, res) => {
     const nickname = req.params.nickname;
     const usuarioActual = req.cookies["SESSIONID"];
     const userData = req.body;
+    var userIsAdmin = false;
 
-    if(nickname !== usuarioActual) {
-        var userIsAdmin = await Utils.isAdmin(req, res);
-        if(!userIsAdmin) {
+    if (nickname !== usuarioActual) {
+        userIsAdmin = await Utils.isAdmin(req, res);
+        if (!userIsAdmin) {
             return;
         }
     }
@@ -137,6 +149,40 @@ router.put('/:nickname', async (req, res) => {
                 user.name = userData.name
                 break;
 
+            case "nickname":
+                var newNickname = userData.nickname;
+                var userExists = await User.findOne({
+                    nickname: newNickname
+                });
+
+                if (userExists) {
+                    res.status(403).send({
+                        error: "El nickname: " + newNickname + " ya está ligado a otro usuario"
+                    });
+                    return;
+                }
+
+                user.nickname = newNickname;
+                res.clearCookie('SESSIONID');
+                res.cookie('SESSIONID', newNickname);
+                break;
+
+            case "email":
+                var newEmail = userData.email;
+                var userExists = await User.findOne({
+                    email: newEmail
+                });
+
+                if (userExists) {
+                    res.status(403).send({
+                        error: "El email: " + newEmail + " ya está ligado a otro usuario"
+                    });
+                    return;
+                }
+
+                user.email = newEmail;
+                break;
+
             case "lastName":
                 user.lastName = userData.lastName
                 break;
@@ -152,6 +198,12 @@ router.put('/:nickname', async (req, res) => {
             case "address":
                 user.address = userData.address
                 break;
+
+            case "userType":
+                if (userIsAdmin) {
+                    user.userType = userData.userType;
+                }
+                break;
         }
     }
 
@@ -166,16 +218,31 @@ router.put('/:nickname', async (req, res) => {
 router.delete('/:nickname', async (req, res) => {
 
     var userIsAdmin = await Utils.isAdmin(req, res);
-    if(!userIsAdmin) {
+    if (!userIsAdmin) {
         return;
     }
 
     var parametros = req.params;
     var nickname = parametros.nickname;
 
+    /*var user = await User.findOne({ nickname: nickname });
+    if(!user) {
+        res.send({
+            message: "El usuario: " + nickname + " no existe"
+        });
+        return;
+    }*/
+
     var usuarioBorrado = await User.deleteOne({
         nickname: nickname
     });
+
+    if(usuarioBorrado.deletedCount === 0) {
+        res.status(404).send({
+            message: "El usuario: " + nickname + " no existe"
+        });
+        return;
+    }
 
     res.send({
         message: "Se ha borrado el usuario: " + nickname
@@ -212,7 +279,7 @@ router.post('/login', async (req, res) => {
         password: datosLogin.password
     });
 
-    if(!usuario) {
+    if (!usuario) {
         return res.status(404).send({
             error: "Datos incorrectos de inicio de sesión. Verifique el user/password"
         });
@@ -230,6 +297,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', async (req, res) => {
     //Borra la cookie SESSIONID
     res.clearCookie('SESSIONID');
+    res.clearCookie('CARTID');
 
     res.send({
         message: "Se ha desloggeado y se ha borrado la sesión"
