@@ -27,15 +27,17 @@ router.get('/all', async (req, res) => {
 //Endpoint para crear un producto
 //POST -> /new
 router.post('/new', async (req, res) => {
-    
+
     var userIsAdmin = await Utils.isAdmin(req, res);
-    if(!userIsAdmin) {
+    if (!userIsAdmin) {
         return;
     }
 
     var productData = req.body;
 
-    const { error } = Validate.newProduct(productData);
+    const {
+        error
+    } = Validate.newProduct(productData);
     if (error) {
         return res.status(400).send({
             error: error.details[0].message
@@ -58,6 +60,7 @@ router.post('/new', async (req, res) => {
         description: productData.description,
         stock: productData.stock,
         price: productData.price,
+        category: productData.category
     });
 
     await producto.save();
@@ -91,12 +94,19 @@ router.get('/search', async (req, res) => {
     var name = query.name; //?name=aspiradora
     var price = query.price; //?price=0,100
     var stock = query.stock; //?stock=true
+    var category = query.category; //?category=deportes
 
     var filtro = {};
 
     if (name) {
         filtro.name = {
             $regex: ToRegex(name)
+        };
+    }
+
+    if (category) {
+        filtro.category = {
+            $regex: ToRegex(category)
         };
     }
 
@@ -147,6 +157,17 @@ router.get('/search', async (req, res) => {
 
 });
 
+router.get('/getFilters', async(req, res) => {
+
+    var allCategories = await Product.find({}).distinct('category');
+
+    var filters = {
+        categories: allCategories
+    };
+
+    res.send(filters);
+});
+
 //Endpoint para ver un producto en específico
 router.get('/:sku', async (req, res) => {
     var sku = req.params.sku;
@@ -171,7 +192,7 @@ router.get('/:sku', async (req, res) => {
 router.delete('/:sku', async (req, res) => {
 
     var userIsAdmin = await Utils.isAdmin(req, res);
-    if(!userIsAdmin) {
+    if (!userIsAdmin) {
         return;
     }
 
@@ -193,7 +214,7 @@ router.delete('/:sku', async (req, res) => {
     await Product.deleteOne({
         sku: sku
     });
-    
+
     res.send({
         message: "Se ha borrado el producto: " + sku
     });
@@ -203,10 +224,10 @@ router.delete('/:sku', async (req, res) => {
 router.put('/:sku', async (req, res) => {
 
     var userIsAdmin = await Utils.isAdmin(req, res);
-    if(!userIsAdmin) {
+    if (!userIsAdmin) {
         return;
     }
-    
+
     var sku = req.params.sku;
     var productData = req.body;
 
@@ -244,6 +265,10 @@ router.put('/:sku', async (req, res) => {
 
             case "images":
                 producto.images = productData.images;
+                break;
+
+            case "category":
+                producto.category = productData.category;
                 break;
         }
     }

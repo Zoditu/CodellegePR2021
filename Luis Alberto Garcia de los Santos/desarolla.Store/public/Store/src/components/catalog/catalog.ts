@@ -23,11 +23,12 @@ export class CatalogComponent implements OnInit {
   }
 
   GetProducts() {
+
     var self = this;
     Singleton.GetInstance().ShowLoader();
     $.ajax({
       type: "GET",
-      url: 'http://localhost:666/products/all',
+      url: `http://localhost:666/products/search?category=${this.searchFilters.category}&name=${this.searchFilters.name}&price=0,${this.searchFilters.price}&stock=${this.searchFilters.stock ? 'true' : ''}`,
       success: function (res: any) {
         //console.log(self.products); //null
         self.products = res;
@@ -60,5 +61,31 @@ export class CatalogComponent implements OnInit {
     });
   }
 
-  products = null;
+  products = new Array;
+  searchFilters = {
+    name: '',
+    price: 100000,
+    stock: false,
+    category: '',
+  }
+
+  UpdateName(element: any) {
+    this.searchFilters.name = element.value;
+  }
+
+  UpdatePrice(element: any) {
+    this.searchFilters.price = element.value;
+  }
+
+  UpdateStock(element: any) {
+    this.searchFilters.stock = element.checked;
+    this.GetProducts();
+  }
+
+  CheckKey(event:any) {
+    //Si es enter
+    if(event.keyCode === 13) {
+      this.GetProducts();
+    }
+  }
 }

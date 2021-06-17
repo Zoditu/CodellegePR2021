@@ -60,28 +60,26 @@ router.get('/getCart', async (req, res) => {
                     userCart.total += carrito.total;
 
                     var issues = await Utils.validateCart(userCart);
-                    //userCart.markModified('products');
-                    //await userCart.save();
-                    userCart = issues.cart;
+                    userCart = issues;
 
                     res.cookie('CARTID', userCart.id, {
                         expires: new Date(2025, 1, 1)
                     });
 
-                    userCart = userCart.toObject();
-                    delete userCart._id;
-                    delete userCart.__v;
+                    //userCart = userCart.cart.toObject();
+                    //delete userCart._id;
+                    //delete userCart.__v;
 
                     return res.send(userCart);
                 }
             }
 
             var issues = await Utils.validateCart(carrito);
-            carrito = issues.cart;
+            carrito = issues;
 
-            carrito = carrito.toObject();
-            delete carrito._id;
-            delete carrito.__v;
+            //carrito = carrito.toObject();
+            //delete carrito._id;
+            //delete carrito.__v;
             return res.send(carrito);
         } else if (user && userCart) {
             res.cookie('CARTID', userCart.id, {
@@ -89,7 +87,7 @@ router.get('/getCart', async (req, res) => {
             });
 
             var issues = await Utils.validateCart(userCart);
-            userCart = issues.cart;
+            userCart = issues;
 
             return res.send(userCart);
         }
@@ -99,7 +97,7 @@ router.get('/getCart', async (req, res) => {
                 expires: new Date(2025, 1, 1)
             });
             var issues = await Utils.validateCart(userCart);
-            userCart = issues.cart;
+            userCart = issues;
 
             return res.send(userCart);
         }

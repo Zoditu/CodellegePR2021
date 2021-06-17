@@ -9,6 +9,7 @@ const router = express.Router();
 
 const Order = require('../models/order');
 const Cart = require('../models/cart');
+const Product = require('../models/product');
 
 //Importar el módulo de utilities
 const Utils = require('../utils/utils');
@@ -57,6 +58,13 @@ router.post('/', async (req, res) => {
     });
 
     await order.save();
+
+    for(var i = 0; i < cart.products.length; i++) {
+        const product = cart.products[i];
+        var productoDB = await Product.findOne( {sku: product.sku} );
+        productoDB.stock -= product.qty;
+        await productoDB.save();
+    }
 
     cart.products = [];
     cart.total = 0;
