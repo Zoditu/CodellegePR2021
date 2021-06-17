@@ -91,12 +91,19 @@ router.get('/search', async (req, res) => {
     var name = query.name; //?name=aspiradora
     var price = query.price; //?price=0,100
     var stock = query.stock; //?stock=true
+    var category = query.category; //?category=deportes
 
     var filtro = {};
 
     if (name) {
         filtro.name = {
             $regex: ToRegex(name)
+        };
+    }
+
+    if (category) {
+        filtro.category = {
+            $regex: ToRegex(category)
         };
     }
 
