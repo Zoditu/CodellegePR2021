@@ -1,5 +1,5 @@
-.boton {
-    margin-top: .5rem;
+.logout {
+    float: right;
     text-align: right;
 }
 
@@ -8,4 +8,17 @@
 }
 .bi {
     margin-right: 1rem;
+}
+
+.bi-pencil, .bi-check2 {
+    float: right;
+    cursor: pointer;
+}
+
+input[type=text] {
+    border: 0;
+    padding-left: .5rem;
+    border-bottom: solid 1px var(--color-blue-light);
+    outline: 0;
+    color: var(--color-blue);
 }

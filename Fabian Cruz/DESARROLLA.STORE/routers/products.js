@@ -53,6 +53,7 @@ router.post('/new', async (req, res) => {
         descripcion: newProduct.descripcion,
         stock: newProduct.stock,
         price: newProduct.price,
+        category: newProduct.category,
         images: newProduct.images
     })
 
@@ -84,12 +85,18 @@ router.get('/search', async (req, res) => {
     var name = query.name; //?name=producto1
     var price = query.price; //?price=0,100
     var stock = query.stock; //?stock=true
+    var category = query.category;
 
     var filtro = {};
 
     if(name) {
         filtro.name = { $regex: ToRegex(name) }
     }
+
+    if(name) {
+        filtro.category = { $regex: ToRegex(category) }
+    }
+
 
     if(price) {
         var precios = price.split(',');
@@ -187,6 +194,8 @@ router.put('/:sku', async (req, res) => {
             case "images":
                 producto.images = productData.images;
                 break;
+            case "category":
+                producto.category = productData.category
         }
     }
 

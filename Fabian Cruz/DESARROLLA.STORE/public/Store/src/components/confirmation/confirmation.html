@@ -1,9 +1,11 @@
+<article *ngIf="numeroPedido !== null else confirmacionInvalida">
 <div class="container py-5 text-center">
     <h2>Tu pedido ha sido confirmado</h2>
     <i class="bi bi-check-circle"></i>
     <h4>Tu pedido será procesado en la brevedad posible</h4>
     <h4>Recibiras un correo electrónico con la información de tu compra</h4>
-    <h4>Tu número de pedido es: {{numPedido}} </h4>
+    <h4>Tu número de pedido es:</h4>
+    <h3>{{numeroPedido}}</h3>
 </div>
 
 <section class="text-center pt-5 container">
@@ -11,3 +13,19 @@
     <h6>Para cualquier duda o inquietud, puedes contactarnos al correo <a href="mailto:correo@algo.com">Soporte de desarrolla.Store</a> </h6>
     <a href="/catalog" class="btn mt-3 btn-pagar">Continuar comprando</a>
 </section>
+</article>
+
+<ng-template #confirmacionInvalida>
+    <div class="container py-5 text-center invalid-order">
+      <h1>El pedido indicado es inválido</h1>
+      <i class="bi bi-x-circle-fill"></i>
+      <h2>Verifique el número de pedido indicado</h2>
+      <h2>Este pedido debió redirigirlo desde la página del pago</h2>
+      <h2>Si no encuentra el número de pedido, copie de la URL el valor junto a order=VALOR</h2>
+    </div>
+    <section class="text-center pb-5 container">
+      <h5>Para cualquier duda o inquietud, puedes contactarnos al correo <a href="mailto:correo@algo.com">Soporte de
+          desarrolla.Store</a></h5>
+      <a href="/catalog" class="btn btn-pagar mt-3">Continuar Comprando</a>
+    </section>
+  </ng-template>

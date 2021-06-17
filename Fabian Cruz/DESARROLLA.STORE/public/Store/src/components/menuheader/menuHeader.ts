@@ -68,6 +68,13 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  PestañaCatalogo(){
+    
+    
+    
+  }
+
   accountRedirect = 'Login';
   numberProducts = 0;
+  catalogo=false;
 }

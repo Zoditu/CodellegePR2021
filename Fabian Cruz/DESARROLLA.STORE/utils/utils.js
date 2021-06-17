@@ -18,6 +18,9 @@ module.exports = {
         });
         return false;
     },
+    genOrderID: function(){
+        return Date.now();
+    },
 
     genCartID: function(){
         var epoch = Date.now() + '' +  Date.now() + '' +  Date.now() + '';

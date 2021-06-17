@@ -12,4 +12,8 @@ import {
   // 
   //  Cambiar el nombre de AppComponent por el del nuestro
   export class InicioComponent {
+
+
+    
+
   }  

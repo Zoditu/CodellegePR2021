@@ -1,5 +1,8 @@
 <section class="container py-5">
   <div class="row">
+    <div class="alert alert-warning" [hidden]='validInfo' role="alert">
+      Por favor, rellene todos los campos con su Información.
+    </div>
     <article class="col-9">
       <h2 class="titulo"> <i class="bi bi-person-circle"></i> Información de envió:</h2>
 
@@ -55,7 +58,7 @@
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="true" href="#">Detalles:</a>
+                <a class="nav-link active" aria-current="true" href="">Detalles:</a>
               </li>
             </ul>
           </div>

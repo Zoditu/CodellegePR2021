@@ -16,6 +16,7 @@ import { AccountComponent } from '../account/account';
 import { LoaderComponent } from '../loader/loader';
 import { CheckoutComponent } from '../checkout/checkout';
 import { ConfirmationComponent } from '../confirmation/confirmation';
+import { NosotrosComponent } from '../nosotros/nosotros';
 
 const routes: Routes = [
   { path: 'catalog', component: CardsComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent},
   { path: 'account', component: AccountComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'confirmation', component: ConfirmationComponent }
+  { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'nosotros', component: NosotrosComponent }
 ];
 
 @NgModule({

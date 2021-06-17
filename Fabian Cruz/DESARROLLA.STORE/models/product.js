@@ -8,5 +8,6 @@ module.exports = mongoose.model('Product', new mongoose.Schema({
     descripcion: String,
     stock: Number,
     price: Number,
+    category: String,
     images: Array
 }),'Products');

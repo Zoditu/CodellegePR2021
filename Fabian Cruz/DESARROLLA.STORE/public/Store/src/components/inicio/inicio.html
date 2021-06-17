@@ -1,5 +1,7 @@
 <main class='container py-3'>
-  <h1>Bienvenido a desarrolla.Store</h1>
+  <div class="row">
+    <h1 class="titulo">Bienvenido a Desarrolla.Store</h1>
+  </div>
   <div id="sliderInicio" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#sliderInicio" data-bs-slide-to="0" class="active" aria-current="true"
@@ -27,51 +29,46 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <section class='text-center'>
-    <hr>
-    <h2>¿Quienes Somos?</h2>
-    <hr>
-    <div class="card border-secondary mb-3 d-inline-block mx-3" style="max-width: 18rem;">
-      <div class="card-header">desarrolla.Software</div>
-      <div class="card-body text-primary">
-        <h5 class="card-title">Por el gobierno de SPGG</h5>
-        <p class="card-text">Somos un curso impartido por Softek con la intención de enseñar la esencia de la carrera de
-          Ingenieria en sistemas.</p>
+  <div class="row buy-category mr-0">
+    <div class="titulo">
+      <h3 class="titulo">Comprar por categoría</h3>
+    </div>
+    <div class="category">
+      <div class="contenedor-img">
+        <button routerLink="/catalog" class="category-btn">Computadoras</button>
+        <img src="../../assets/images/computadoras.png" alt="" class="category-img">
       </div>
     </div>
-    <div class="card border-secondary mb-3 d-inline-block mx-3" style="max-width: 18rem;">
-      <div class="card-header">¿Para qué?</div>
-      <div class="card-body text-primary">
-        <h5 class="card-title">Aprender y/o aplicar</h5>
-        <p class="card-text">SPara aprender y poder aplicar lo aprendido en otros aspectos laborales y tambien para
-          poder laborar de la carrera.</p>
+    <div class="category">
+      <div class="contenedor-img">
+        <button routerLink="/catalog" class="category-btn">Celulares</button>
+        <img src="../../assets/images/celulares.png" alt="" class="category-img">
       </div>
     </div>
-    <div class="card border-secondary mb-3 d-inline-block mx-3" style="max-width: 18rem;">
-        <div class="card-header">¿Quienes?</div>
-        <div class="card-body text-primary">
-          <h5 class="card-title">Cualquiera</h5>
-          <p class="card-text">Todo aquel que quiera aprender el desarrollo de paginas web y que pueda complementarlo con sus conocimientos.</p>
-        </div>
+    <div class="category">
+      <div class="contenedor-img">
+        <button routerLink="/catalog" class="category-btn">Consolas</button>
+        <img src="../../assets/images/consolas.png" alt="" class="category-img">
       </div>
-    <h6>Este curso fue impartidos en su primera version en Primavera-Verano 2021</h6>
-  
-    <hr>
-    <hr>
-    <h2>Nuestra Vision</h2>
-    <hr>
-    <div class='about-image'>
-        <img src="w-100 h-100" src=''>
     </div>
-    <article>
-        <div class="d-table-cell alig-middle text-left">
-            <h3>Acerca de...</h3>
-            <p>Somos un curso que se encargado de impartir desarrollo web.</p>
-            <h3>¿Cuando?</h3>
-            <p>Todos los días de 9 de la mañana a 12 de la tarde.</p>
-            <h3>¿Donde?</h3>
-            <p>A través de Microsft Teams, por llamada en línea para compartir recursos.</p>
-        </div>
-    </article>
-  </section>
+    <div class="category">
+      <div class="contenedor-img">
+        <button routerLink="/catalog" class="category-btn">Tablets</button>
+        <img src="../../assets/images/tablets.png" alt="" class="category-img">
+      </div>
+    </div>
+    <div class="category">
+      <div class="contenedor-img">
+        <button routerLink="/catalog" class="category-btn">Impresoras</button>
+        <img src="../../assets/images/impresoras.png" alt="" class="category-img">
+      </div>
+    </div>
+    <div class="category">
+      <div class="contenedor-img">
+        <button routerLink="/catalog" class="category-btn">Pantallas</button>
+        <img src="../../assets/images/televisiones.png" alt="" class="category-img">
+      </div>
+    </div>
+  </div>
+  <div class="separador"></div>
 </main>

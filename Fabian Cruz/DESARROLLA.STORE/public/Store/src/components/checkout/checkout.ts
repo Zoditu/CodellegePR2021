@@ -26,7 +26,7 @@ import { CartComponent } from '../cart/cart';
           self.cart.products.push({
             sku: 'Gastos de envío'
             ,name: 'Gastos de envío',
-            quantity: 1,                
+            qty: 1,                
             unit_price: self.gastosEnvio
         });
 
@@ -80,6 +80,7 @@ import { CartComponent } from '../cart/cart';
               })
             }
 
+            console.log(articulos)
             return actions.order.create({
               purchase_units: [{
                 amount: {

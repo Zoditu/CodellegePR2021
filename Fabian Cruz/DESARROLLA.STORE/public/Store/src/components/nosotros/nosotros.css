@@ -1,0 +1,23 @@
+.titulo {
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.separador {
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+    height: 1rem;
+    background-color: var(--color-fondo2);
+}
+
+.p-howare {
+    text-align: justify;
+    align-items: center;
+}
+
+.img-howare {
+    text-align: center;
+    height: 15rem;
+}
