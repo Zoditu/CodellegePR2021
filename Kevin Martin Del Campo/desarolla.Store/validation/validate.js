@@ -23,7 +23,8 @@ module.exports = {
             description: Joi.string().required(),
             stock: Joi.number().required(),
             price: Joi.number().required(),
-            images: Joi.array().required()
+            images: Joi.array().required(),
+            category: Joi.string().required()
         });
 
         return schema.validate(data);
