@@ -22,7 +22,8 @@ module.exports = {
             name: Joi.string().required(),
             description: Joi.string().required(),
             stock: Joi.number().required(),
-            price: Joi.number().required()
+            price: Joi.number().required(),
+            images: Joi.array().required()
         });
 
         return schema.validate(data);
