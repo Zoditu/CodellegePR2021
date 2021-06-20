@@ -32,8 +32,6 @@ router.get("/getSession",async (req, res) => {
 });
 router.get("/all",async (req, res) => {
 
-
-
     var userIsAdmin = await Utils.isAdmin(req,res);
     if(!userIsAdmin){
         return;
@@ -54,7 +52,6 @@ router.get('/profile', async (req, res) => {
     }, {
         __v: 0,
         _id: 0,
-        password: 0
     });
     //findOne puede regresar null o el usuario
     if (!user) {
@@ -86,7 +83,6 @@ router.get("/:nickname",async (req, res) => {
 var user = await User.findOne({nickname: nickname}, {
     __v:0, 
     _id:0,
-    password:0
 });
 //findOne puede regresar null o el usuario
 if(!user) {
@@ -184,7 +180,9 @@ for (var i = 0; i < propiedades.length; i++) {
             }
 
             user.nickname = newNickname;
-            break;
+                res.clearCookie('SESSIONID');
+                res.cookie('SESSIONID', newNickname);
+                break;
 
         case "email":
             var newEmail = userData.email;
@@ -216,6 +214,10 @@ for (var i = 0; i < propiedades.length; i++) {
 
         case "address":
             user.address = userData.address
+            break;
+
+            case "password":
+            user.password = userData.password
             break;
 
         case "userType":

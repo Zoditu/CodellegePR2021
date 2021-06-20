@@ -1,55 +1,61 @@
-<div class="container py-5">
+<div class="container">
   <div class="title">
-    <h1><b>Carrito de Compra</b></h1>
+    <h1>Carrito de Compra</h1>
     <button class="btn clean-button" (click)="CleanCart()">
       <i class="bi bi-trash-fill"></i>&nbsp;Limpiar carrito
     </button>
   </div>
-  
-  <section>
-    <!-- <div *ngIf="products == !null; else emptyCart"> -->
-      <div class="column-labels">
-        <label class="product-image">Producto</label>
-        <label class="product-details">.</label>
-        <label class="product-price">Precio</label>
-        <label class="product-quantity">Cantidad</label>
-        <label class="product-line-price">Total</label>
+
+  <div class="row carrito">
+    <div *ngIf="products !== null; else emptyCart">
+      <div class="row align-items-center  encabezado">
+        <div class="product-image col-6">Producto</div>
+        <div class="product-price col">Precio</div>
+        <div class="product-quantity col-2">Cantidad</div>
+        <div class="product-delete col">Eliminar</div>
+        <div class="product-price col-2">Total</div>
       </div>
 
-      <div *ngFor="let product of products" class="product">
-        <div class="product-image">
-          <img [src]="product.images[0]">
-        </div>
-        <div class="product-details">
-          <div class="product-title">{{product.name}}
+      <div class="row productos">
+        <div *ngFor="let product of products" class="row product row align-items-center">
+          <div class="col-2 image">
+            <img [src]="product.images[0]">
           </div>
-          <p class="product-description">{{product.description}}</p>
-        </div>
-        <div class="product-price">${{product.unit_price}}
-        </div>
-        <div class="product-quantity">
-          <span class="button-cart" (click)="DeleteOne(product.sku)">-</span>
-                <span class="px-3">{{product.qty}}</span>
-                <span class="button-cart" (click)="AddOne(product.sku)">+</span>
-        </div>
-        <div class="product-removal">
-          <button class="remove-product" (click)="DeleteProduct(product.sku);">
-            Eliminar
-          </button>
-        </div>
-        <div class="product-line-price">${{product.qty * product.unit_price}}</div>
-      </div>
-      <br>
-      <br>
-      <div class="totals">
-        <label>Grand Total: </label>
-        <div class="totals-value" id="cart-total">${{total}}
+          <div class="col-4 details">
+            <div class="product-title"><b>{{product.name}}</b>
             </div>
+            <p class="product-description">{{product.description}}</p>
+          </div>
+          <div class="col price"><b>${{product.unit_price}}</b>
+          </div>
+          <div class="col-2 quantity">
+            <span class="button-cart left" (click)="DeleteOne(product.sku)">-</span>
+            <span>{{product.qty}}</span>
+            <span class="button-cart right" (click)="AddOne(product.sku)">+</span>
+          </div>
+          <div class="col removal">
+            <button class="remove-product" (click)="DeleteProduct(product.sku);">
+              Eliminar
+            </button>
+          </div>
+          <div class="col-2 line-price"><b>${{product.qty * product.unit_price}}</b></div>
+        </div>
       </div>
-      <a class="checkout" href="/checkout">Checkout</a>
-    <!-- </div>
+
+      <div class="row totals align-items-center ">
+        <div class="col-8"></div>
+        <div class="col-2"><label><b> Grand Total: </b></label></div>
+        <div class="col-2"><div class="totals-value" id="cart-total">${{total}}
+        </div></div>
+      </div>
+
+      <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4 centrar"><a class="checkout" href="/checkout">COMPRAR</a></div>
+      </div>
+    </div>
     <ng-template #emptyCart>
-     <h3 class="py-5">No hay productos en el carrito</h3>
-    </ng-template> -->
-  </section>
+      <h3 class="py-5">No hay productos en el carrito</h3>
+    </ng-template>
+  </div>
 </div>

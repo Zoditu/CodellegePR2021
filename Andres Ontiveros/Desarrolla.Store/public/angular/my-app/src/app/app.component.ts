@@ -6,9 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'APP';
-  name = "Andres";
-  CambiarTitulo(){
-    this.title = "Angular cambia solo"
-  }
+  title = 'my-app';
 }

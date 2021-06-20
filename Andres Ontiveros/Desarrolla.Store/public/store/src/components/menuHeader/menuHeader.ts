@@ -56,9 +56,26 @@ export class HeaderComponent implements OnInit {
       },
       url: "http://localhost:666/carts/getCart",
       success: function (cartInfo: any) {
+        //Mostrar un modal o mensaje con los issues
+        var issues = cartInfo.cart_issues;
+        if (issues.length) {
+          var messages = '';
+          for (var i = 0; i < issues.length; i++) {
+            const problema = issues[i];
+            messages += problema.issue + "<br><br>SKU Producto: " + problema.product.sku + "<br>Nombre: " + problema.product.name + "<hr>";
+          }
+          //Mostrar modal
+          alert(messages);
+        }
+        cartInfo = cartInfo.cart;
+
         if(Singleton.GetInstance().UpdateCheckout) {
           var copia = Object.assign({},cartInfo);
           Singleton.GetInstance().UpdateCheckout(copia);
+      }
+      if (Singleton.GetInstance().UpdateCartPage) {
+        var copia = Object.assign({}, cartInfo);
+        Singleton.GetInstance().UpdateCartPage(copia);
       }
       self.numberProducts = cartInfo.quantity;
         Singleton.GetInstance().HideLoader();

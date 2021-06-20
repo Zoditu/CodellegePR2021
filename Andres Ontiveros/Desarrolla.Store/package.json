@@ -1,19 +1,20 @@
 {
-  "name": "desarrolla.software.spgg",
+  "name": "proyecto-personal",
   "version": "1.0.0",
-  "description": "Proyecto desarrolla.software",
+  "description": "This is my project from the Desarrolla.Software course, i did some changes and i added some functions to be more usefull the page",
   "main": "Service.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Andres Ontiveros",
-  "license": "MIT",
-  "dependencies": {
-    "@angular/cli": "^11.2.11",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "joi": "^17.4.0",
-    "mongoose": "^5.12.3"
-  }
+  "repository": {
+    "type": "git",
+    "url": "Andreschz7"
+  },
+  "author": "Juan Andres Ontiveros Chairez",
+  "license": "MIT"
 }

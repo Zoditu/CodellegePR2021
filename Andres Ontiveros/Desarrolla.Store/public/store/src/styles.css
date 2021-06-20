@@ -1,19 +1,119 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --color-white: #feffde;
+  --color-cream: #feffde;
+  --color-white: white;
+  --color-cream-transparent: #feffded2;
   --color-blue: #9e7540;
+  --color-blue-transparent: #9e7540c4;
   --color-gray: #bd9354;
+  --color-gray-transparent: #bd9354b7;
   --color-black: #85603f;
+  --color-black-transparent: #85603faf;
   --color-border: #eee;   
-  --font-default: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-bold: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
+  --required-status: var(--color-blue);
+  --font-general: 'Abel';
 }
 
 body {
   background: var(--color-white);
   color: var(--color-black);
+  font-family: var(--font-general);
 }
 
 .float-right {
   float: right;
+}
+
+.link {
+  color: var(--color-black);
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--color-blue);
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/*Custom Alert styles */
+.customAlertContainer {
+  font-family: var(--font-general);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-cream-transparent);
+  z-index: 3091;
+}
+
+.customAlert {
+  display: none;
+  text-align: center;
+  min-width: 250px !important;
+  max-width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+  background:var(--color-gray);
+}
+
+@media all and (max-width: 1300px) {
+  .customAlert .message {
+    font-size: 14px !important;
+  }
+
+  .customAlert input[type=button] {
+    height: 15% !important;
+  }
+}
+
+.customAlert .message {
+  padding: 5px;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  text-align: justify;
+  word-break: break-word;
+}
+
+.customAlert input[type=button] {
+  width: 120px;
+  height: 36px;
+  outline: 0;
+  border: 0;
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.customAlert input[type=button]:hover {
+  transition: 0.3s;
+  cursor: pointer;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

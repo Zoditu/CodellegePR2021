@@ -11,6 +11,8 @@ import { AccountComponent } from '../account/account';
 import { DetallesCarritoComponent } from '../detallesCarrito/detallesCarrito';
 import { CheckoutComponent } from '../checkout/checkout';
 import { ConfirmationComponent } from '../confirmation/confirmation';
+import { AcercaDeComponent } from '../AcercaDe/AcercaDe';
+import { FooterComponent } from '../menuFooter/menuFooter';
 
 import { LoaderComponent } from '../loader/loader';
 
@@ -22,7 +24,8 @@ const routes : Routes = [
   { path: 'account', component: AccountComponent },
   { path: 'detallesCarrito', component: DetallesCarritoComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'confirmation', component: ConfirmationComponent }
+  { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'acercaDe', component: AcercaDeComponent }
 ];
 
 @NgModule({
@@ -30,8 +33,10 @@ const routes : Routes = [
     StoreComponent,
     HeaderComponent,
     CatalogComponent,
+    FooterComponent,
     DetallesCarritoComponent,
     LoaderComponent,
+    CheckoutComponent,
     ConfirmationComponent
   ],
   imports: [

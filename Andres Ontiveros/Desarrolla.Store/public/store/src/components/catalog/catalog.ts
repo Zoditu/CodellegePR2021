@@ -19,6 +19,7 @@ export class CatalogComponent implements OnInit {
     //console.log('El valor de productos es: ' + this.products);
     //Hacer mi petición a http://localhost:666/products/all
     this.GetProducts();
+    /* this.GetFilters(); */
     $(".toast").toast();
   }
 
@@ -27,7 +28,7 @@ export class CatalogComponent implements OnInit {
     Singleton.GetInstance().ShowLoader();
     $.ajax({
       type: "GET",
-      url: 'http://localhost:666/products/all',
+      url: `http://localhost:666/products/search?category=${this.searchFilters.category}&name=${this.searchFilters.name}&price=0,${this.searchFilters.price}&stock=${this.searchFilters.stock ? 'true' : ''}`,
       success: function (res: any) {
         //console.log(self.products); //null
         self.products = res;
@@ -37,6 +38,20 @@ export class CatalogComponent implements OnInit {
     });
   }
 
+  /* GetFilters() {
+    var self = this;
+    Singleton.GetInstance().ShowLoader();
+    $.ajax({
+      type: "GET",
+      url: `http://localhost:666/products/getFilters`,
+      success: function(res: any) {
+        self.products = res;
+        Singleton.GetInstance().HideLoader();
+        console.log(self.products);
+      }
+
+  });
+} */
   AddToCart(sku: String) {
     var self = this;
     Singleton.GetInstance().ShowLoader();
@@ -60,5 +75,48 @@ export class CatalogComponent implements OnInit {
     });
   }
 
-  products = null;
+  products = new Array;
+  searchFilters = {
+    name: '',
+    price: 1500,
+    stock: false,
+    category: '',
+  }
+
+  UpdateName(element: any) {
+    this.searchFilters.name = element.value;
+  }
+
+  UpdatePrice(element: any) {
+    this.searchFilters.price = element.value;
+  }
+
+  UpdateCategory(element: any) {
+    this.searchFilters.category = "Plantas Interior";
+    this.GetProducts();
+  }
+  UpdateCategoryUno(element: any) {
+    this.searchFilters.category = "Plantas Exterior";
+    this.GetProducts();
+  }
+  UpdateCategoryDos(element: any) {
+    this.searchFilters.category = "Artículos Jardinería";
+    this.GetProducts();
+  }
+  UpdateCategoryTres(element: any) {
+    this.searchFilters.category = "";
+    this.GetProducts();
+  }
+  UpdateStock(element: any) {
+    this.searchFilters.stock = element.checked;
+    this.GetProducts();
+  }
+
+  CheckKey(event:any) {
+    //Si es enter
+    if(event.keyCode === 13) {
+      this.GetProducts();
+    }
+  }
 }
+

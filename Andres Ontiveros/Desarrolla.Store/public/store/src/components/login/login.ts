@@ -24,7 +24,7 @@ Login() {
       nickname: this.email,
       password: this.password
     },
-    success: function (res: any){
+    success: function (res: any) {
       Singleton.GetInstance().HideLoader();
       self.invalidLogin = false;
       window.location.href="/";

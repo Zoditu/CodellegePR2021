@@ -1,15 +1,51 @@
-<main class="container py-3 text-center" >
+<main class="container py-3 text-center">
   <h1>Desarrolla.Store - Catalogo de productos</h1>
   <br>
   <br>
   <article class="row">
     <section class="filtro col-3">
-      <h3>Filtros de búsqueda</h3>
-      <input type="checkbox" name="Filtro tal" id="filtro1">
-      <label for="filtro1">Filtro 1</label>
+      <br>
+      <div class="d-flex">
+        <input [value]="searchFilters.name" (input)="UpdateName($event.target)" (keydown)="CheckKey($event);"
+          class="form-control me-2" type="text" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-secondary buscar" (click)="GetProducts();" type="submit">Buscar</button>
+      </div>
+      <br>
+      <h5>Precios: $0 - ${{searchFilters.price}}</h5>
+      <input class="w-75 barra" type="range" min="0" max="1500" step="10" [value]="searchFilters.price"
+        (input)="UpdatePrice($event.target);" (change)="GetProducts();">
+      <br>
+      <label for="stock">
+        <h5>Con Stock:&nbsp;</h5>
+      </label>
+      <input type="checkbox" id="stock" [checked]="searchFilters.stock" (change)="UpdateStock($event.target);">
+      <br>
+      <h4>Por Categoría</h4>
+      <p>
+        <label for="Plantas Interior">
+          <h5>Plantas Interior:&nbsp;</h5>
+        </label>
+        <input type="radio" id="PlantasInterior" name="Categorias" (change)="UpdateCategory($event.target);">
+        <br>
+        <label for="Plantas Exterior">
+          <h5>Plantas Exterior&nbsp;</h5>
+        </label>
+        <input type="radio" id="PlantasExterior" name="Categorias" (change)="UpdateCategoryUno($event.target);">
+        <br>
+        <label for="Artículos Jardinería">
+          <h5>Artículos Jardinería&nbsp;</h5>
+        </label>
+        <input type="radio" id="ArtículosJardinería" name="Categorias" (change)="UpdateCategoryDos($event.target);">
+        <br>
+        <label for="Artículos Jardinería">
+          <h5>Todos los artículos&nbsp;</h5>
+        </label>
+        <input type="radio" id="TodosArtículos" name="Categorias"(change)="UpdateCategoryTres($event.target);">
+      </p>
+
     </section>
-    <section class="col-9 px-2">
-      <div *ngFor="let product of products" class="card product-card">
+    <section class="col-9 productos">
+      <div *ngFor="let product of products" class="card relativo product-card">
         <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div *ngFor="let image of product.images; let i = index"
@@ -34,15 +70,26 @@
           <p class="card-text">
             {{product.description}}
           </p>
-          <button (click)="AddToCart(product.sku)" class="btn float-right"><b>+</b></button>
+          <!-- <p class="align-left">
+            sku:&nbsp; {{product.sku}}
+          </p> -->
+          <!-- <div class="Boton">
+            <div class="float-right"> -->
+          <button [disabled]="product.stock < 1" (click)="AddToCart(product.sku)" class="btn agregar">+</button>
         </div>
+          <!-- <div class="absoluto">Agregar</div>
+        </div> -->
+      </div>
+      <div class="text-center" *ngIf="!products.length">
+        <h2 class="mt-5">No se han encontrado resultados :(</h2>
+        <h4>Pruebe con otros criterios de búsqueda.</h4>
       </div>
     </section>
   </article>
 </main>
 
-<div class="toast align-items-center text-white border-0" role="alert" aria-live="assertive"
-  aria-atomic="true" data-bs-animation="true" data-bs-autohide="true" data-bs-delay="2000">
+<div class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true"
+  data-bs-animation="true" data-bs-autohide="true" data-bs-delay="2000">
   <div class="d-flex">
     <div class="toast-body">
       Se ha añadido el producto al carrito

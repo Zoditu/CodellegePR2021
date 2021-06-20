@@ -15,9 +15,6 @@ const Product = require('../models/poduct');
 
 //Importar el módulo de utilities
 const Utils = require('../utils/utils');
-const {
-    boolean
-} = require('joi');
 
 //Endpoint del tipo GET, que se llame getCart
 //Debe revisar si existe una cookie con el ID de un carrito (La cookie se llama CARTID)
@@ -42,9 +39,6 @@ router.get('/getCart', async (req, res) => {
     if (cartID) {
         var carrito = await Cart.findOne({
             id: cartID
-        }, {
-            _id: 0,
-            __v: 0
         });
 
         if (carrito) {
@@ -65,25 +59,35 @@ router.get('/getCart', async (req, res) => {
                     userCart.quantity += carrito.quantity;
                     userCart.total += carrito.total;
 
-                    userCart.markModified('products');
-                    await userCart.save();
+                    var issues = await Utils.validateCart(userCart);
+                    userCart = issues;
 
                     res.cookie('CARTID', userCart.id, {
                         expires: new Date(2025, 1, 1)
                     });
 
-                    userCart = userCart.toObject();
-                    delete userCart._id;
-                    delete userCart.__v;
+                    //userCart = userCart.cart.toObject();
+                    //delete userCart._id;
+                    //delete userCart.__v;
+
                     return res.send(userCart);
                 }
             }
 
+            var issues = await Utils.validateCart(carrito);
+            carrito = issues;
+
+            //carrito = carrito.toObject();
+            //delete carrito._id;
+            //delete carrito.__v;
             return res.send(carrito);
         } else if (user && userCart) {
             res.cookie('CARTID', userCart.id, {
                 expires: new Date(2025, 1, 1)
             });
+
+            var issues = await Utils.validateCart(userCart);
+            userCart = issues;
 
             return res.send(userCart);
         }
@@ -92,6 +96,9 @@ router.get('/getCart', async (req, res) => {
             res.cookie('CARTID', userCart.id, {
                 expires: new Date(2025, 1, 1)
             });
+            var issues = await Utils.validateCart(userCart);
+            userCart = issues;
+
             return res.send(userCart);
         }
 
@@ -252,7 +259,7 @@ router.patch('/add', async (req, res) => {
  * Al final restarlo al total
  * Restar al quantity el producto.qty a eliminar
  */
- router.patch('/remove', async (req, res) => {
+router.patch('/remove', async (req, res) => {
     var datoProducto = req.body;
     var cartID = req.cookies["CARTID"];
     var carrito = null;
@@ -336,6 +343,88 @@ router.patch('/cleanCart', async (req, res) => {
     await carrito.save();
 
     res.send(carrito);
+});
+
+router.put('/validateCart', async (req, res) => {
+    var cartID = req.cookies["CARTID"];
+    var carrito = await Cart.findOne({
+        id: cartID
+    });
+
+    if (!carrito) {
+        return res.status(400).send({
+            message: "No existe un carrito asociado a esta petición... Ejecute el endpoint /carts/getCart"
+        });
+    }
+
+    var cart_issues = [];
+    //Ejecuta 1 por 1 a la vez
+    //Es más lento
+    for (var i = 0; i < carrito.products.length; i++) {
+        const product = carrito.products[i];
+
+        //Comprobar que el producto existe... No se puede comprar algo que ya se quitó
+        var productDB = await Product.findOne({
+            sku: product.sku
+        });
+
+        //No encontró el producto en la DB. Lo eliminamos
+        if (!productDB) {
+            cart_issues.push({
+                product: {
+                    sku: product.sku,
+                    name: product.name
+                },
+                issue: "Este producto ha sido dado de baja del catálogo"
+            });
+
+            //Elimina el elemento a partir de la posición i, y lo va a hacer n veces
+            carrito.products.splice(i, 1);
+            i--;
+            continue;
+        } else {
+            if (productDB.stock <= 0) {
+                cart_issues.push({
+                    product: {
+                        sku: product.sku,
+                        name: product.name
+                    },
+                    issue: "Este producto no tiene stock por el momento"
+                });
+
+                carrito.products.splice(i, 1);
+                i--;
+                continue;
+            } else if (productDB.stock < product.qty) {
+                cart_issues.push({
+                    product: {
+                        sku: product.sku,
+                        name: product.name
+                    },
+                    issue: "Este producto no tiene suficiente stock. Se le ha modificado al máximo existente"
+                });
+            }
+        }
+
+        product.name = productDB.name;
+        product.description = productDB.description;
+        product.unit_price = productDB.price;
+        product.images = productDB.images;
+    }
+
+    carrito.quantity = 0;
+    carrito.total = 0;
+    for (var i = 0; i < carrito.products.length; i++) {
+        const product = carrito.products[i];
+        carrito.quantity += product.qty;
+        carrito.total += product.qty * product.unit_price;
+    }
+
+    carrito.markModified('products');
+    await carrito.save();
+
+    res.send(cart_issues);
+
 });
 
 

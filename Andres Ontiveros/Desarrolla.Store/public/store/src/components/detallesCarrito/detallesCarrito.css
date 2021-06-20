@@ -1,187 +1,87 @@
-/*
-I wanted to go with a mobile first approach, but it actually lead to more verbose CSS in this case, so I've gone web first. Can't always force things...
-
-Side note: I know that this style of nesting in SASS doesn't result in the most performance efficient CSS code... but on the OCD/organizational side, I like it. So for CodePen purposes, CSS selector performance be damned.
-*/
-
-/* Global "table" column settings */
-
 h1 {
+  font-size: 3rem;
+  font-weight: bold !important;
   padding-top: 4rem;
   padding-bottom: 2rem;
   display: inline-block;
   color: var(--color-black)
 }
 
-.column-labels {
-  color: var(--color-black);
-  font-weight: bold;
-  border-bottom: 0.5px solid var(--color-blue);
-  display: block;
-  height: 2rem;
-  font-size: 1.25rem;
-}
-
-.product-image {
-  float: left;
-  width: 20%;
-}
-
-.product-image img {
-  width: 100%;
-  height: 9rem;
-  padding-right: 3rem;
-}
-
-.product-details {
-  float: left;
-  width: 37%;
-}
-
-.product .product-details {
-  height: 9rem;
-}
-
-.product-price {
-  float: left;
-  width: 12%;
-}
-
-.product .product-price,
-.product .product-quantity,
-.product .product-line-price,
-.product .product-removal {
-  padding-top: 3rem;
-  font-weight: bold;
-}
-
-
-.product-quantity {
-  float: left;
-  width: 10%;
+.encabezado {
   text-align: center;
+  font-size: 1.25rem;
+  border-bottom: var(--color-black) solid 2px;
+  font-weight: bold;
+  background-color: var(--color-cream);
+  padding: 2rem 0rem 2rem 0rem;
+}
+.product-image {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
-.column-labels .product-line-price {
-  float: left;
-  width: 21%;
-  text-align: right;
+.row {
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
-.column-labels .product-details {
-  color: var(--color-white)
-}
-
-.product .product-removal {
-  float: left;
-  width: 9%;
-}
-
-.product-line-price {
-  float: left;
-  width: 12%;
-  text-align: right;
+.productos {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-blue);
+/*   background-color: var(--color-cream-transparent); */
 }
 
 .product {
-  height: 10rem;
-  margin-top: 1rem;
-  border-bottom: 0.5px solid var(--color-gray);
-  color: var(--color-blue);
+  border-bottom: var(--color-gray-transparent) solid 1px;
+  padding: 1rem 0rem 1rem 0rem;
 }
 
-/* Body/Header stuff */
-body {
-  padding: 0px 30px 30px 20px;
-  font-family: var(--font-default);
-  font-weight: 100;
+.product-delete{
+  color: var(--color-cream);
 }
 
-h1 {
-  font-weight: 100;
+img  {
+  width: 100%;
 }
 
-/* Column headers */
-
-.product .product-image {
+.totals {
   text-align: center;
+  height: 6rem;
+  font-size: 1.5rem;
 }
 
-.product .product-details .product-title {
-  height: 2rem;
-  font-family: var(--font-bold);
-  font-weight: bold;
-}
-
-.product .product-details .product-description {
-  margin-bottom: 5px;
-  margin-right: 3rem;
-  height: 7rem;
-  line-height: 1.4em;
-}
-
-.product-quantity input {
-  width: 40px;
-
+.centrar {
+  text-align: center;
 }
 
 .remove-product {
   border: 0;
-  padding: 4px 8px;
-  margin-left: 5rem;
   background-color: var(--color-gray);
   color: var(--color-white);
   font-family: var(--font-bold);
   font-size: 12px;
   border-radius: 3px;
+  padding: 2px 6px 2px 6px;
   float: left;
+  text-align: center;
+  margin-left: 0.6rem;
 }
 
 .remove-product:hover {
   background-color: #a44;
 }
 
-/* Totals section */
-.totals .totals-item {
-  float: right;
-  clear: both;
-  width: 100%;
-
-}
-
-.totals label {
-  float: left;
-  clear: both;
-  width: 79%;
-  text-align: right;
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: var(--color-black);
-}
-
-.totals .totals-value {
-  float: right;
-  width: 21%;
-  text-align: right;
-  font-size: 1.4rem;
-}
-
-.totals-item-total {
-  font-family: var(--font-bold);
-}
-
 .checkout {
-  float: right;
   border: 0;
-  margin-top: 20px;
-  margin-top: 2rem;
-  margin-right: 5rem;
-  padding: 6px 25px;
+  padding: 6px 90px;
   background-color: var(--color-blue);
   color: var(--color-white);
   font-size: 25px;
   border-radius: 3px;
-  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
 }
 
 .checkout:hover {
@@ -194,7 +94,7 @@ h1 {
   border-radius: 0;
   color: var(--color-white);
   float: right;
-  margin-top: 5rem;
+  margin-top: 4.8rem;
 }
 
 .clean-button:hover {
@@ -208,19 +108,37 @@ h1 {
 }
 
 .button-cart:hover {
-  background-color: var(--color-black);
+  background-color: var(--color-gray-transparent);
   color: var(--color-white);
 }
 
 a {
   text-decoration: none;
+  width: 100%;
 }
 
 .title {
   margin-bottom: 3rem;
-  color: ver(--color-black)
+  color: var(--color-black);
 }
 
 .line-border {
   border-bottom: 0.3rem solid var(--color-black);
+}
+
+.container {
+  font-family: var(--font-general);
+  padding: 0rem 6rem 4rem 6rem;
+}
+
+section {
+  margin-bottom: 6rem;
+}
+
+.left {
+  margin-right: 1rem;
+}
+
+.right {
+  margin-left: 1rem;
 }
