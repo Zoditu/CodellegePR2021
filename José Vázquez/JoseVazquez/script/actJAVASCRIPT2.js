@@ -42,7 +42,7 @@ var frases = [{
     },
     {
         texto: 'El mundo se consume en dinero dinero, aprende algo, dinero $',
-        lugar: 'Somewhere n da world',
+        lugar: 'Somewhere nda world',
         persona: 'MC DINERO'
     },
     {

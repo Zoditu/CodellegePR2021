@@ -1,0 +1,46 @@
+Comandos de NodeJs
+
+node PATH/app.js
+
+npm install package --save
+npm install package --global
+
+Express se conforma de:
+Application: General, es todo.
+Use: Para cargar plugins o extensiones para el server
+	- Manipular cookies
+	- Manipular el CORS
+	- Manipular el tipo de preprocesador de texto.
+
+Methods: Todos los métodos de HTTP
+	- get
+	- post
+	- delete
+	- put
+User Routers: Utiliza routers oara generar endpoints.
+
+SQL vs MongoDB
+Tablas - Coleccion
+Registro (fila) - Documento
+
+=======================================
+Promesass
+Las promesas permiten trabajar de manera asincrona en segundo plano y utilizan 3 parametros.
+Si se utilizan muchas promesas se puede crear un callback hell
+.then() - Crea un callback con el resultado y se manda llamar cuando todo sale bien
+.catch() - Si ocurre un error, se manda a llamar al catch en vez de al .then
+.finally() - Indiferente mente si ocurrio el error o no, realiza una instruccion (se utiliza para limpiar cosas)
+
+==================
+Segregacion
+{$lte:} = 
+$ = Segregacion
+Lt = Lower than or
+e = equal
+
+	// $lte -> menor o igual
+        // $gte -> mayor o igual
+        // $lt -> menor
+        // $gt -> mayor
+        // $e -> igual
+        // $ne -> no igual

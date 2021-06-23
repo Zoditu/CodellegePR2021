@@ -1,0 +1,58 @@
+<section class="container py-5">
+
+  <div class="row">
+    <div class="alert alert-danger" [hidden]="validInfo" role="alert">
+      Por favor, rellene todos los campos con su información.
+    </div>
+
+    <div class="col-8 datos">
+      <div class="cuadro-uno">
+      <h2><i class="bi bi-info-circle-fill"></i>Datos Usuario</h2>
+      <ul class="list-group">
+        
+        <li class="list-group-item"><i class="bi bi-person-fill"></i><b>Nombre:</b> 
+          <input type="text" (input)="UpdateValue($event, 'name')" [value]="userData.name">
+        </li>
+        <li class="list-group-item"><i class="bi bi-person-fill"></i><b>Apellidos:</b>
+          <input type="text" (input)="UpdateValue($event, 'lastName')" [value]="userData.lastName"></li>
+        <li class="list-group-item"><i class="bi bi-envelope-fill"></i><b>Email:</b>
+          <input type="text" (input)="UpdateValue($event, 'email')" [value]="userData.email"></li>
+        <li class="list-group-item"><i class="bi bi-telephone-fill"></i><b>Teléfono:</b>:
+          <input type="text" (input)="UpdateValue($event, 'phone')" [value]="userData.phone"></li>
+      </ul>
+      <h2 class="envio-d"><i class="bi bi-geo-alt-fill"></i>Dirección de envío</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><b>Calle:</b>
+          <input type="text" (input)="UpdateValue($event, 'street')" [value]="userData.address.street"></li>
+        <li class="list-group-item"><b>Colonia:</b>
+          <input type="text" (input)="UpdateValue($event, 'suburb')" [value]="userData.address.suburb"></li>
+        <li class="list-group-item"><b>Nombre:</b>
+          <input type="text" (input)="UpdateValue($event, 'city')" [value]="userData.address.city"></li>
+        <li class="list-group-item"><b>Estado:</b>
+          <input type="text" (input)="UpdateValue($event, 'state')" [value]="userData.address.state"></li>
+        <li class="list-group-item"><b>Código Postal</b>
+          <input type="text" (input)="UpdateValue($event, 'zip')" [value]="userData.address.zip"></li>
+      </ul>
+    </div>
+</div>
+
+    <article class="col-4">
+      <div class="cuadro-tres">
+      <h2>Resumen</h2>
+      <section *ngIf="cart.quantity > 0 else emptyCart">
+        <div class="total">
+        <h4 class="text-end"><b>Subtotal:</b>&nbsp;&nbsp; ${{((cart.total * 0.84)-184.8).toFixed(2)}}</h4>
+        <h4 class="text-end"><b>IVA:</b>&nbsp;&nbsp; ${{((cart.total * 0.16)-35.2).toFixed(2)}}</h4>
+        <h4 class="text-end"><b>Gastos de envio:</b>&nbsp;&nbsp; $220</h4>
+        <hr>
+        <h4 class="text-end"><b>Total:</b>&nbsp;&nbsp; ${{(cart.total).toFixed(2)}}</h4>
+      </div>
+      </section>
+      <ng-template #emptyCart>
+        <h3>El carrito está vacío</h3>
+      </ng-template>
+      <div [hidden]="cart.quantity === 0" id="paypal-payment"></div>
+    </div>
+    </article>
+  </div>
+</section>

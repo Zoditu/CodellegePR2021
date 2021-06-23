@@ -1,0 +1,22 @@
+
+.cuadro{
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    display: inline-block;
+    width: 20rem;
+    height: 20rem;
+    background-color: pink;
+    transition:width  background .3s, left 0.3, top 0.3s;
+
+    
+    }
+    .cuadro:hover{
+        left:10rem
+        top 10rem
+
+        width: 20rem;
+        height: 20rem;
+        background: green;
+
+        transition: background 3s, left 3s, top: 1s;

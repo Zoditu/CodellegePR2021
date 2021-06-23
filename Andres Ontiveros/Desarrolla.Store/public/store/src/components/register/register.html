@@ -1,0 +1,32 @@
+      <div class="login-page">
+        <div class="form">
+          <div class="header"><h3>Crear cuenta</h3></div>
+            <div class="login-form">
+                <h6>Nickname</h6>
+                <input type="text" (input)="UpdateValue($event, 'nickname')"/>
+                <h6>Nombre</h6>
+                <input type="text" (input)="UpdateValue($event, 'name')"/>
+                <h6>Apellido</h6>
+                <input type="text" (input)="UpdateValue($event, 'lastName')"/>
+                <h6>Dirección</h6>
+                <input type="text"  placeholder="Calle" (input)="UpdateValue($event, 'street')"/>
+                <input class="mitad" type="text" placeholder="Colonia" (input)="UpdateValue($event, 'suburb')"/>
+                <input class="mitad-2" type="text" placeholder="Ciudad" (input)="UpdateValue($event, 'city')"/>
+                <input class="mitad" type="text" placeholder="Estado" (input)="UpdateValue($event, 'state')"/>
+                <input class="mitad-2" type="number" placeholder="Código Postal" (input)="UpdateValue($event, 'zio')" placeholder="60000"/>
+                <h6>Email</h6>
+                <input type="text" (input)="UpdateValue($event, 'email')"/>
+                <h6>Contraseña</h6>
+                <input type="password" (input)="UpdateValue($event, 'password')" placeholder="password"/>
+                <h6>Telefono</h6>
+                <input type="number" (input)="UpdateValue($event, 'phone')" placeholder="8X XX XX XX XX"/>
+                <br>
+                <br>
+                <div class="register-error" [hidden]="!invalidRegister">
+                  No se pudo registrar: {{registerFailureReason}}
+                </div>
+                <button (click)="Register();">CREAR</button>
+                <p class="message">Ya estas registrado? <a href="/login">Iniciar Sesión</a></p>
+              </div>
+        </div>
+      </div>

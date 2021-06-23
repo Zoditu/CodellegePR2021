@@ -1,0 +1,84 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.diagrama{
+    text-align: center;
+}
+
+.separador{
+    width: 18rem;
+    text-align: left;
+    padding-left: 1.75rem;
+    display: inline-block;
+}
+
+.tema{
+    width: 18rem;
+    font-size: 1.5rem;
+    display: inline-block;
+}
+
+.circulo{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    border: 2px solid black;
+
+}
+.linea-horizontal{
+    width: 5rem;
+    background: black;
+    height: 1.5rem;
+    
+}
+
+.rectangulo{
+    width: 8rem;
+    height: 5rem;
+    border: 2px solid black;
+}
+
+.linea-vertical{
+    width: 1.5rem;
+    height: 5rem;
+    background: black;
+}
+
+.table{
+    display: table;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.table-cell{
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+.flex{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.centrado{
+    width: 100%;
+}
+
+.float-left{
+    float: left;
+}

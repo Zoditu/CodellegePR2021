@@ -1,0 +1,138 @@
+<style>
+    .curso123 {
+        color: white;
+        background-color: darkslategray;
+        border: solid yellow;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 0.4rem 0 0.4rem 0;
+    }
+</style>
+<script>
+    var sitiosStreaming = [
+        {
+            nombre: "twich",
+            url: 'twich.com',
+            pago: false,
+            calidad: "buena"
+        },
+        {
+            nombre: "youtube",
+            url: 'youtube.com',
+            pago: false,
+            calidad: "buena"
+        },
+        {
+            nombre: "facebook",
+            url: 'facebool.com',
+            pago: false,
+            calidad: "media"
+        }
+    ];
+
+    var yo = {
+        name: "Fabian",
+        secondName: "Felipe",
+        lastName: "Cruz",
+        secondLastName: "Garcia",
+        fechaNac: '01/04/1995',
+        sexo: "masculino",
+        edad: "26 años",
+        altura: "1.94 cm",
+        peso: '84.0 kg',
+        tez: "blanca"
+    }
+
+    // var nombres = ['Kevin', 'Luis', 'Fabian', 'Mariel', 'Tomás']
+    // for (let i = nombres.length - 1; i > -1; i--) {
+    //     const nombre = nombres[i];
+    //     console.log(nombre);
+    // }
+
+    // var tareaEnEjecucion = true
+    // var x = 0;
+    // while (tareaEnEjecucion === true) {
+    //     x++
+    //     if(x===100){
+    //         tareaEnEjecucion = false;
+    //     }
+    // }
+
+    var tipoDeTarea = ['Barrer', 'Trapear', 'Trastos', 'Baños', 'Camas', 'Cocina', 'Otro']
+    for (let i = 0; i < tipoDeTarea.length; i++) {
+        const tarea = tipoDeTarea[i];
+        if (tarea === 'Barrer') {
+            var escoba = true
+            console.log('Barriendo');
+        } else if (tarea === 'Trapear') {
+            var trapeador = true
+            var cubeta = true
+            console.log('Trapeando');
+        } else if (tarea === 'Trastos') {
+            var esponja = true
+            console.log('Lavando trastes');
+        } else if (tarea === 'Baños') {
+            var esponja = true
+            var cepillo = true
+            var trapo = true
+            console.log('Lavando el baño');
+        } else if (tarea === 'Camas') {
+            var cobijas = true
+            console.log('Tendiendo las camas');
+        } else if (tarea === 'Cocina') {
+            var esponjaMetal = true
+            console.log('Limpiando la cocina');
+        } else {
+            var tareaNueva = true
+            console.log('Estoy ocupado :c');
+        }
+
+        switch (tarea) {
+            case 'Barrer':
+                var escoba = true
+                console.log('Barriendo');
+                break;
+        
+            case 'Trapear':
+                var trapeador = true
+                var cubeta = true
+                console.log('Trapeando');
+                break;
+
+            case 'Trastos':
+                var esponja = true
+                console.log('Lavando trastes');
+                break;
+
+            case 'Baños':
+                var esponja = true
+                var cepillo = true
+                var trapo = true
+                console.log('Lavando el baño');
+                break;
+            
+            case 'Camas':
+                var cobijas = true
+                console.log('Tendiendo las camas');
+                break;
+
+            case 'Cocina':
+                var esponjaMetal = true
+                console.log('Limpiando la cocina');
+                break;
+
+            default:
+                var tareaNueva = true
+                console.log('Estoy ocupado :c');
+                break;
+        }
+        
+    };
+
+    
+
+
+</script>
+<curso id="PR2021" hora="9:00A.M." class="curso123"></curso>
+

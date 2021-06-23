@@ -1,0 +1,68 @@
+body, html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.tarjeta{
+    margin-left: 2rem;
+    margin-top: 2rem;
+    width:18rem;
+    height:25rem;
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 2%;
+
+}
+
+.titulo{
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+.event-img{
+    display: inline-block;
+    background-image:url(https://i.pinimg.com/originals/a8/06/fe/a806fef8ea2a9504f8ed750c9f151645.jpg);
+    height: 11rem;
+    width: 99.5%;
+    background-size: 100% 100%;
+    border: 2px solid black;
+    border-radius: 2%;
+}
+
+.clear{
+    clear: both;
+}
+.footer{
+    bottom: 2rem;
+ margin-top: 0.5rem;
+ margin-left: 0.5rem;
+}
+.completo{
+    margin-top: 1rem;
+    margin-left: 1rem;
+    float: left;
+
+}
+h2{
+    font-size: 1rem;
+}
+h1{
+    text-align: center;
+    font-size: 3rem;
+}
+.int-t{
+    text-align: left;
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+.intro{
+    text-align: left;
+    font-size: 1.5rem;
+    margin-left: 2rem;
+}

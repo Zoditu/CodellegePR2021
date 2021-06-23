@@ -1,0 +1,108 @@
+.list-group {
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+.bi {
+    margin-right: 1rem;
+}
+
+.logout-btn {
+    float: right;
+    font-size: 1rem;
+    color: var(--color-black);
+    border-bottom: 1px solid var(--color-blue);
+    margin-top: 0.4rem;
+    padding: 0.3rem;
+    cursor: pointer;
+    float: right;
+
+    transition: 0.3s color, 0.3s background-color, 0.3s border-bottom;
+}
+
+.logout-btn:hover {
+    color: var(--color-white);
+    background-color: var(--color-blue);
+    border-bottom: 1px solid var(--color-black);
+
+    transition: 0.3s color, 0.3s background-color, 0.3s border-bottom;
+}
+
+.bi-pencil-square, .bi-check2-square {
+    float: right;
+    cursor: pointer;
+}
+
+input[type=text] {
+    border: 0;
+    outline: 0;
+    color: var(--color-gray);
+    border-bottom: 1px solid var(--color-black);
+    width: 50%;
+}
+
+.container {
+    font-family: var(--font-general);
+    padding: 0rem 8rem 0rem 8rem;
+    margin-bottom: 8rem;
+}
+
+.perfil, .envio {
+    width: 48.45%;
+    background-color: var(--color-cream-transparent);
+    padding: 2rem 3rem 2rem 3rem;
+    box-shadow: 2px 2px 14px 2px var(--color-gray-transparent);
+    display: inline-block;
+}
+
+.password {
+    margin-top: 2rem;
+    width: 48.65%;
+    background-color: var(--color-cream-transparent);
+    padding: 2rem 4rem 2rem 4rem;
+    box-shadow: 2px 2px 14px 2px var(--color-gray-transparent);
+    display: inline-block;
+}
+
+.list-group-item {
+    background-color: white;
+    /* margin-top: 0.5rem; */
+    border: none; /* 1px var(--color-black) solid; */
+    /* box-shadow: 2px 2px 4px var(--color-gray-transparent); */
+    color: var(--color-blue);
+    font-size: 1.15rem;
+    height: 2.75rem;
+}
+.list-group {
+    margin-top: 1.5rem;
+    box-shadow: 2px 2px 14px 2px var(--color-gray-transparent);
+    background-color: white;
+}
+ul {
+    padding: 1rem 0rem 1rem 0rem;
+}
+.titulo-perfil, .titulo-envio, .titulo-password {
+    color: var(--color-blue);
+    font-weight: bold;
+}
+.bi-pencil-square:hover {
+    color: var(--color-black);
+    text-shadow: 2px 2px 3px var(--color-black);
+}
+i {
+    color: var(--color-black);
+}
+
+.bi-check2-square:hover {
+    color: rgb(24, 182, 18);
+    text-shadow: 2px 2px 3px var(--color-gray);
+}
+.space {
+    margin-right: 2rem;
+}
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    padding-top: 3rem;
+    text-align: center;
+}

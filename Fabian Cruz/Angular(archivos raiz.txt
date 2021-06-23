@@ -1,0 +1,10 @@
+src: Se encuentra la raíz de todo (source)
+	- index.html: Es el HTML de la pagina principal
+	- styles.css: Estilos globales, lo ven todos los componentes en la pagina.
+	- main.ts:Importa los componentes a la aplicacion principal
+	- componentes: otro folder
+		- .componentName.css: Estilos que solo afectan a este componente.
+		- .componentName.ts: Lógica (Propiedad y funciones de este componente)
+		- .componentName.html: La vista de este componente, es un fragmento de la página
+		- .componentName.module.ts: Exporta el componente
+

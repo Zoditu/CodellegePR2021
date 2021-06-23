@@ -1,0 +1,21 @@
+
+.cuadro{
+    width: 35rem;
+    height: 35rem;
+    background-color: purple;
+    position: relative;
+    
+
+}
+
+.otro{
+    width: 25%;
+    height: 25%;
+    background-color: salmon;
+    top: 50%;
+  left: 50%;
+    position: absolute;
+    
+    
+}
+

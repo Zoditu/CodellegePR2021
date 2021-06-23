@@ -1,0 +1,8 @@
+#wrapper section div p .failed ::before {
+}
+
+.failed{
+    color: red;
+font-weight: bold;
+text-decoration: underline;
+}

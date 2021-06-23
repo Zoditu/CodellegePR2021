@@ -1,0 +1,40 @@
+header {
+    height: 3rem;
+    padding: 0.3rem;
+    color: whitesmoke;
+    font-size: 1.4rem;
+}
+
+a, a:link{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+a:hover{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.logo {
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: dimgray;
+    float: left;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+i {
+    margin-left: 0.5rem;
+}
+
+span {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}

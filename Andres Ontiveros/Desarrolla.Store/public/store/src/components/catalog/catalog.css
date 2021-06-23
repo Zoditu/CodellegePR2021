@@ -1,0 +1,208 @@
+.filtro {
+    /* background: linear-gradient( var(--color-blue),var(--color-white)); */
+    background-color: var(--color-gray-transparent);
+    color: var(--color-white);
+    height: 28rem;
+    box-shadow: 2px 2px 14px 2px var(--color-black);
+    height: 25rem;
+}
+
+.product-card {
+    width: 14.09rem;
+    display: inline-flex;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.product-card img {
+    width: 100%;
+    height: 12rem;
+    background-color: white;
+    border-radius: 1%;
+}
+
+.card {
+    border: 1px solid var(--color-gray);
+    box-shadow: 2px 2px 8px var(--color-gray-transparent);
+}
+.card-body button {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    position: absolute;
+    right: 0.3rem;
+    bottom: 0.3rem;
+}
+
+.card-body {
+    height: 13rem;
+    font-size: 1.25rem;
+    background-color: var(--color-cream-transparent);
+}
+
+.card-text {
+    height: 6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.86rem;
+}
+
+.toast {
+    position: fixed;
+    top: 4rem;
+    right: 1rem;
+    background-color: var(--color-gray);
+    font-size: 1rem;
+    text-align: center;
+}
+.btn-outline-secondary {
+    color: var(--color-white);
+    font-weight: bold;
+    border: 2px var(--color-black) solid;
+}
+.btn-outline-secondary:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.container {
+    font-family: var(--font-general);
+}
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    padding-top: 3rem;
+}
+
+.form-control:focus {
+    box-shadow: 0px 0px 2px 3px var(--color-white-transparent);
+    outline: 0;
+    border-color: var(--color-gray);
+    background-color: white;
+    color: black;
+  }
+
+  .form-control::placeholder {
+    color: var(--color-black);
+  }
+
+  .buscar:focus {
+    box-shadow: 0px 0px 2px 3px var(--color-white-transparent);
+    outline: 0;
+    border-color: var(--color-gray);
+    background-color: white;
+    color: var(--color-black);
+  }
+
+  .productos {
+      margin-bottom: 4rem;
+  }
+.barra {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 300px;
+  height: 5px;
+  padding: 0;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+/*Chrome thumb*/
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-border-radius: 5px;
+  /*16x16px adjusted to be same as 14x14px on moz*/
+  height: 16px;
+  width: 16px;
+  border-radius: 5px;
+  background: var(--color-black);
+  border: 1px solid var(--range-border);
+}
+/*Mozilla thumb*/
+
+input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -moz-border-radius: 5px;
+    height: 14px;
+    width: 14px;
+    border-radius: 5px;
+    background: var(--color-black);
+    border: 1px solid var(--range-border);
+  }
+  
+  /*IE & Edge input*/
+  
+  input[type=range]::-ms-track {
+    width: 300px;
+    height: 6px;
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: white;
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: var(--color-blue);
+    border-width: 2px 0;
+    /*remove default tick marks*/
+    color: transparent;
+  }
+  
+  /*IE & Edge thumb*/
+  
+  input[type=range]::-ms-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 5px;
+    background: var(--color-black);
+    border: 1px solid var(--range-border);
+  }
+  
+  /*IE & Edge left side*/
+  
+  input[type=range]::-ms-fill-lower {
+    background: var(--color-gray);
+    border-radius: 2px;
+  }
+  
+  /*IE & Edge right side*/
+  
+  input[type=range]::-ms-fill-upper {
+    background: var(--color-gray);
+    border-radius: 2px;
+  }
+  
+  /*IE disable tooltip*/
+  
+  input[type=range]::-ms-tooltip {
+    display: none;
+  }
+
+  
+
+h4 {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-black);
+  font-weight: bold;
+}
+/* .align-left {
+  text-align: left;
+  font-size: 0.75rem;
+  color: var(--color-gray-transparent);
+  padding-bottom: 2rem;
+} */
+
+.agregar {
+  background-color: var(--color-blue-transparent) !important;
+  color: white !important;
+}
+
+.agregar:hover {
+  background-color: var(--color-blue) !important;
+  color: white !important;
+}

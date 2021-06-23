@@ -37,7 +37,7 @@ function LimitesDeNumero(n1, n2) {
     var resultado = 'El número' + ' '+n1 + ' '+'es' + ' '+(esMayor ? 'mayor' : 'menor o igual') +' '+ 'que el número' + ' '+n2;
     return resultado;
 }
-console.log(LimitesDeNumero(2, 3));
+console.log(LimitesDeNumero(5, 3));
 //---------------------------------------
 var arreglo=[ 10, 20, 30, 40, 50 ];
 //arreglo[5]=60;

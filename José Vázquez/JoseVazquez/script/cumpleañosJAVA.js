@@ -1,7 +1,7 @@
 var cumpleañeros = [];
 
 cumpleañeros.push({
-    nombre: 'Jose',
+    nombre: 'Jose1  ',
     fecha: '05/10/1999',
     imagen: 'imagen',
     regalos: 'Quiero una bicicleta',
@@ -13,7 +13,7 @@ cumpleañeros.push({
 });
 
 cumpleañeros.push({
-    nombre: 'PEPE',
+    nombre: 'PEPE2',
     fecha: '05/10/1999',
     imagen: 'imagen',
     regalos: 'Quiero una bicicleta',
@@ -25,7 +25,7 @@ cumpleañeros.push({
 });
 
 cumpleañeros.push({
-    nombre: 'Jose',
+    nombre: 'Jose3',
     fecha: '05/10/1999',
     imagen: 'imagen',
     regalos: 'Quiero una bicicleta',
@@ -134,3 +134,20 @@ if(edad===15 || edad===17){
 console.log('*********************')
 
 
+for (var i = cumpleañeros.length - 1; i>=0; i--) {
+    var cumpleañero = cumpleañeros[i];
+    cumpleañero.mostrarDetalles();
+    console.log("------------------------")
+    
+}
+
+var contador = 1;
+while (true){
+    if(contador<10){
+        break;
+    }
+
+console.log('Ciclo while' + contador);
+contador++;
+}
+console.log('Debería estar aquí...'); 

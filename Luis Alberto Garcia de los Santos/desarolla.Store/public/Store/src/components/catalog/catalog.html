@@ -1,0 +1,64 @@
+<main class="container py-3">
+  <h1>desarrolla.Store - Catálogo de productos</h1>
+  <article class="row">
+    <section class="filtro col-3">
+      <h3>Filtros de búsqueda</h3>
+      <div class="search-bar">
+        <input [value]="searchFilters.name" (input)="UpdateName($event.target)" (keydown)="CheckKey($event);" type="text" class="w-100 search-box" placeholder="Buscar...">
+        <div class="search-icon" (click)="GetProducts();">
+          <i class="bi bi-search"></i>
+        </div>
+      </div>
+      <br>
+      Precios: $0 - ${{searchFilters.price}}
+      <input class="w-100" type="range" min="0" max="100000" step="100" [value]="searchFilters.price" (input)="UpdatePrice($event.target);" (change)="GetProducts();">
+      <br>
+      <label for="stock">Con Stock:&nbsp;</label>
+      <input type="checkbox" id="stock" [checked]="searchFilters.stock" (change)="UpdateStock($event.target);">
+    </section>
+    <section class="col-9 px-2">
+      <div *ngFor="let product of products" class="card product-card">
+        <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let image of product.images; let i = index"
+              [class]="'carousel-item' + (i === 0 ? ' active' : '')">
+              <img [src]="image" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <span>{{product.name}} - ${{product.price}}</span>
+          <p class="card-text">
+            {{product.description}}
+          </p>
+          <button [disabled]="product.stock < 1" (click)="AddToCart(product.sku)" class="btn float-right">+</button>
+        </div>
+      </div>
+      <div class="text-center" *ngIf="!products.length">
+        <h2 class="mt-5">No se han encontrado resultados :(</h2>
+        <h4>Pruebe con otros criterios de búsqueda.</h4>
+      </div>
+    </section>
+  </article>
+</main>
+
+<div class="toast align-items-center text-white border-0" role="alert" aria-live="assertive"
+  aria-atomic="true" data-bs-animation="true" data-bs-autohide="true" data-bs-delay="2000">
+  <div class="d-flex">
+    <div class="toast-body">
+      Se ha añadido el producto al carrito
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+      aria-label="Close"></button>
+  </div>
+</div>

@@ -1,0 +1,144 @@
+h1 {
+  font-size: 3rem;
+  font-weight: bold !important;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  display: inline-block;
+  color: var(--color-black)
+}
+
+.encabezado {
+  text-align: center;
+  font-size: 1.25rem;
+  border-bottom: var(--color-black) solid 2px;
+  font-weight: bold;
+  background-color: var(--color-cream);
+  padding: 2rem 0rem 2rem 0rem;
+}
+.product-image {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.productos {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-blue);
+/*   background-color: var(--color-cream-transparent); */
+}
+
+.product {
+  border-bottom: var(--color-gray-transparent) solid 1px;
+  padding: 1rem 0rem 1rem 0rem;
+}
+
+.product-delete{
+  color: var(--color-cream);
+}
+
+img  {
+  width: 100%;
+}
+
+.totals {
+  text-align: center;
+  height: 6rem;
+  font-size: 1.5rem;
+}
+
+.centrar {
+  text-align: center;
+}
+
+.remove-product {
+  border: 0;
+  background-color: var(--color-gray);
+  color: var(--color-white);
+  font-family: var(--font-bold);
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 2px 6px 2px 6px;
+  float: left;
+  text-align: center;
+  margin-left: 0.6rem;
+}
+
+.remove-product:hover {
+  background-color: #a44;
+}
+
+.checkout {
+  border: 0;
+  padding: 6px 90px;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  font-size: 25px;
+  border-radius: 3px;
+  text-align: center;
+  width: 100%;
+}
+
+.checkout:hover {
+  background-color: rgb(45, 138, 45);
+}
+
+.clean-button {
+  background: var(--color-blue);
+  border: 0;
+  border-radius: 0;
+  color: var(--color-white);
+  float: right;
+  margin-top: 4.8rem;
+}
+
+.clean-button:hover {
+  background: rgb(117, 18, 18);
+  color: var(--color-white);
+}
+
+.button-cart {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.button-cart:hover {
+  background-color: var(--color-gray-transparent);
+  color: var(--color-white);
+}
+
+a {
+  text-decoration: none;
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 3rem;
+  color: var(--color-black);
+}
+
+.line-border {
+  border-bottom: 0.3rem solid var(--color-black);
+}
+
+.container {
+  font-family: var(--font-general);
+  padding: 0rem 6rem 4rem 6rem;
+}
+
+section {
+  margin-bottom: 6rem;
+}
+
+.left {
+  margin-right: 1rem;
+}
+
+.right {
+  margin-left: 1rem;
+}

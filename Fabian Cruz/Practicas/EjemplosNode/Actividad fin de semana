@@ -1,0 +1,16 @@
+Crear un servicio que tenga 2 routers.
+El servicio trata sobre una red social.
+
+El primer router es para datos del usuario:
+    - POST: register
+    - GET: profile
+    - GET: user/IDUser -> Donde IDUser es un parametro de la peticion
+    - PUT: edit/IDUser -> Donde IDUser es un parametro de la peticion y en el body mandar los datos a actualizar
+    - DELETE: deleteUser -> Mandar en el body el ID del user
+
+El segundo router es para publicaciones
+    - POST: new
+    - PUT edit/PostID -> Donde PostID es un parametro y mandar en el body los datos a editar de la publicacion.
+    - GET: all
+    - GET: post/PostID -> Donde PostID es un parametro
+    - DELETE: deletePost -> Mandar en el body el postID a borrar

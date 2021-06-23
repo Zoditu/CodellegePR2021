@@ -1,0 +1,143 @@
+.filtro {
+  border: 0.3rem solid var(--color-blue);
+  color: var(--color-gray);
+}
+
+.product-card {
+  width: 18rem;
+  display: inline-flex;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.product-card img {
+  width: 100%;
+  height: 10rem;
+  background-color: dimgray;
+}
+
+.card-body button {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  position: absolute;
+  right: 0.3rem;
+  bottom: 0.3rem;
+}
+
+.card-body {
+  height: 10rem;
+}
+
+.card-text {
+  height: 6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: var(--color-blue);
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-box {
+  padding-right: 1.5rem;
+}
+
+.search-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.35rem;
+}
+
+input[type=text] {
+  border: 0;
+  background-color: transparent;
+  border-bottom: 1px solid var(--required-status);
+  outline: 0;
+}
+
+input[type=text]:active {
+  outline: 0;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 300px;
+  height: 5px;
+  padding: 0;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+/*Chrome thumb*/
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-border-radius: 5px;
+  /*16x16px adjusted to be same as 14x14px on moz*/
+  height: 16px;
+  width: 16px;
+  border-radius: 5px;
+  background: #E7E7E7;
+  border: 1px solid #C5C5C5;
+}
+
+/*Mozilla thumb*/
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -moz-border-radius: 5px;
+  height: 14px;
+  width: 14px;
+  border-radius: 5px;
+  background: var(--range-color);
+  border: 1px solid #C5C5C5;
+}
+
+/*IE & Edge input*/
+input[type=range]::-ms-track {
+  width: 300px;
+  height: 6px;
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 2px 0;
+  /*remove default tick marks*/
+  color: transparent;
+}
+
+/*IE & Edge thumb*/
+input[type=range]::-ms-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 5px;
+  background: var(--range-color);
+  border: 1px solid #C5C5C5;
+}
+
+/*IE & Edge left side*/
+input[type=range]::-ms-fill-lower {
+  background: #919e4b;
+  border-radius: 2px;
+}
+
+/*IE & Edge right side*/
+input[type=range]::-ms-fill-upper {
+  background: var(--range-border);
+  border-radius: 2px;
+}
+
+/*IE disable tooltip*/
+input[type=range]::-ms-tooltip {
+  display: none;
+}

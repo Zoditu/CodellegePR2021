@@ -1,0 +1,132 @@
+h1 {
+    padding-top: 3rem;
+    font-size: 3rem;
+    font-weight: bold;
+    padding-bottom: 2rem;
+    text-shadow: 4px 4px 5px var(--color-gray-transparent);
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 2rem;
+}
+#SliderInicio {
+    width: 100%;
+    height: 30rem;
+    padding-right: 8rem;
+    padding-left: 8rem;
+}
+
+#SliderInicio img {
+    width: 100%;
+    height: 30rem;
+    padding-right: 8rem;
+    padding-left: 8rem;
+}
+
+#sliderInicio button:hover {
+    background-color: rgba(105, 105, 105, 0.39);
+}
+
+.card {
+    background-color: transparent;
+    border: none;
+    height: 20rem;
+    width: 17rem;
+    cursor: pointer;
+    transition: all 500ms ease-out;
+    box-shadow: var(--color-black-transparent)5px 5px 5px;
+}
+.capa-uno, .capa-dos, .capa-tres {
+    height: 20rem;
+    width: 17rem;
+    position: absolute;
+    background-color: var(--color-cream-transparent);
+    top: 0;
+    left: 0;
+    border-radius: 2.5px;
+    transition: all 500ms ease-out;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 1.10rem;
+}
+.uno:hover > .capa-uno {
+    visibility: visible;
+    opacity: 1;
+}
+.dos:hover > .capa-dos {
+    visibility: visible;
+    opacity: 1;
+}
+.tres:hover > .capa-tres {
+    visibility: visible;
+    opacity: 1;
+}
+.card-body {
+    height: 16rem;
+    color: var(--color-black);
+    font-weight: bold;
+}
+.uno {
+    background-image: url(https://i.pinimg.com/736x/e9/1e/ce/e91ece583cfc65520f7380bb8b4e4bd8.jpg);
+    background-size: 100% 100%;
+    position: relative;
+} 
+.dos {
+    background-image: url(https://aws-v2.revistaad.es/prod/designs/v1/assets/360x360/154977.jpg);
+    background-size: 100% 100%;
+}
+.tres {
+    background-image: url(http://catalogos.deriocuarto.ar/IMG/articulos-de-jardineria-id734_1-w640-h480-m1.jpg);
+    background-size: 100% 100%;
+}
+
+.card-header {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: var(--color-gray-transparent);
+}
+.about-image {
+    width: 26rem;
+    height: 28rem;
+    display: inline-block;
+    box-shadow: var(--color-black-transparent)5px 5px 5px;
+}
+
+.about-image + article {
+    width: calc(60% - 20rem);
+    height: 28rem;
+    display: inline-block;
+    text-align: left;
+    text-align: center;
+}
+
+.centered-flex {
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    height: 45rem;
+    background-color: var(--color-footer);
+}
+.login-error {
+    font-size: 0.75rem !important;
+}
+.container {
+    font-family: var(--font-general);
+}
+hr {
+    height: 4px;
+  background-color: var(--color-black-transparent);
+}
+.margin-bottom {
+    margin-bottom: 2rem;
+}
+h3 {
+    font-weight: bold;
+}
+.texto {
+    font-size: 1.15rem;
+}

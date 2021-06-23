@@ -1,0 +1,109 @@
+footer {
+    padding: 1.5rem 6rem 1.5rem 6rem;
+    background-color: var(--color-gray-transparent);
+    color: var(--color-white);
+    font-family: var(--font-general);
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+i {
+    font-size: 2rem;
+    margin: 2rem;
+    cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+    color: var(--color-white);
+    font-weight: normal !important;
+}
+
+.bi-twitter:hover {
+    background: -moz-linear-gradient(top, #2cd1e7 0%, #d0fffdf3 100%);
+  background: -webkit-linear-gradient(top, #2cd1e7 0%, #d0fffdf3 100%);
+  background: linear-gradient(to bottom, #2cd1e7 0%, #d0fffdf3 100%);
+-webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: white;
+}
+
+.bi-instagram:hover {
+    background: -moz-linear-gradient(top, #e72c83 0%, #f58a26 100%);
+  background: -webkit-linear-gradient(top, #e72c83 0%, #f58a26 100%);
+  background: linear-gradient(to bottom, #e72c83 0%, #f58a26 100%);
+-webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bi-facebook:hover {
+    background: -moz-linear-gradient(top, #052270 0%, #2049cf 100%);
+  background: -webkit-linear-gradient(top, #052270 0%, #2049cf 100%);
+  background: linear-gradient(to bottom, #052270 0%, #2049cf 100%);
+-webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bi-youtube:hover {
+    background: -moz-linear-gradient(top, #690a0a 0%, #cf2020 100%);
+  background: -webkit-linear-gradient(top, #690a0a 0%, #cf2020 100%);
+  background: linear-gradient(to bottom, #690a0a 0%, #cf2020 100%);
+-webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Acerca {
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.Acerca:hover {
+    color: var(--color-blue);
+}
+
+.bold {
+    color: var(--color-black);
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.btn-outline-secondary {
+  color: var(--color-black);
+  font-weight: bold;
+  border: 2px var(--color-black) solid;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.col-search {
+  padding-right: 7rem;
+  padding-bottom:4rem;
+}
+
+.row .text-left a {
+font-size: 1.5rem;
+font-weight: normal;
+}
+
+h5 {
+  font-size: 1.5rem;
+}

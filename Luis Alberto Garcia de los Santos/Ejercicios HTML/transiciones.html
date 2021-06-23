@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        @keyframes mover {
+            from{
+                left: 0;
+                top: 0;
+            }
+            to{
+                left: 10rem;
+                top: 10rem;
+            }
+        }
+
+.tarjeta{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    width: 20rem;
+    height: 20rem;
+    background: rgb(63, 219, 219);
+    transition: width 0.3s, height 0.3s, background 0.3s, left 0.3s, top 0.3s;
+}
+.tarjeta:hover{
+    left: 10rem;
+    top: 10rem;
+    width: 40rem;
+    height: 40rem;
+    background: rgb(116, 31, 214) ;
+    transition: width 0.3s, height 0.3s, background 0.3s, left 0.3s, top 0.3s;
+}
+    </style>
+</head>
+<body>
+    <div class="tarjeta">  
+    </div>
+</body>
+</html>

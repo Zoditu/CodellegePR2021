@@ -1,0 +1,18 @@
+
+div.examen
+{
+    width: 500px;
+    border: 1px solid black;
+    margin-left: 500px;
+    padding-top: 300px;
+    text-align: left;
+    background-color: rgb(244, 164, 96);
+}
+.letras{
+    color: red;
+    margin-left: 2px;
+}
+
+    
+
+
