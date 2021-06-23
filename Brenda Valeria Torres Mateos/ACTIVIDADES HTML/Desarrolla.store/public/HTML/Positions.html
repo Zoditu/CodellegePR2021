@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posicionamiento</title>
+    <style>
+
+.cuadro {
+            width: 15rem;
+            height: 15rem;
+            background: forestgreen;
+        }
+
+        .pequeno {
+            width: 5rem;
+            height: 5rem;
+            background: red;
+        }
+
+        .relative {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Positions</h1>
+    <div class="relative">
+        <div class="cuadro">
+            <div class="relative">
+                <div class="cuadro pequeno"></div>
+            </div>
+        </div>
+        <br>
+        <div class="cuadro">
+            <div class="relative">
+                <main>
+                    <section>
+                        <article>
+                            <div class="cuadro pequeno"></div>
+                        </article>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

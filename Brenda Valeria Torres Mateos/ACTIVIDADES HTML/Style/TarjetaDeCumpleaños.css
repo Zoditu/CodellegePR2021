@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+.tarjeta {
+    width: 30rem;
+    height: 18rem;
+    font-size: 1.5em;
+    border-radius: 5%;
+    float: left;
+
+    background:lightgray;
+
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tarjeta header {
+    height: 15%;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.tarjeta main {
+    height: 85%;
+}
+
+.tarjeta main section:first-child {
+    padding-top: 0.5rem;
+    padding-right: 0.5rem;
+    height: 70%;
+}
+
+.tarjeta main section:last-child {
+    height: 30%;
+    padding: 0.5rem;
+}
+
+.tarjeta .datos {
+    float: left;
+    text-align: right;
+    padding-right: 0.5rem;
+    width: 70%;
+    height: 100%;
+}
+
+.tarjeta .imagen {
+    float: left;
+    background-image: url(https://i.pinimg.com/736x/df/1e/85/df1e856078364b682cfcb4b16aeb37da.jpg);
+    background-size: 100% 100%;
+    width: 30%;
+    height: 100%;
+    
+}
+
+.table {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.table-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
