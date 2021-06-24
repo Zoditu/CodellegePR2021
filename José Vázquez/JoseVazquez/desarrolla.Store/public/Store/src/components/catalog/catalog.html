@@ -29,9 +29,9 @@
           </button>
         </div> 
         <div class="card-body">
-          <span>KISSES CEREAL - $400</span>
+          <span>{{product.name}} - ${{product.price}}</span>
           <p class="card-text">
-            Milk and chocolate the perfect couple
+            {{product.description}}
           </p>
           <button (click)="AddToCart(product.sku)" class="btn float-right">+</button>
         </div>

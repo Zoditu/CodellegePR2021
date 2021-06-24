@@ -1,5 +1,6 @@
 table {
-  font-size: 2rem;
+  font-size: 0.8rem;
+  color:white;
 }
 
 .line-border {
@@ -32,11 +33,13 @@ td {
 }
 
 .product-image {
-  max-width: 6rem;
+  max-width: 4rem;
+  
 }
 
 .product-image img {
-  height: 7rem;
+  height:auto;
+  width: 100%;
 }
 
 .product-detail {
@@ -91,4 +94,8 @@ td {
 .clean-button:hover {
   background: var(--color-limpiarcarrito);
   color: var(--color-white);
+}
+
+.container{
+  color: white;
 }

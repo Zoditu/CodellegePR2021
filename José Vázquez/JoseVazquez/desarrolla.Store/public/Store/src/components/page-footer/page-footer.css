@@ -1,6 +1,7 @@
 footer {
     padding: 3rem;
     background-color: var(--color-footer);
+    color: white;
 }
 
 .text-left{

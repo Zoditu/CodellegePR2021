@@ -4,13 +4,14 @@
   --color-footer: #860000;
   --color-red: #860000;
   --color-black: #ff0000;
-  --color-black2: #130000;
+  --color-black2: #ffffff;
   --error-color: #c05a5a;
   --color-agregarrojo: rgb(255, 0, 0);
   --color-colorpagar: rgb(255, 0, 0);
   --color-negrocontinuar: #000000;
   --color-pagar: red;
-  --color-limpiarcarrito: rgb(255, 0, 0);
+  --color-limpiarcarrito:
+  
 }
 
 body {

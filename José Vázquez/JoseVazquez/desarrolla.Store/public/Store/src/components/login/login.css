@@ -15,7 +15,7 @@
 }
 
 .button-login {
-  background-color: var(--color-blue);
+  background-color: red;
   color: var(--color-white);
   border: 0;
   width: 100%;
@@ -25,4 +25,8 @@
 .login-error {
   font-weight: bold;
   color: var(--error-color);
+}
+
+section{
+  color: white;
 }
