@@ -2,7 +2,7 @@ import {
     Component,
     OnInit
   } from '@angular/core';
-import { func } from 'joi';
+  import { func } from 'joi';
   declare var $:any;
 
   import { Singleton } from '../../refactoring/DataSingleton';

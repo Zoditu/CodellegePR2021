@@ -1,67 +1,71 @@
-<main class="container text-center">
-  <div class="col card">
-    <h4 class="card-header">Registrar Usuario</h4>
-    <div class="card-body">
-      <div class="card-row">
-        <span class="card-title cell">* Usuario:</span>
-        <input type="text" (input)="UpdateValue($event, 'nickname')"
-          placeholder="Nickname" class="cell">
+<main class="container pt-5">
+  <section class="row-contenedor">
+    <div class="rowP  col-6">
+      <h2 class="titulo-h2 pb-2">Registrate</h2>
+      <div>
+        <label class="form-label">Rellena el formulario siguiente con tus datos.</label>
       </div>
-      <div class="card-row">
-        <span class="card-title cell">* Nombre:</span>
-        <input type="text" (input)="UpdateValue($event, 'name')"
-          placeholder="Nombre" class="cell">
-      </div>
-      <div class="card-row">
-        <span class="card-title cell">* Apellido:</span>
-        <input type="text" (input)="UpdateValue($event, 'lastName')"
-          placeholder="Apellido" class="cell">
-      </div>
-      <hr>
-      <div class="card-row">
-        <span class="card-title cell">Calle:</span>
-        <input type="text" (input)="UpdateValue($event, 'street')"
-          placeholder="Calle" class="cell">
-      </div>
-      <div class="card-row">
-        <span class="card-title cell">Colonia:</span>
-        <input type="text" (input)="UpdateValue($event, 'suburb')"
-          placeholder="Colonia" class="cell">
-      </div>
-      <div class="card-row">
-        <span class="card-title cell">Municipio:</span>
-        <input type="text" (input)="UpdateValue($event, 'city')"
-          placeholder="Municipio" class="cell">
-      </div>
-      <div class="card-row">
-        <span class="card-title cell">Estado:</span>
-        <input type="text" (input)="UpdateValue($event, 'state')"
-          placeholder="Estado" class="cell">
-      </div>
-      <div class="card-row">
-        <span class="card-title cell">C.P.</span>
-        <input type="text" (input)="UpdateValue($event, 'zip')"
-          placeholder="C.P." class="cell">
-      </div>
-      <hr>
-      <div class="card-row">
-        <span class="card-title cell">* Email:</span>
-        <input type="text" (input)="UpdateValue($event, 'email')"
-          placeholder="user@dominio.com" class="cell">
-      </div>
-      <div class="card-row">
-        <span class="card-title cell">* Contraseña:</span>
-        <input type="password" (input)="UpdateValue($event, 'password')"
-          placeholder="*******" class="cell">
-      </div>
-      <div class="card-row">
-        <span class="card-title cell">Telefono:</span>
-        <input type="number" (input)="UpdateValue($event, 'phone')"
-          placeholder="Telefono" class="cell">
+      <div class="row1">
+        <form class="register-form d-flex">
+          <div class="imputs">
+            <div class="datePerson">
+              <h5 class="titulo">Datos Generales:</h5>
+              <div class="mb-1">
+                <input type="text" (input)="UpdateValue($event, 'nickname')" placeholder="ID Usuario"
+                  class="form-control">
+              </div>
+              <div class="mb-1">
+                <input type="text" (input)="UpdateValue($event, 'name')" placeholder="Nombre" class="form-control">
+              </div>
+              <div class="mb-1">
+                <input type="text" (input)="UpdateValue($event, 'lastName')" placeholder="Apellido"
+                  class="form-control">
+              </div>
+              <div class="mb-1">
+                <input type="email" (input)="UpdateValue($event, 'email')" placeholder="alguien@dominio.com"
+                  class="form-control">
+              </div>
+              <div class="mb-1">
+                <input type="password" (input)="UpdateValue($event, 'password')" placeholder="********"
+                  class="form-control">
+              </div>
+              <div class="mb-1">
+                <input type="text" (input)="UpdateValue($event, 'phone')" placeholder="81 00 00 00 00"
+                  class="form-control">
+              </div>
+            </div>
+            <div class="address imputs mt-5">
+              <h5 class="titulo">Datos de envió:</h5>
+              <div class="mb-1">
+                <input type="text" (input)="UpdateValue($event, 'street')" placeholder="Calle" class="form-control">
+              </div>
+              <div class="mb-1">
+                <input type="text" (input)="UpdateValue($event, 'suburb')" placeholder="Colonia" class="form-control">
+              </div>
+              <div class="mb-1">
+                <input type="text" (input)="UpdateValue($event, 'city')" placeholder="Municipio" class="form-control">
+              </div>
+              <div class="mb-1">
+                <input type="text" (input)="UpdateValue($event, 'state')" placeholder="Estado" class="form-control">
+              </div>
+              <div class="mb-1">
+                <input type="text" (input)="UpdateValue($event, 'zip')" placeholder="C.P." class="form-control">
+              </div>
+            </div>
+          </div>  
+        </form>
+        <div class="boton">
+          <a href='/login' class="btn btn-secondary">Cancelar</a>
+          <a (click)='Register();' class="btn btn-primary">Registrarse</a>          
+        </div>
+        <div class="py-2 register-error" [hidden]='!invalidRegister'>No se pudo registrar el usuario.
+          {{registerFailureReason}}.
+        </div>
       </div>
     </div>
-      <hr>
-      <div class="py-2 register-error" [hidden]='!invalidRegister'>No se pudo registrar el usuario. {{registerFailure}}.</div>
-      <button (click)='Register();'>Registrar</button>    
-  </div>
+    <div class="col-1"></div>
+    <div class="row2 col-5">
+      <img src="../../assets/images/resgistrate.png" alt="">
+    </div>
+  </section>
 </main>

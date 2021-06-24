@@ -35,6 +35,7 @@ const routes: Routes = [
     StoreComponent, // Se añae el componente importado arriba
     HeaderComponent,
     FooterComponent,
+    InicioComponent,
     CardsComponent,
     CartComponent,
     LoaderComponent,

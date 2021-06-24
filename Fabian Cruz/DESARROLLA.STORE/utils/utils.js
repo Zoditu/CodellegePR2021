@@ -28,23 +28,23 @@ module.exports = {
         return epoch;
     },
 
-    validateCart: async (carrito) => {
-        // var cartID = req.cookies["CARTID"];
-        // var carrito = await Cart.findOne({
-        //     id: cartID
-        // });
-        
-        var cart_issues = [];
+    validateCart: async function(carrito) {
+        /*var carrito = await Cart.findOne({
+            id: cartID
+        });*/
     
+        var cart_issues = [];
+        //Ejecuta 1 por 1 a la vez
+        //Es más lento
         for (var i = 0; i < carrito.products.length; i++) {
             const product = carrito.products[i];
     
-            // COmprobar que el producto existe... No se puede comprar algo que ya se quitó
+            //Comprobar que el producto existe... No se puede comprar algo que ya se quitó
             var productDB = await Product.findOne({
                 sku: product.sku
-            })
+            });
     
-            // No encontró el producto en la DB. Lo eliminamos
+            //No encontró el producto en la DB. Lo eliminamos
             if (!productDB) {
                 cart_issues.push({
                     product: {
@@ -53,7 +53,8 @@ module.exports = {
                     },
                     issue: "Este producto ha sido dado de baja del catálogo"
                 });
-                // Elimina el elemento apartir de la posicion i, y lo va a hacer nveces
+    
+                //Elimina el elemento a partir de la posición i, y lo va a hacer n veces
                 carrito.products.splice(i, 1);
                 i--;
                 continue;
@@ -66,19 +67,22 @@ module.exports = {
                         },
                         issue: "Este producto no tiene stock por el momento"
                     });
+    
                     carrito.products.splice(i, 1);
                     i--;
                     continue;
-                } else if(productDB.stock < product.qty) {
+                } else if (productDB.stock < product.qty) {
+                    product.qty = productDB.stock;
                     cart_issues.push({
                         product: {
                             sku: product.sku,
                             name: product.name
                         },
-                        issue: "Este producto no tiene suficiente stock. Se le ha modificado al maximo existente por el momento"
-                    });                
+                        issue: "Este producto no tiene suficiente stock. Se le ha modificado al máximo existente"
+                    });
                 }
             }
+    
             product.name = productDB.name;
             product.description = productDB.description;
             product.unit_price = productDB.price;
@@ -91,12 +95,15 @@ module.exports = {
             const product = carrito.products[i];
             carrito.quantity += product.qty;
             carrito.total += product.qty * product.unit_price;
-    
         }
     
         carrito.markModified('products');
         await carrito.save();
+
+        //console.log('El nuevo carrito: ');
+        //console.log(cart_issues);
     
         return { cart: carrito, cart_issues: cart_issues };
+    
     }
 };

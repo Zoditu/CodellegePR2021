@@ -62,11 +62,18 @@
 
 .search-bar {
     position: relative;
+    margin-bottom: 1.5rem;
 }
 
-.search-box {
+.form-control {
+    width: 20rem;
+    padding-left: 1rem;
     padding-right: 1.5rem;
+    border-radius: .5rem;
+    border: solid .1rem var(--color-fondo2);
+    outline: 0;
 }
+
 
 .search-icon {
     position: absolute;
@@ -81,4 +88,17 @@
 .dropdown-item:hover {
     color: var(--color-black);
     background-color: var(--color-fondo2);
+}
+
+.navbar {
+    background-color: var(--color-fondo2);
+}
+
+.categorys {
+    text-align: left;
+    list-style: none;
+}
+
+.item-list {
+    cursor: pointer;
 }

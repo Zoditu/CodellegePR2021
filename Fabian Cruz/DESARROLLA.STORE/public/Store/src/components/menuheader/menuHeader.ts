@@ -3,7 +3,7 @@ import {
   OnInit
  } from '@angular/core';
 declare var $:any;
-
+import { CardsComponent } from '../../components/cards/cards'
 import { Singleton } from '../../refactoring/DataSingleton';
 
 @Component({
@@ -23,11 +23,11 @@ export class HeaderComponent implements OnInit {
 
     this.CheckSession();
   } 
+  
 
   ReloadCart(){
     Singleton.GetInstance().ShowLoader();
     var self = this
-    console.log('Ejecutando LoadCart')
     $.ajax({
       type: 'GET',
       xhrFields: {
@@ -66,12 +66,6 @@ export class HeaderComponent implements OnInit {
         self.accountRedirect = "Login";
       }
     });
-  }
-
-  PestañaCatalogo(){
-    
-    
-    
   }
 
   accountRedirect = 'Login';

@@ -18,9 +18,15 @@ import { Singleton } from '../../refactoring/DataSingleton';
 //  Cambiar el nombre de AppComponent por el del nuestro
 export class CardsComponent implements OnInit {
   ngOnInit(){
+    var self = this;
     this.GetProducts();
-    $(".toast").toast()
-    
+    this.GetFilters();
+
+    Singleton.GetInstance().Category = function() {
+      self.Category();
+  }
+
+    $(".toast").toast();
   }
 
   GetProducts(){
@@ -28,7 +34,19 @@ export class CardsComponent implements OnInit {
     var self = this;
     $.ajax({
       type: 'GET',
-      url: 'http://localhost:666/products/all',
+      url: `http://localhost:666/products/search?category=${this.searchFilters.category}&name=${this.searchFilters.name}&price=0,${this.searchFilters.price}&stock=${this.searchFilters.stock ? 'true' : ''}`,
+      success: function(res: any) {
+        self.products = res;
+        Singleton.GetInstance().HideLoader();
+      }
+    });
+  }
+  GetFilters(){
+    Singleton.GetInstance().ShowLoader();
+    var self = this;
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:666/products/getFilters',
       success: function(res: any) {
         self.products = res;
         Singleton.GetInstance().HideLoader();
@@ -57,5 +75,47 @@ export class CardsComponent implements OnInit {
       }
     })
   }
-  products = null;
+  products = new Array;
+  categories = new Array;
+  
+  
+  searchFilters = {
+    name: '',
+    price: 25000,
+    stock: false,
+    category: '',
+  }
+
+  UpdateName(element: any) {
+    this.searchFilters.name = element.value;
+  }
+
+  UpdatePrice(element: any) {
+    this.searchFilters.price = element.value;
+  }
+
+  Category(){
+    var categoria = Singleton.GetInstance().CategoryExport();
+    console.log(categoria)
+    this.UpdateCategory(categoria);
+  }
+
+  UpdateCategory(element: any) {
+    this.searchFilters.category = element;
+    this.GetProducts();
+  }
+
+  UpdateStock(element: any) {
+    this.searchFilters.stock = element.checked;
+    this.GetProducts();
+  }
+
+  CheckKey(event:any) {
+    //Si es enter
+    if(event.keyCode === 13) {
+      this.GetProducts();
+    }
+  }
+
+
 }

@@ -93,7 +93,7 @@ router.get('/search', async (req, res) => {
         filtro.name = { $regex: ToRegex(name) }
     }
 
-    if(name) {
+    if(category) {
         filtro.category = { $regex: ToRegex(category) }
     }
 
@@ -137,6 +137,17 @@ router.get('/search', async (req, res) => {
 
     res.send(productos)
 })
+
+router.get('/getFilters', async(req, res) => {
+
+    var allCategories = await Product.find({}).distinct('category');
+
+    var filters = {
+        categories: allCategories
+    };
+
+    res.send(filters);
+});
 
 // Endpoint para buscar un sku
 router.get('/:sku', async (req, res) => {

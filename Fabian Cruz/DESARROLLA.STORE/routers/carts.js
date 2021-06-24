@@ -361,16 +361,17 @@ router.put('/validateCart', async (req, res) => {
     }
 
     var cart_issues = [];
-
+    //Ejecuta 1 por 1 a la vez
+    //Es más lento
     for (var i = 0; i < carrito.products.length; i++) {
         const product = carrito.products[i];
 
-        // COmprobar que el producto existe... No se puede comprar algo que ya se quitó
+        //Comprobar que el producto existe... No se puede comprar algo que ya se quitó
         var productDB = await Product.findOne({
             sku: product.sku
-        })
+        });
 
-        // No encontró el producto en la DB. Lo eliminamos
+        //No encontró el producto en la DB. Lo eliminamos
         if (!productDB) {
             cart_issues.push({
                 product: {
@@ -379,7 +380,8 @@ router.put('/validateCart', async (req, res) => {
                 },
                 issue: "Este producto ha sido dado de baja del catálogo"
             });
-            // Elimina el elemento apartir de la posicion i, y lo va a hacer nveces
+
+            //Elimina el elemento a partir de la posición i, y lo va a hacer n veces
             carrito.products.splice(i, 1);
             i--;
             continue;
@@ -392,19 +394,21 @@ router.put('/validateCart', async (req, res) => {
                     },
                     issue: "Este producto no tiene stock por el momento"
                 });
+
                 carrito.products.splice(i, 1);
                 i--;
                 continue;
-            } else if (productDB.stock < product.quantity) {
+            } else if (productDB.stock < product.qty) {
                 cart_issues.push({
                     product: {
                         sku: product.sku,
                         name: product.name
                     },
-                    issue: "Este producto no tiene suficiente stock. Se le ha modificado al maximo existente por el momento"
+                    issue: "Este producto no tiene suficiente stock. Se le ha modificado al máximo existente"
                 });
             }
         }
+
         product.name = productDB.name;
         product.description = productDB.description;
         product.unit_price = productDB.price;
@@ -417,13 +421,13 @@ router.put('/validateCart', async (req, res) => {
         const product = carrito.products[i];
         carrito.quantity += product.qty;
         carrito.total += product.qty * product.unit_price;
-
     }
 
     carrito.markModified('products');
     await carrito.save();
 
     res.send(cart_issues);
+
 });
 
 //Exportar o generar el módulo carts.js
