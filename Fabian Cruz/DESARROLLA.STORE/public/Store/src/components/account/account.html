@@ -1,0 +1,87 @@
+<section class="container py-5">
+  <div class="alert alert-warning" [hidden]="errorInfo === ''" role="alert">
+    {{errorInfo}}
+  </div>
+  <h2 class="titulo">
+    <i class="bi bi-person-circle"></i>
+    Información de cuenta:
+    <a href="#" class="btn btn-primary logout" (click)="LogOut();">Cerrar Sesión</a>
+  </h2>
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active"> <i class="bi bi-person-lines-fill"></i> Datos Generales</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="info">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <i class="bi bi-person"></i>
+              <span [hidden]="Editing['nickname']">ID Usuario: {{ userData.nickname}}</span>
+              <input type="text" [hidden]="!Editing['nickname']" [value]="userData.nickname" (input)="UpdateValue($event, 'nickname');">
+              <i class="bi bi-pencil" [hidden]="Editing['nickname']" (click)="Editing['nickname'] = true"></i>
+              <i (click)="UpdateInfo('nickname');" class="bi bi-check2" [hidden]="!Editing['nickname']" (click)="Editing['nickname'] = false"></i>
+            </li>
+            <li class="list-group-item"><i class="bi bi-person"></i> 
+              <span [hidden]="Editing['name']">Nombre: {{ userData.name}}</span>
+              <input type="text" [hidden]="!Editing['name']" [value]="userData.name" (input)="UpdateValue($event, 'name');">
+              <i class="bi bi-pencil" [hidden]="Editing['name']" (click)="Editing['name'] = true"></i>
+              <i (click)="UpdateInfo('name');" class="bi bi-check2" [hidden]="!Editing['name']" (click)="Editing['name'] = false"></i>
+            </li>
+            <li class="list-group-item"><i class="bi bi-person"></i>
+              <span [hidden]="Editing['lastName']">Apellido: {{ userData.lastName}}</span>
+              <input type="text" [hidden]="!Editing['lastName']" [value]="userData.lastName" (input)="UpdateValue($event, 'lastName');">
+              <i class="bi bi-pencil" [hidden]="Editing['lastName']" (click)="Editing['lastName'] = true"></i>
+              <i (click)="UpdateInfo('lastName');" class="bi bi-check2" [hidden]="!Editing['lastName']" (click)="Editing['lastName'] = false"></i>
+            </li>
+            <li class="list-group-item"><i class="bi bi-envelope"></i>
+              <span [hidden]="Editing['email']">Email: {{ userData.email}}</span>
+              <input type="text" [hidden]="!Editing['email']" [value]="userData.email" (input)="UpdateValue($event, 'email');">
+              <i class="bi bi-pencil" [hidden]="Editing['email']" (click)="Editing['email'] = true"></i>
+              <i (click)="UpdateInfo('email');" class="bi bi-check2" [hidden]="!Editing['email']" (click)="Editing['email'] = false"></i>
+            </li>
+            <li class="list-group-item"><i class="bi bi-telephone"></i>
+              <span [hidden]="Editing['phone']">Teléfono: {{ userData.phone}}</span>
+              <input type="text" [hidden]="!Editing['phone']" [value]="userData.phone" (input)="UpdateValue($event, 'phone');">
+              <i class="bi bi-pencil" [hidden]="Editing['phone']" (click)="Editing['phone'] = true"></i>
+              <i (click)="UpdateInfo('phone');" class="bi bi-check2" [hidden]="!Editing['phone']" (click)="Editing['phone'] = false"></i>
+            </li>
+          </ul>
+      </div>
+      <div class="card address">
+        <div class="card-header">
+            <i class="bi bi-geo-alt-fill"></i> Datos de envió
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="bi bi-signpost"></i>
+              <span [hidden]="Editing['street']">Calle: {{ userData.address.street }} </span>
+              <input type="text" [hidden]="!Editing['street']" [value]="userData.address.street" (input)="UpdateValue($event, 'street');">
+              <i class="bi bi-pencil" [hidden]="Editing['street']" (click)="Editing['street'] = true"></i>
+              <i (click)="UpdateInfo('address');" class="bi bi-check2" [hidden]="!Editing['street']" (click)="Editing['street'] = false"></i>
+            </li>
+            <li class="list-group-item"><i class="bi bi-geo-alt"></i>
+              <span [hidden]="Editing['suburb']">Colonia: {{ userData.address.suburb }} </span>
+              <input type="text" [hidden]="!Editing['suburb']" [value]="userData.address.suburb" (input)="UpdateValue($event, 'suburb');">
+              <i class="bi bi-pencil" [hidden]="Editing['suburb']" (click)="Editing['suburb'] = true"></i>
+              <i (click)="UpdateInfo('address');" class="bi bi-check2" [hidden]="!Editing['suburb']" (click)="Editing['suburb'] = false"></i>
+            </li>
+            <li class="list-group-item"><i class="bi bi-geo-alt"></i><span [hidden]="Editing['city']">Ciudad: {{ userData.address.city }} </span>
+              <input type="text" [hidden]="!Editing['city']" [value]="userData.address.city" (input)="UpdateValue($event, 'city');">
+              <i class="bi bi-pencil" [hidden]="Editing['city']" (click)="Editing['city'] = true"></i>
+              <i (click)="UpdateInfo('address');" class="bi bi-check2" [hidden]="!Editing['city']" (click)="Editing['city'] = false"></i></li>
+            <li class="list-group-item"><i class="bi bi-geo-alt"></i><span [hidden]="Editing['state']">Estado: {{ userData.address.state }} </span>
+              <input type="text" [hidden]="!Editing['state']" [value]="userData.address.state" (input)="UpdateValue($event, 'state');">
+              <i class="bi bi-pencil" [hidden]="Editing['state']" (click)="Editing['state'] = true"></i>
+              <i (click)="UpdateInfo('address');" class="bi bi-check2" [hidden]="!Editing['state']" (click)="Editing['state'] = false"></i></li>
+            <li class="list-group-item"><i class="bi bi-geo-alt"></i><span [hidden]="Editing['zip']">C.P.: {{ userData.address.zip }} </span>
+              <input type="text" [hidden]="!Editing['zip']" [value]="userData.address.zip" (input)="UpdateValue($event, 'zip');">
+              <i class="bi bi-pencil" [hidden]="Editing['zip']" (click)="Editing['zip'] = true"></i>
+              <i (click)="UpdateInfo('address');" class="bi bi-check2" [hidden]="!Editing['zip']" (click)="Editing['zip'] = false"></i></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

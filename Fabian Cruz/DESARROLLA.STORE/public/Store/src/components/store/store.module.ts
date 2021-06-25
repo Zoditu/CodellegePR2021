@@ -12,13 +12,22 @@ import { InicioComponent } from '../inicio/inicio';
 import { LoginComponent } from '../login/login';
 import { RegisterComponent } from '../register/register';
 import { CartComponent } from '../cart/cart';
+import { AccountComponent } from '../account/account';
+import { LoaderComponent } from '../loader/loader';
+import { CheckoutComponent } from '../checkout/checkout';
+import { ConfirmationComponent } from '../confirmation/confirmation';
+import { NosotrosComponent } from '../nosotros/nosotros';
 
 const routes: Routes = [
   { path: 'catalog', component: CardsComponent},
   { path: '', component: InicioComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'cart', component: CartComponent}
+  { path: 'cart', component: CartComponent},
+  { path: 'account', component: AccountComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'nosotros', component: NosotrosComponent }
 ];
 
 @NgModule({
@@ -26,11 +35,12 @@ const routes: Routes = [
     StoreComponent, // Se añae el componente importado arriba
     HeaderComponent,
     FooterComponent,
-    CardsComponent,
     InicioComponent,
-    LoginComponent,
-    RegisterComponent,
-    CartComponent
+    CardsComponent,
+    CartComponent,
+    LoaderComponent,
+    CheckoutComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

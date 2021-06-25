@@ -1,45 +1,72 @@
+<nav class="navbar navbar-expand-lg mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/catalog">Catálogo de productos</a>
+      <form class="d-flex">
+        <input [value]="searchFilters.name" (input)="UpdateName($event.target)" (keydown)="CheckKey($event);" class="form-control me-2" type="search" placeholder="Buscar.." aria-label="Search">
+        <div class="btn btn-outline-success" (click)="GetProducts();"><i class="bi bi-search"></i></div>
+      </form>
+  </div>
+</nav>
 <main class="container">
-    <h1 class='py-3'>Desarrolla.store -  Catálogo de productos</h1>
   <article class="row">
-    <section class="filtro col-3">
-      <h3>Filtros de búsqueda</h3>
-      <input type="checkbox" name="Filtro Tal" id="filtro1">
-      <label for="filtro1">Filtro 1</label>
-    </section>
-    <section class="col-9 px-2">
-        <div *ngFor="let product of products" class="card product-card">
-          <div class="card product-card" style="width: 18rem;">
-            <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-touch="false"
-              data-bs-interval="false">
-              <div class="carousel-inner">
-                <div *ngFor="let image of product.images; let i = index" [class]="'carousel-item' + (i === 0 ? ' active' : '')">
-                  <img [src]="image" class="d-block w-100">
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
-              data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
-              data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">{{product.name}} - ${{product.price}} </h5>
-              <hr>
-              <p class="card-text">{{product.descripcion}}</p>
-              <button (click)="AddToCart(product.sku)" class="btn btn-primary">+</button>
+    <section class="filtro col-2">
+      <div class="line"></div>
+      <h5>Navegar por</h5>
+      <div class="row">
+          <div class="categorys">
+            <div class="list-group" id="list-tab" role="tablist">
+              <button class="list-group-item list-group-item-action active" data-bs-toggle="list" role="tab" (click)="UpdateCategory('');">Todos los productos</button>
+              <button class="list-group-item list-group-item-action" data-bs-toggle="list"role="tab" (click)="UpdateCategory('Computadoras');" id="Computadoras">Computadoras</button>
+              <button class="list-group-item list-group-item-action" data-bs-toggle="list"role="tab" (click)="UpdateCategory('Celulares');">Celulares</button>
+              <button class="list-group-item list-group-item-action" data-bs-toggle="list" role="tab" (click)="UpdateCategory('Consolas');">Consolas</button>
+              <button class="list-group-item list-group-item-action" data-bs-toggle="list" role="tab" (click)="UpdateCategory('Tablets');">Tablets</button>
+              <button class="list-group-item list-group-item-action" data-bs-toggle="list" role="tab" (click)="UpdateCategory('Impresoras');">Impresoras</button>
+              <button class="list-group-item list-group-item-action" data-bs-toggle="list" role="tab" (click)="UpdateCategory('Pantallas');">Pantallas</button>
             </div>
           </div>
+      </div>
+      <br>
+      Precios: $0 - ${{searchFilters.price}}
+      <input class="w-100" type="range" min="0" max="25000" step="100" [value]="searchFilters.price" (input)="UpdatePrice($event.target);" (change)="GetProducts();">
+      <br>
+      <label for="stock">Con Stock:&nbsp;</label>
+      <input type="checkbox" id="stock" [checked]="searchFilters.stock" (change)="UpdateStock($event.target);">
+    </section>
+    <section class="col px-2">
+      <div *ngFor="let product of products" class="card product-card">
+        <div [id]="'slider-' + product.sku" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+          <div class="carousel-inner">
+            <div *ngFor="let image of product.images; let i = index"
+              [class]="'carousel-item' + (i === 0 ? ' active' : '')">
+              <img [src]="image" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#slider-' + product.sku"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <h4 class="card-title">${{product.price}} MXN</h4>
+          <div>
+            <p class="card-text col-10">{{product.descripcion}}</p>
+            <button [disabled]="product.stock < 1" (click)="AddToCart(product.sku)"
+              class="btn btn-primary col">+</button>
+          </div>
+        </div>
+      </div>
     </section>
   </article>
 </main>
-<div class="toast align-items-center text-white border-0" role="alert" aria-live="assertive"
-  aria-atomic="true" data-bs-animation="true" data-bs-autohide="true" data-bs-delay="2000">
+<div class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true"
+  data-bs-animation="true" data-bs-autohide="true" data-bs-delay="2000">
   <div class="d-flex">
     <div class="toast-body">
       Se ha añadido el producto al carrito

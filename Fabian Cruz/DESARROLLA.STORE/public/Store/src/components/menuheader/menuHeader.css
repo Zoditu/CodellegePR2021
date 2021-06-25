@@ -1,5 +1,5 @@
 header {
-    background: var(--color-black);
+    background: var(--color-blue);
     height: 3rem;
     padding: .3rem;
     color: var(--color-white);
@@ -46,4 +46,22 @@ i {
 span {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+}
+
+.accordion {
+    position: relative;
+}
+
+.dropdown-item {
+    color: var(--color-black);
+}
+
+.dropdown-item:hover {
+    color: var(--color-black);
+    background-color: var(--color-fondo2);
+}
+
+.search-bar {
+    width: 15rem;
+    display: flex;
 }

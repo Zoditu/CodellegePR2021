@@ -1,32 +1,49 @@
-.card-body {
-    display: table;
-}
-.card-row {
-    display: table-row;
+.register-error {
+    color: var(--error-color);
 }
 
-.cell {
-    display: table-cell;
+.register-form {
+    background-color: var(--color-fondo3);
+    border-radius: 1rem;
+}
+
+.imputs {
+    border: solid .1rem var(--color-blue-light);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 
-.card {
-    border: solid 2px var(--color-blue);
-    display: inline-block;
-    margin: 2rem
-}
-
-.card-header {
-    text-align: center;
-    background-color: var(--color-blue);
-    font-family: 'Oswald', sans-serif;
-    color: var(--color-white);
-}
-
-.card-body {
+.form-control:hover {
     background-color: var(--color-white);
 }
 
-.register-error {
-    color: var(--error-color);
+h5.titulo {
+    text-align: center;
+}
+
+.titulo-h2 {
+    display: inline-block;
+    font-size: 2rem;
+}
+
+.address {
+    background-color: var(--color-fondo2);
+}
+
+.row-contenedor {
+    display: flex;
+}
+
+.boton {
+    margin-top: 1rem;
+    float: right;
+}
+.btn {
+    margin-left: 1rem;
+}
+
+.btn-primary {
+    width: 10rem;
 }

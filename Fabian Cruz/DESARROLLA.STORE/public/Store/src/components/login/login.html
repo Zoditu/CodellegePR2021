@@ -1,15 +1,62 @@
 <main class="container">
-  <div class="col card">
-    <h5 class="card-header">Iniciar Sesion</h5>
-    <div class="card-body">
-      <h5 class="card-title">Username/Email</h5>
-      <input type="text" (input)='UpdateEmail($event)' placeholder="Usenrname/Email">
-      <h5 class="card-title">Password</h5>
-      <input type="text" (input)='UpdatePassword($event)' placeholder="********">
-      <hr>
-      <a (click)='Login();' class="btn btn-primary">Iniciar Sesion</a>
-      <div class="py-2 login-error" [hidden]='!invalidLogin'>No se pudo iniciar sesión. Verifique sus datos.</div>
-      <div>¿Eres un cliente nuevo? <a href="" class="Empieza_aquí" routerLink="/register">Empieza aquí</a></div>
-    </div>
-  </div>
+  <section class="row py-4">
+    <section class="row col-5">
+        <h3 class="titulo pt-2">Bienvenido,</h3>
+        <h3>inicia sesión para seguir comprando</h3>
+      <section class="row">
+        <form class="login-form">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Usuario / Email</label>
+            <input type="email" (input)='UpdateEmail($event)' placeholder="Usenrname/Email" class="form-control"
+              id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" (input)='UpdatePassword($event)' placeholder="********" class="form-control"
+              id="exampleInputPassword1">
+          </div>
+          <div class="conectarse">
+            <a (click)='Login();' class="btn btn-primary">Conectarse</a>
+            <div class="py-2 login-error" [hidden]='!invalidLogin'>No se pudo iniciar sesión. Verifique sus datos.</div>
+            <div class="form-text">
+              <span>¿Eres un cliente nuevo? </span>
+              <a href="/register" class="Empieza_aquí">Registrate</a>
+            </div>
+          </div>
+        </form>
+      </section>
+    </section>
+    <div class="col-2"></div>
+    <section class="col-5 slider">
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="/assets/images/computadoras/pc2a.webp" class="slider-img">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="/assets/images/celulares/cel2a.jpg" class="slider-img">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="/assets/images/consolas/consola3a.jpg" class="slider-img">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+  </section>
 </main>

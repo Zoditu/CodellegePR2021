@@ -1,33 +1,64 @@
-<main class="container">
+<main class="container py-5">
+  <div class="row">
     <h2 class="title">Carrito de compras</h2>
-    <div class="row">
-        <div class="col-6 line-border"></div>
-    </div>
-    <div class="row">
-        <table class="table table-success table-striped table-borderless">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>
-                        <div>Nombre Producto</div>
-                        <div>#SKU</div>
-                        <div>Descripción</div>
-                    </td>
-                    <td class="centered">
+    <div class="col-6 line-border"></div>
+  </div>
+  <div class="row">
+    <div *ngIf="products !== null; else emptyCart">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>
+                <button class="btn clean-button" (click)="CleanCart();">
+                    <i class="bi bi-trash"></i>&nbsp;Limpiar todo
+                </button>                
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td class="product-image">
+              <img [src]="product.images[0]" alt="Imagen del producto">
+            </td>
+            <td class="product-detail">
+              <div [title]="product.name"> {{product.name}} </div>
+              <div [title]="product.sku"># {{product.sku}} </div>
+              <div [title]="product.description"> {{product.description}} </div>
+            </td>
+            <td>
+              <div class="d-flex align-self-center centered">
+                <span class="button-cart" (click)="DeleteOne(product.sku)">-</span>
+                <span class="px-3 centered">{{product.qty}}</span>
+                <span class="button-cart" (click)="AddOne(product.sku)">+</span>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex align-self-center centered">
+                <span class="px-3 centered">${{product.qty * product.unit_price}}</span>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex align-self-center button-cart centered">
+                <span class="button-cart" (click)="DeleteProduct(product.sku)">X</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
 
-                    </td>
-                </tr>
-            </tbody>
-            
-        </table>
+      </table>
+      <section class="cart-total">
+        <span>Total: ${{total}}</span>
+      </section>
+      <section>
+        <a href='/checkout' class="btn btn-pagar overflow-hidden">Continuar</a>
+      </section>
     </div>
+    <ng-template #emptyCart>
+      <h4 class="py-4">No hay productos en el carrito</h4>
+    </ng-template>
+  </div>
 </main>

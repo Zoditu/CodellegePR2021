@@ -6,7 +6,21 @@
   <div class='d-flex align-items-center float-right h-100'>
     <a routerLink="/">Inicio</a>
     <span>&nbsp;|&nbsp;</span>
-    <a routerLink="/catalog">Catálogo</a>
+    <div class="catalogo">
+      <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#">Catálogo</a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="/catalog">Computadoras</a></li>
+        <li><a class="dropdown-item" href="/catalog">Celulares</a></li>
+        <li><a class="dropdown-item" href="/catalog">Consolas</a></li>
+        <li><a class="dropdown-item" href="/catalog">Tablets</a></li>
+        <li><a class="dropdown-item" href="/catalog">Impresoras</a></li>
+        <li><a class="dropdown-item" href="/catalog">Pantallas</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" routerLink="/catalog">Todos los productos</a></li>
+      </ul>
+    </div>
+    <!-- <span>&nbsp;|&nbsp;</span>
+    <a routerLink="/catalog" class="catalogo">Catálogo</a> -->
     <span>&nbsp;|&nbsp;</span>
     <a [routerLink]="accountRedirect === 'Login' ? '/login' : '/account'"> {{ accountRedirect }} </a>
     <a routerLink="/cart">

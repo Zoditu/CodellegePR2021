@@ -26,8 +26,8 @@ router.get('/all', async (req, res) => {
     res.send(users);
 });
 
-router.get('getSession', async (req,res) => {
-    const usuarioActual =  req.cookies['SESSIONID'];
+router.get('/getSession', async (req,res) => {
+    const nickname =  req.cookies['SESSIONID'];
     var user = await User.findOne({
         nickname: nickname
     });
@@ -63,13 +63,7 @@ router.post('/register', async (req, res) => {
         });
     }
 
-    var usuarioRegistrado = new User({
-        nickname: datosUsuario.nickname,
-        name: datosUsuario.name,
-        lastName: datosUsuario.lastName,
-        email: datosUsuario.email,
-        password: datosUsuario.password
-    })
+    var usuarioRegistrado = new User(datosUsuario);
 
     await usuarioRegistrado.save();
     res.send({
@@ -80,8 +74,7 @@ router.post('/register', async (req, res) => {
 // Router,metodo,endpoint,peticion y respuesta
 router.get('/:nickname', async (req, res) => {
 
-    var parametros = req.params;
-    var nickname = parametros.nickname;
+    var nickname = req.cookies['SESSIONID'];;
 
     var user = await User.findOne({ nickname: nickname }, { __v: 0, _id: 0, password: 0 })
     // findOne puede regresar null o el usuario
@@ -96,52 +89,101 @@ router.get('/:nickname', async (req, res) => {
 
 router.put('/:nickname', async (req, res) => {
     const nickname = req.params.nickname;
-    const usuarioActual =  req.cookies['SESSIONID'];
+    const usuarioActual = req.cookies["SESSIONID"];
     const userData = req.body;
+    var userIsAdmin = false;
 
-
-    if(nickname !== usuarioActual) {
-        var userIsAdmin = await Utils.isAdmin(req, res);
-        if(!userIsAdmin) {
+    if (nickname !== usuarioActual) {
+        userIsAdmin = await Utils.isAdmin(req, res);
+        if (!userIsAdmin) {
             return;
         }
     }
 
-    var user = await User.findOne({ nickname: nickname });
+    var user = await User.findOne({
+        nickname: nickname
+    });
+
+    //findOne puede regresar null o el usuario
     if (!user) {
         //User no existe
         return res.status(404).send({
-            message: 'El usuario: ' + nickname + ' no existe'
+            message: "El usuario: " + nickname + " no existe"
         });
     }
 
-    // Los objetos en JS tambien se les conoce como Key-Values Pair
-    // { key: value }
-
+    //Los objetos en JS también se les conoce como Key-Value Pair
+    //{ key: value }
+    //key es único
+    //{ name: "abc" }
     var propiedades = Object.keys(userData);
-    // Regresa un array [Strings]
-    // ['name','OPOtraPropiedad]
-    // Esto funcionara porque puedo acceder a una propiedad de un objeto
-    // De manera tipo Hashing: userData['name'] => userData.name
+    //Regresa un array [Strings]
+    //['name', 'OtraPropiedad', 'lastName']
+    //Esto funcionará porque puedo acceder a una propiedad de un objeto
+    //de manera tipo Hashing: userData["name"] -> userData.name
 
     for (var i = 0; i < propiedades.length; i++) {
         const propiedad = propiedades[i];
-        
+
         switch (propiedad) {
             case "name":
-                user.name = userData.name;
+                user.name = userData.name
                 break;
+
+            case "nickname":
+                var newNickname = userData.nickname;
+                var userExists = await User.findOne({
+                    nickname: newNickname
+                });
+
+                if (userExists) {
+                    res.status(403).send({
+                        error: "El nickname: " + newNickname + " ya está ligado a otro usuario"
+                    });
+                    return;
+                }
+
+                user.nickname = newNickname;
+                res.clearCookie('SESSIONID');
+                res.cookie('SESSIONID', newNickname);
+                break;
+
+            case "email":
+                var newEmail = userData.email;
+                var userExists = await User.findOne({
+                    email: newEmail
+                });
+
+                if (userExists) {
+                    res.status(403).send({
+                        error: "El email: " + newEmail + " ya está ligado a otro usuario"
+                    });
+                    return;
+                }
+
+                user.email = newEmail;
+                break;
+
             case "lastName":
-                user.lastName = userData.lastName;
+                user.lastName = userData.lastName
                 break;
+
             case "phone":
-                user.phone = userData.phone;
+                user.phone = userData.phone
                 break;
+
             case "password":
-                user.password = userData.password;
+                user.password = userData.password
                 break;
+
             case "address":
-                user.address = userData.address;
+                user.address = userData.address
+                break;
+
+            case "userType":
+                if (userIsAdmin) {
+                    user.userType = userData.userType;
+                }
                 break;
         }
     }
@@ -149,8 +191,9 @@ router.put('/:nickname', async (req, res) => {
     await user.save();
 
     res.send({
-        message: 'Se actualizo el usario correctamente'
-    })
+        message: "Se actualizó el usuario correctamente"
+    });
+
 });
 
 router.delete('/:nickname', async (req, res) => {
@@ -208,6 +251,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', async (req, res) => {
     res.clearCookie('SESSIONID');
+    res.clearCookie('CARTID');
 
     res.send({
         message: 'Se ha desloggeado y se ha borrado la sesión'

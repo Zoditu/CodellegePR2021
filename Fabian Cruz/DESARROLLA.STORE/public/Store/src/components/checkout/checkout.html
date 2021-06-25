@@ -1,0 +1,87 @@
+<section class="container py-5">
+  <div class="row">
+    <div class="alert alert-warning" [hidden]='validInfo' role="alert">
+      Por favor, rellene todos los campos con su Información.
+    </div>
+    <article class="col-9">
+      <h2 class="titulo"> <i class="bi bi-person-circle"></i> Información de envió:</h2>
+
+      <div class="card text-center">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a class="nav-link active"> <i class="bi bi-person-lines-fill"></i> Datos Generales</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="info">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="bi bi-person"></i>Nombre:
+                <input type="text" (input)="UpdateValue($event, 'name')" [value]="userData.name">
+              </li>
+              <li class="list-group-item"><i class="bi bi-person"></i>Apellido: <input type="text"
+                  (input)="UpdateValue($event, 'lastName')" [value]="userData.lastName"> </li>
+              <li class="list-group-item"><i class="bi bi-envelope"></i>Email: <input type="text"
+                  (input)="UpdateValue($event, 'email')" [value]="userData.email"></li>
+              <li class="list-group-item"><i class="bi bi-telephone"></i>Teléfono: <input type="text"
+                  (input)="UpdateValue($event, 'phone')" [value]="userData.phone"> </li>
+            </ul>
+          </div>
+          <div class="card address">
+            <div class="card-header">
+              <i class="bi bi-geo-alt-fill"></i> Dirección de envió
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Calle: <input type="text" (input)="UpdateValue($event, 'street')"
+                  [value]="userData.address.street"> </li>
+              <li class="list-group-item">Colonia: <input type="text" (input)="UpdateValue($event, 'suburb')"
+                  [value]="userData.address.suburb"> </li>
+              <li class="list-group-item">Ciudad: <input type="text" (input)="UpdateValue($event, 'city')"
+                  [value]="userData.address.city"> </li>
+              <li class="list-group-item">Estado: <input type="text" (input)="UpdateValue($event, 'state')"
+                  [value]="userData.address.state"> </li>
+              <li class="list-group-item">C.P: <input type="text" (input)="UpdateValue($event, 'zip')"
+                  [value]="userData.address.zip"> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="boton">
+        <a href="#" class="btn btn-primary logout">Cerrar Sesión</a>
+      </div> -->
+    </article>
+    <article class="col-3">
+      <h5 class="pt-3">Resumen del pedido:</h5>
+      <section *ngIf="cart.quantity > 0 else emptyCart">
+        <div class="card text-center">
+          <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="true" href="">Detalles:</a>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <ul class="list-group resumen-form">
+              <li class="list-group-item">Num. Productos: {{cart.products.length}}</li>
+              <li class="list-group-item">Subtotal: ${{(cart.total * 0.84).toFixed(2)}}</li>
+              <li class="list-group-item">IVA: ${{(cart.total * 0.16).toFixed(2) }}</li>
+              <li class="list-group-item total">Total: ${{(cart.total).toFixed(2)}}</li>
+            </ul>
+          </div>
+        </div>
+        
+        
+      </section>
+      <ng-template #emptyCart>
+        <section><h4>El carrito está vacío.</h4></section>
+      </ng-template>
+      <hr>
+      <div [hidden]="cart.quantity === 0" id="paypal-payment">
+
+      </div>
+
+    </article>
+  </div>
+</section>

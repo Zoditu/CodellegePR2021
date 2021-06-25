@@ -1,6 +1,7 @@
 import { 
     Component,
   } from '@angular/core';
+import { LoginComponent } from '../login/login';
   declare var $:any;
     
   @Component({
@@ -13,40 +14,40 @@ import {
   // 
   //  Cambiar el nombre de AppComponent por el del nuestro
   export class RegisterComponent {
-    Register(){
-      var self = this;
-      $.ajax({
-        type: "POST",
-        xhrFields: {
-          withCredentials: true
-        },
-        url: 'http://localhost:666/users/register',
-        data: {
+    Register() {
+        var self = this;
+        $.ajax({
+          type: "POST",
+          xhrFields: { //Esto permite compartir cookies
+            withCredentials: true
+          },
+          url: 'http://localhost:666/users/register',
+          data: {
             nickname: this.nickname,
             name: this.name,
             lastName: this.lastName,
             address: {
-                street: this.address.street,
-                suburb: this.address.suburb,
-                city: this.address.city,
-                state: this.address.state,
-                zip: this.address.zip
+              street: this.address.street,
+              suburb: this.address.suburb,
+              city: this.address.city,
+              state: this.address.state,
+              zip: this.address.zip
             },
             email: this.email,
             password: this.password,
-            phone: this.phone,
-        },
-
-        success: (res: any) => {
-          self.invalidRegister = false;
-          window.location.href="/";
-        },
-        error: (error: any) => {
-          self.invalidRegister= true;
-          self.registerFailure = error.responseJSON.error;
-        }
-      });
-    }
+            phone: this.phone
+          },
+          success: function (res: any) {
+            //Con el singleton cambiar el tipo de enlace en el menu header
+            //Cambiarlo de Login a Mi Cuenta
+            window.location.href = '/';
+          },
+          error: function (error: any) {
+            self.invalidRegister = true;
+            self.registerFailureReason = error.responseJSON.error;
+          }
+        });
+      }
 
     UpdateValue(event: any, property: String) {
         var value = event.target.value;
@@ -84,9 +85,6 @@ import {
                 case 'phone':
                     this.phone = value
                 break;       
-        
-            default:
-                break;
         }
     }
 
@@ -96,17 +94,17 @@ import {
     name = '';
     lastName = '';
     address = {
-    street: '',
-    suburb: '',
-    city: '',
-    state: '',
-    zip: ''
-    }
-    phone = '';
+        street: '',
+        suburb: '',
+        city: '',
+        state: '',
+        zip: 0
+        }
+    phone = 0;
 
 
-    invalidRegister=false
-    registerFailure= ''
+    invalidRegister = false;
+    registerFailureReason = '';
   }  
 
 
